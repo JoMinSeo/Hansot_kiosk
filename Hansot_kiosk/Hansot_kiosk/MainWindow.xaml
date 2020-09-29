@@ -9,7 +9,22 @@
         WindowStyle="None"
         mc:Ignorable="d"
         Title="한솥 키오스크"
+        Width="1920"
+        Height="1080"
         >
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition/>
+            <RowDefinition Height="0.3*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <TextBlock Text="asdf" FontSize="100"/>
+        </Grid>
+        <Grid Grid.Row="1" x:Name="CtrlGrid">
+            <MediaElement x:Name="ProMet" Height="900" Source="Assets\[한솥X삼양] 한솥 불닭치킨마요 환상의 하모니! (feat. 짤툰).MP4"
+                          LoadedBehavior="Manual"
+                          MediaOpened="ProMet_MediaOpened" MediaEnded="ProMet_MediaEnded" MediaFailed="ProMet_MediaFailed"/>
+        </Grid>
     </Grid>
 </Window>
