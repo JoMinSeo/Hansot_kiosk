@@ -16,3 +16,6 @@ D:\PR\Git\CSSuheng\Hansot_kiosk\Hansot_kiosk\Hansot_kiosk\obj\Debug\Hansot_kiosk
 D:\PR\Git\CSSuheng\Hansot_kiosk\Hansot_kiosk\Hansot_kiosk\obj\Debug\Hansot_kiosk.exe
 D:\PR\Git\CSSuheng\Hansot_kiosk\Hansot_kiosk\Hansot_kiosk\obj\Debug\Hansot_kiosk.pdb
 D:\PR\Git\CSSuheng\Hansot_kiosk\Hansot_kiosk\Hansot_kiosk\obj\Debug\Hansot_kiosk_Content.g.cs
+D:\PR\Git\CSSuheng\Hansot_kiosk\Hansot_kiosk\Hansot_kiosk\obj\Debug\Control\OrderCtrl.g.cs
+D:\PR\Git\CSSuheng\Hansot_kiosk\Hansot_kiosk\Hansot_kiosk\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\PR\Git\CSSuheng\Hansot_kiosk\Hansot_kiosk\Hansot_kiosk\obj\Debug\Control\OrderCtrl.baml

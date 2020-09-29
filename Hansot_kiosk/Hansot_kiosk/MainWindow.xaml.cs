@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hansot_kiosk.Control;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,37 +24,11 @@ namespace Hansot_kiosk
         public MainWindow()
         {
             InitializeComponent();
-
-            ProMet.Play();
         }
-
-        private void ProMet_MediaEnded(object sender, RoutedEventArgs e)
+        private void init()
         {
-
-        }
-
-        private void ProMet_MediaFailed(object sender, ExceptionRoutedEventArgs e)
-        {
-
-        }
-
-        private void ProMet_MediaOpened(object sender, RoutedEventArgs e)
-        {
-            this.playTimeSlider.Minimum = 0;
-
-            this.playTimeSlider.Maximum = this.mediaElement.NaturalDuration.TimeSpan.TotalSeconds;
-        }
-
-        private void playBtn_Click(object sender, RoutedEventArgs e)
-        {
-            if (this.ProMet.Source == null)
-
-            {
-
-                return;
-
-            }
-            this.ProMet.Play();
+            this.readyCtrl.Visibility = Visibility.Collapsed;
+            this.orderCtrl.Visibility = Visibility.Visible;
         }
     }
 }

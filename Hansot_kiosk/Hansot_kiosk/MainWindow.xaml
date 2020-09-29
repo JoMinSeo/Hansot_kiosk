@@ -18,12 +18,15 @@
             <RowDefinition/>
             <RowDefinition Height="0.3*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
-            <TextBlock Text="asdf" FontSize="100"/>
+        <Grid Grid.Row="0" Background="#373737">
+            <DockPanel>
+                <TextBlock Text="asdf" FontSize="90" Foreground="White" DockPanel.Dock="Right" TextAlignment="Right" Width="500"/>
+                <Image />
+            </DockPanel>
         </Grid>
         <Grid Grid.Row="1" x:Name="CtrlGrid">
-            <control:ReadyCtrl Visibility="Visible"/>
-            <control:OrderCtrl Visibility="Collapsed"/>
+            <control:ReadyCtrl x:Name="readyCtrl" Visibility="Collapsed"/>
+            <control:OrderCtrl x:Name="orderCtrl" Visibility="Visible"/>
         </Grid>
     </Grid>
 </Window>

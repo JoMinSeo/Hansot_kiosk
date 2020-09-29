@@ -13,10 +13,15 @@
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="0.15*"/>
                 <RowDefinition Height="0.6*"/>
                 <RowDefinition Height="0.2*"/>
             </Grid.RowDefinitions>
+            <Grid>
+                <StackPanel x:Name="CategoryBtnStpnl" Orientation="Horizontal">
+                    
+                </StackPanel>
+            </Grid>
         </Grid>
         <Grid Grid.Column="1">
             

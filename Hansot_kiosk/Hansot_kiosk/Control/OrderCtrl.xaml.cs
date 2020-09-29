@@ -23,6 +23,13 @@ namespace Hansot_kiosk.Control
         public OrderCtrl()
         {
             InitializeComponent();
+
+            CategoryBtnAdd("버튼 1");
+            CategoryBtnAdd("버튼 2");
+        }
+        private void CategoryBtnAdd(string content)
+        {
+            this.CategoryBtnStpnl.Children.Add(new Button { Content = content, FontSize = 70, Margin = new Thickness(10) { Left = 5, Right = 5 } }) ;
         }
     }
 }
