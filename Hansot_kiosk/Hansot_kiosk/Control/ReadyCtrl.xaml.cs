@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Hansot_kiosk.Control
 {
     /// <summary>
-    /// Interaction logic for UserControl1.xaml
+    /// Interaction logic for ReadyCtrl.xaml
     /// </summary>
-    public partial class UserControl1 : UserControl
+    public partial class ReadyCtrl : UserControl
     {
-        public UserControl1()
+        public ReadyCtrl()
         {
             InitializeComponent();
         }
