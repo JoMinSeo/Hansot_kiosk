@@ -14,13 +14,13 @@
         >
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.1*"/>
             <RowDefinition/>
             <RowDefinition Height="0.3*"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Background="#373737">
             <DockPanel>
-                <TextBlock Text="asdf" FontSize="90" Foreground="White" DockPanel.Dock="Right" TextAlignment="Right" Width="500"/>
+                <TextBlock Text="asdf" FontSize="70" Foreground="White" DockPanel.Dock="Right" TextAlignment="Right" Width="500"/>
                 <Image />
             </DockPanel>
         </Grid>

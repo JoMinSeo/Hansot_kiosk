@@ -4,8 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Hansot_kiosk.Control"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             mc:Ignorable="d"
+             d:DesignHeight="1080" d:DesignWidth="1920">
     <UserControl.Resources>
     </UserControl.Resources>
     <Grid Background="white">
@@ -68,25 +68,21 @@
                 </ListBox>
             </Grid>
             <Grid Grid.Row="1">
-                <ListView x:Name="lvMenu" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                          SelectionMode="Single">
-                    <ListView.ItemsPanel>
+                <ListBox x:Name="lbMenus" Margin="150,0,0,0" FontSize="16" FontWeight="SemiBold" VerticalAlignment="Top" BorderBrush="Transparent" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <WrapPanel Orientation="Horizontal"/>
+                            <WrapPanel />
                         </ItemsPanelTemplate>
-                    </ListView.ItemsPanel>
-                    <ListView.ItemTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Horizontal" Width="400" Height="300">
-                                <Image Source="{Binding ImagePath}"></Image>
-                                <StackPanel VerticalAlignment="Center">
-                                    <TextBlock Text="{Binding Name}"></TextBlock>
-                                    <TextBlock Text="{Binding Price}"></TextBlock>
-                                </StackPanel>
+                            <StackPanel Width="250" Height="250">
+                                <Image Source="{Binding Path}"/>
+                                <TextBlock Text="{Binding Name}" Margin="0,24,0,0" HorizontalAlignment="Center"/>
                             </StackPanel>
                         </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                    </ListBox.ItemTemplate>
+                </ListBox>
             </Grid>
         </Grid>
         <Grid Grid.Column="1">
