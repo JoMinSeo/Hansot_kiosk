@@ -5,8 +5,34 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Hansot_kiosk.Control"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="1080" d:DesignWidth="1920">
     <Grid Background="White">
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150*"/>
+            <RowDefinition Height="50*"/>
+        </Grid.RowDefinitions>
+
+        <MediaElement Grid.Row="0" Name ="VideoControl"  VerticalAlignment="Top" HorizontalAlignment="Center">
+            <MediaElement.Triggers>
+                <EventTrigger RoutedEvent="MediaElement.Loaded">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <MediaTimeline Source="C:\Users\minse\github\Hansot_kiosk\Hansot_kiosk\Hansot_kiosk\Assets\hansot_1080.mp4" Storyboard.TargetName="VideoControl"  
+                 RepeatBehavior="Forever" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </MediaElement.Triggers>
+        </MediaElement>
+
+        <Grid Grid.Row="1" Background="Red">
+            <StackPanel>
+                <Label Content="안녕하세요. 주문을 원하시면 아래 주문버튼을 눌러주세요." FontSize="52" HorizontalAlignment="Center" Margin="0,90,0,0"/>
+                <Button Name="OrderStart_btn" Height="80" Width="320" Content="주문하기" FontSize="48" Margin="0,70,0,0" Click="OrderButton_Click"/>
+            </StackPanel>
+        </Grid>
     </Grid>
+     
 </UserControl>
