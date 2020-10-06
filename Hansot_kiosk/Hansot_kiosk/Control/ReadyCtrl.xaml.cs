@@ -24,5 +24,10 @@ namespace Hansot_kiosk.Control
         {
             InitializeComponent();
         }
+
+        private void OrderButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }

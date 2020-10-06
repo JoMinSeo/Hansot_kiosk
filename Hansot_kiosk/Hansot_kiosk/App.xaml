@@ -4,6 +4,9 @@
              xmlns:local="clr-namespace:Hansot_kiosk"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <FontFamily x:Key="nanumb">./Fonts/nanum_squareb.ttf#Nanum</FontFamily>
+        <FontFamily x:Key="nanumeb">./Fonts/nanum_squareeb.ttf#Nanum</FontFamily>
+        <FontFamily x:Key="nanumr">./Fonts/nanum_squarer.ttf#Nanum</FontFamily>
+        <FontFamily x:Key="nanuml">./Fonts/nanum_squarel.ttf#Nanum</FontFamily>
     </Application.Resources>
 </Application>
