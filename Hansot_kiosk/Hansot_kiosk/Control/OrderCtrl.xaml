@@ -6,6 +6,8 @@
              xmlns:local="clr-namespace:Hansot_kiosk.Control"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+    </UserControl.Resources>
     <Grid Background="white">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -17,10 +19,74 @@
                 <RowDefinition Height="0.6*"/>
                 <RowDefinition Height="0.2*"/>
             </Grid.RowDefinitions>
-            <Grid>
-                <StackPanel x:Name="CategoryBtnStpnl" Orientation="Horizontal">
-                    
-                </StackPanel>
+            <Grid Grid.Row="0">
+                <ListBox x:Name="lbCategory"
+                         VerticalAlignment="Top">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel IsItemsHost="True"
+                                                    Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListBoxItem}">
+                            <Setter Property="Foreground" Value="Gray" />
+                            <Setter Property="Background" Value="Transparent" />
+                            <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+                            <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+                            <Setter Property="Padding" Value="18,10,18,10" />
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                        <Grid>
+                                            <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+                                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"></ContentPresenter>
+                                            </Border>
+                                            <Border x:Name="UnderBd" Margin="18,0,18,0" VerticalAlignment="Bottom" BorderBrush="Transparent" BorderThickness="2"></Border>
+                                        </Grid>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsSelected" Value="true">
+                                                <Setter Property="Foreground" Value="#E22219" />
+                                                <Setter TargetName="UnderBd" Property="BorderBrush" Value="#E22219" />
+                                            </Trigger>
+                                            <Trigger Property="IsMouseOver" Value="true">
+                                                <Setter Property="Foreground" Value="Black" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+
+                    <ListBoxItem>프리미엄</ListBoxItem>
+                    <ListBoxItem Content="프리미엄"/>
+                    <ListBoxItem>세트</ListBoxItem>
+                    <ListBoxItem>도시락</ListBoxItem>
+                    <ListBoxItem>사이드 메뉴</ListBoxItem>
+                </ListBox>
+            </Grid>
+            <Grid Grid.Row="1">
+                <ListView x:Name="lvMenu" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                          SelectionMode="Single">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" Width="400" Height="300">
+                                <Image Source="{Binding ImagePath}"></Image>
+                                <StackPanel VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding Name}"></TextBlock>
+                                    <TextBlock Text="{Binding Price}"></TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </Grid>
         </Grid>
         <Grid Grid.Column="1">
