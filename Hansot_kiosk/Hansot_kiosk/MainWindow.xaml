@@ -16,7 +16,6 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*"/>
             <RowDefinition/>
-            <RowDefinition Height="0.3*"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Background="#373737">
             <DockPanel>
@@ -25,8 +24,8 @@
             </DockPanel>
         </Grid>
         <Grid Grid.Row="1" x:Name="CtrlGrid">
-            <control:ReadyCtrl x:Name="readyCtrl" Visibility="Collapsed"/>
-            <control:OrderCtrl x:Name="orderCtrl" Visibility="Visible"/>
+            <control:ReadyCtrl x:Name="readyCtrl" Visibility="Visible" Loaded="readyCtrl_Loaded"/>
+            <control:OrderCtrl x:Name="orderCtrl" Visibility="Collapsed"/>
         </Grid>
     </Grid>
 </Window>
