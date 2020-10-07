@@ -38,10 +38,5 @@ namespace Hansot_kiosk
 
             App.uIStateManager.Push(readyCtrl);
         }
-
-        private void readyCtrl_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
