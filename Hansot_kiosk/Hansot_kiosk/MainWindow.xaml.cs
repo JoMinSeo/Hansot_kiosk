@@ -1,4 +1,5 @@
 ﻿using Hansot_kiosk.Control;
+using Kiosk.UIManager;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,14 +22,26 @@ namespace Hansot_kiosk
     /// </summary>
     public partial class MainWindow : Window
     {
+        
         public MainWindow()
         {
             InitializeComponent();
+            initUI();
+
         }
-        private void init()
+
+        private void initUI()
         {
-            this.readyCtrl.Visibility = Visibility.Collapsed;
-            this.orderCtrl.Visibility = Visibility.Visible;
+            App.uIStateManager.Set(UICategory.HOME, readyCtrl);
+            App.uIStateManager.Set(UICategory.ORDER, orderCtrl);
+            //chris - add user control. please~!!
+
+            App.uIStateManager.Push(readyCtrl);
+        }
+
+        private void readyCtrl_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
