@@ -27,7 +27,7 @@ namespace Hansot_kiosk.Control
 
         private void OrderButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            App.uIStateManager.Push(OrderCtrl);
         }
     }
 }
