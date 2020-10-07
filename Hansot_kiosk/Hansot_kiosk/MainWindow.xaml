@@ -24,8 +24,12 @@
             </DockPanel>
         </Grid>
         <Grid Grid.Row="1" x:Name="CtrlGrid">
-            <control:ReadyCtrl x:Name="readyCtrl" Loaded="readyCtrl_Loaded"/>
-            <control:OrderCtrl x:Name="orderCtrl" />
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1865*"/>
+                <ColumnDefinition Width="47*"/>
+            </Grid.ColumnDefinitions>
+            <control:ReadyCtrl x:Name="readyCtrl" Loaded="readyCtrl_Loaded" Grid.ColumnSpan="2"/>
+            <control:OrderCtrl x:Name="orderCtrl" Grid.ColumnSpan="2"/>
         </Grid>
     </Grid>
 </Window>

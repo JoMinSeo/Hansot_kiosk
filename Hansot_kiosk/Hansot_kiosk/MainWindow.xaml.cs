@@ -1,4 +1,5 @@
 ﻿using Hansot_kiosk.Control;
+using Kiosk.UIManager;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +32,10 @@ namespace Hansot_kiosk
 
         private void initUI()
         {
+            App.uIStateManager.Set(UICategory.HOME, readyCtrl);
+            App.uIStateManager.Set(UICategory.ORDER, orderCtrl);
+            //chris - add user control. please~!!
+
             App.uIStateManager.Push(readyCtrl);
         }
 

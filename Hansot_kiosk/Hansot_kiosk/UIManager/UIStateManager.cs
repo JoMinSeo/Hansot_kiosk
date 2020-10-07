@@ -1,21 +1,32 @@
-﻿using System;
+﻿using Kiosk.UIManager;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Hansot_kiosk
+namespace UIManager
 {
     public class UIStateManager
     {
-        public static Stack<UserControl> UIStack = new Stack<UserControl>();
+
+        private Dictionary<UICategory, UserControl> DicUserControl = new Dictionary<UICategory, UserControl>();
+        public Stack<UserControl> UIStack = new Stack<UserControl>();
 
         public void Push(UserControl ctrl)
         {
             UIStack.Push(ctrl);
             SetVisible(ctrl, Visibility.Visible);
+        }
+
+        public UserControl Get(UICategory category)
+        {
+            return DicUserControl[category];
+        }
+
+        public void Set(UICategory category, UserControl uc)
+        {
+            DicUserControl.Add(category, uc);
+            uc.Visibility = Visibility.Collapsed;
         }
 
 
@@ -48,6 +59,4 @@ namespace Hansot_kiosk
             ctrl.Visibility = visible;
         }
     }
-
-    
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kiosk.UIManager;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,7 +28,9 @@ namespace Hansot_kiosk.Control
 
         private void OrderButton_Click(object sender, RoutedEventArgs e)
         {
-            App.uIStateManager.Push(OrderCtrl);
+            UserControl uc = App.uIStateManager.Get(UICategory.ORDER);
+            if(uc != null)
+                App.uIStateManager.Push(uc);
         }
     }
 }
