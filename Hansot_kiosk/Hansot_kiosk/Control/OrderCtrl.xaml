@@ -47,11 +47,8 @@
                                         </Grid>
                                         <ControlTemplate.Triggers>
                                             <Trigger Property="IsSelected" Value="true">
-                                                <Setter Property="Foreground" Value="#E22219" />
-                                                <Setter TargetName="UnderBd" Property="BorderBrush" Value="#E22219" />
-                                            </Trigger>
-                                            <Trigger Property="IsMouseOver" Value="true">
-                                                <Setter Property="Foreground" Value="Black" />
+                                                <Setter Property="Foreground" Value="#F6CA00" />
+                                                <Setter TargetName="UnderBd" Property="BorderBrush" Value="#F6CA00" />
                                             </Trigger>
                                         </ControlTemplate.Triggers>
                                     </ControlTemplate>
