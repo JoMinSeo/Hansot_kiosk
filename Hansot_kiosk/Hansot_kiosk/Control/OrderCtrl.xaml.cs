@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Hansot_kiosk.Common;
+using Hansot_kiosk.ViewModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Hansot_kiosk.Control
 {
@@ -20,9 +11,23 @@ namespace Hansot_kiosk.Control
     /// </summary>
     public partial class OrderCtrl : UserControl
     {
+        private OrderViewModel orderViewModel = new OrderViewModel();
         public OrderCtrl()
         {
             InitializeComponent();
+            this.Loaded += OrderCtrl_Loaded;
+
+        }
+
+        private void OrderCtrl_Loaded(object sender, RoutedEventArgs e)
+        {
+            init();
+        }
+
+        private void init()
+        {
+            orderViewModel.LoadMenu();
+            lbMenus.ItemsSource = orderViewModel.lstMenu.Where(x => x.Category == Category.meatmeat).ToList();
         }
     }
 }

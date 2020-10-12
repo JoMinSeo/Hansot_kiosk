@@ -65,7 +65,7 @@
                 </ListBox>
             </Grid>
             <Grid Grid.Row="1">
-                <ListBox x:Name="lbMenus" Margin="150,0,0,0" FontSize="16" FontWeight="SemiBold" VerticalAlignment="Top" BorderBrush="Transparent" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListBox x:Name="lbMenus" Margin="10,0,0,0" FontSize="20" FontWeight="SemiBold" VerticalAlignment="Top" BorderBrush="Transparent" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel />
