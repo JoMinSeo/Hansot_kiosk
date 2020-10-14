@@ -24,8 +24,20 @@
             </DockPanel>
         </Grid>
         <Grid Grid.Row="1" x:Name="CtrlGrid">
-            <control:ReadyCtrl x:Name="readyCtrl"/>
-            <control:OrderCtrl x:Name="orderCtrl"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1865*"/>
+                <ColumnDefinition Width="47*"/>
+            </Grid.ColumnDefinitions>
+
+            <control:ReadyCtrl x:Name="readyCtrl" Grid.ColumnSpan="2"/>
+            <control:OrderCtrl x:Name="orderCtrl" Grid.ColumnSpan="2"/>
+            <control:PlaceCtrl x:Name="placeCtrl" Grid.ColumnSpan="2"/>
+            <control:SeatSelectCtrl x:Name="seatSelectCtrl" Grid.ColumnSpan="2"/>
+            <control:PaySelectCtrl x:Name="paySelectCtrl" Grid.ColumnSpan="2"/>
+            <control:PayCashCtrl x:Name="payCashCtrl" Grid.ColumnSpan="2"/>
+            <control:PayCreditCtrl x:Name="payCreditCtrl" Grid.ColumnSpan="2"/>
+            <control:CompleteCtrl x:Name="completeCtrl" Grid.ColumnSpan="2"/>
+
         </Grid>
     </Grid>
 </Window>
