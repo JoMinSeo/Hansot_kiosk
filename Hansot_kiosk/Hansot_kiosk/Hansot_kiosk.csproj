@@ -57,15 +57,56 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Manager\OrderManager.cs" />
+    <Compile Include="Control\CompleteCtrl.xaml.cs">
+      <DependentUpon>CompleteCtrl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\PayCashCtrl.xaml.cs">
+      <DependentUpon>PayCashCtrl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\PayCreditCtrl.xaml.cs">
+      <DependentUpon>PayCreditCtrl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\PaySelectCtrl.xaml.cs">
+      <DependentUpon>PaySelectCtrl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\PlaceCtrl.xaml.cs">
+      <DependentUpon>PlaceCtrl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\SeatSelectCtrl.xaml.cs">
+      <DependentUpon>SeatSelectCtrl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UIManager\UICategory.cs" />
     <Compile Include="UIManager\UIStateManager.cs" />
     <Compile Include="ViewModel\OrderViewModel.cs" />
+    <Page Include="Control\CompleteCtrl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Control\OrderCtrl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Control\PayCashCtrl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\PayCreditCtrl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\PaySelectCtrl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\PlaceCtrl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Control\ReadyCtrl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\SeatSelectCtrl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
