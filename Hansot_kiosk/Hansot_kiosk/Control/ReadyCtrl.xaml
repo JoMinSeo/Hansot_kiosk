@@ -30,7 +30,7 @@
         <Grid Grid.Row="1">
             <StackPanel>
                 <Label Content="안녕하세요. 주문을 원하시면 아래 주문버튼을 눌러주세요." FontSize="52" HorizontalAlignment="Center" Margin="0,70,0,0"/>
-                <Button Name="OrderStart_btn" Height="80" Width="320" Content="주문하기" FontSize="48" Foreground="#FFFFFF" Margin="0,70,0,0" Click="OrderButton_Click" Background="#373737"/>
+                <Button Name="OrderStart_btn" Height="80" Width="320" Content="주문하기" FontSize="48" Foreground="#FFFFFF" Margin="0,70,0,0" Click="OrderButton_Click" Background="#373737" BorderThickness="0"/>
             </StackPanel>
         </Grid>
     </Grid>

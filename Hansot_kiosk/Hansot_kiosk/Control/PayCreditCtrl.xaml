@@ -22,7 +22,7 @@
             </StackPanel>
         </Grid>
         <Grid>
-            <Button Content="이전" Margin="20,0,0,20" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="200" Height="70" Background="#D9D9D9"/>
+            <Button Content="이전" Margin="20,0,0,20" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="200" Height="70" Background="#D9D9D9" Click="PreviousBtn_Click" BorderThickness="0"/>
         </Grid>
     </Grid>
 </UserControl>

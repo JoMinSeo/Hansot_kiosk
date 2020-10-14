@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kiosk.UIManager;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,25 @@ namespace Hansot_kiosk.Control
         public PlaceCtrl()
         {
             InitializeComponent();
+        }
+
+        private void ShopMealBtn_Click(object sender, RoutedEventArgs e)
+        {
+            UserControl uc = App.uIStateManager.Get(UICategory.SEATSELECT);
+            if (uc != null)
+                App.uIStateManager.Push(uc);
+        }
+
+        private void TakeOutBtn_Click(object sender, RoutedEventArgs e)
+        {
+            UserControl uc = App.uIStateManager.Get(UICategory.PAYSELECT);
+            if (uc != null)
+                App.uIStateManager.Push(uc);
+        }
+
+        private void PreviousBtn_Click(object sender, RoutedEventArgs e)
+        {
+            App.uIStateManager.Pop();
         }
     }
 }

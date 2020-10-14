@@ -11,11 +11,11 @@
             <Label Content="식사장소를 선택하여주세요." HorizontalAlignment="Left" FontSize="52" Margin="40,40,0,0" VerticalAlignment="Top"/>
         </Grid>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Content="매장식사" HorizontalAlignment="Center" Margin="0,0,50,0" VerticalAlignment="Center" Width="300" Height="300" Background="#F6CA00"/>
-            <Button Content="포장주문" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" Width="300" Height="300" Background="#F6CA00"/>
+            <Button Content="매장식사" HorizontalAlignment="Center" Margin="0,0,50,0" VerticalAlignment="Center" Width="300" Height="300" Background="#F6CA00" Click="ShopMealBtn_Click" BorderThickness="0"/>
+            <Button Content="포장주문" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" Width="300" Height="300" Background="#F6CA00" Click="TakeOutBtn_Click" BorderThickness="0"/>
         </StackPanel>
         <Grid>
-            <Button Content="이전" Margin="0,0,0,50" VerticalAlignment="Bottom" Width="200" Height="70" Background="#D9D9D9"/>
+            <Button Content="이전" Margin="0,0,0,50" VerticalAlignment="Bottom" Width="200" Height="70" Background="#D9D9D9" Click="PreviousBtn_Click" BorderThickness="0"/>
         </Grid>
     </Grid>
 </UserControl>

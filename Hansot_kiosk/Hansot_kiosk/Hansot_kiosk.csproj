@@ -24,6 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -165,9 +166,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="NewFolder1\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Assets\baseline_home_white_48dp.png" />
     <Content Include="Assets\hansot_1080.mp4" />
@@ -246,29 +245,75 @@
     <Content Include="Assets\Menu\bowlLunchbox\철판볶음밥\한솥 철판볶음밥.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Resource Include="Assets\Menu\meatmeat\고기고기.jpg" />
-    <Resource Include="Assets\Menu\meatmeat\돈까스도련님고기고기.jpg" />
-    <Resource Include="Assets\Menu\meatmeat\돈치 고기고기.jpg" />
-    <Resource Include="Assets\Menu\meatmeat\새치 고기고기.jpg" />
-    <Resource Include="Assets\Menu\meatmeat\생선까스도련님고기고기.jpg" />
-    <Resource Include="Assets\Menu\meatmeat\탕수육도련님고기고기.jpg" />
-    <Resource Include="Assets\Menu\set\고추장숯불삼겹정식.jpg" />
-    <Resource Include="Assets\Menu\set\국화.jpg" />
-    <Resource Include="Assets\Menu\set\돈까스도련님.jpg" />
-    <Resource Include="Assets\Menu\set\동백.jpg" />
-    <Resource Include="Assets\Menu\set\메가치킨제육.jpg" />
-    <Resource Include="Assets\Menu\set\생선까스도련님.jpg" />
-    <Resource Include="Assets\Menu\set\소불고기.jpg" />
-    <Resource Include="Assets\Menu\set\숯불삼겹정식.jpg" />
-    <Resource Include="Assets\Menu\set\숯불직화구이.jpg" />
-    <Resource Include="Assets\Menu\set\제육 김치찌개 정식.jpg" />
-    <Resource Include="Assets\Menu\set\제육볶음.jpg" />
-    <Resource Include="Assets\Menu\set\주말숯불삼겹2종정식.jpg" />
-    <Resource Include="Assets\Menu\set\치킨제육.jpg" />
-    <Resource Include="Assets\Menu\set\칠리 찹쌀탕수육도련님.jpg" />
-    <Resource Include="Assets\Menu\set\칠리탕수육 육개장 정식.jpg" />
-    <Resource Include="Assets\Menu\set\콤비네이션 정식.jpg" />
-    <Resource Include="Assets\Menu\set\통치즈돈까스 도시락.jpg" />
+    <Content Include="Assets\Menu\meatmeat\고기고기.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Menu\meatmeat\돈까스도련님고기고기.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Menu\meatmeat\돈치 고기고기.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Menu\meatmeat\새치 고기고기.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Menu\meatmeat\생선까스도련님고기고기.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Menu\meatmeat\탕수육도련님고기고기.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Menu\set\고추장숯불삼겹정식.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Menu\set\국화.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Menu\set\돈까스도련님.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Menu\set\동백.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Menu\set\메가치킨제육.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Menu\set\생선까스도련님.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Menu\set\소불고기.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Menu\set\숯불삼겹정식.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Menu\set\숯불직화구이.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Menu\set\제육 김치찌개 정식.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Menu\set\제육볶음.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Menu\set\주말숯불삼겹2종정식.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Menu\set\치킨제육.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Menu\set\칠리 찹쌀탕수육도련님.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Menu\set\칠리탕수육 육개장 정식.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Menu\set\콤비네이션 정식.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Menu\set\통치즈돈까스 도시락.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Resource Include="Assets\Menu\sideDish\간식안주 시리즈\순살치킨 세트%28대%29.jpg" />
     <Resource Include="Assets\Menu\sideDish\간식안주 시리즈\순살치킨 세트%28중%29.jpg" />
     <Resource Include="Assets\Menu\sideDish\간식안주 시리즈\순살치킨믹스 세트.jpg" />
@@ -277,7 +322,9 @@
     <Resource Include="Assets\Menu\sideDish\간식안주 시리즈\치킨 BOX%28대%29.jpg" />
     <Resource Include="Assets\Menu\sideDish\간식안주 시리즈\치킨 BOX%28중%29_양식소스.jpg" />
     <Resource Include="Assets\Menu\sideDish\간식안주 시리즈\치킨 BOX%28중%29_칠리소스.jpg" />
-    <Resource Include="Assets\Menu\sideDish\미니닭가슴살볶음밥.jpg" />
+    <Content Include="Assets\Menu\sideDish\미니닭가슴살볶음밥.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Resource Include="Assets\Menu\sideDish\미니반찬\김치.jpg" />
     <Resource Include="Assets\Menu\sideDish\미니반찬\무말랭이.jpg" />
     <Resource Include="Assets\Menu\sideDish\미니반찬\볶음김치.jpg" />
@@ -309,8 +356,12 @@
     <Resource Include="Assets\Menu\sideDish\실속반찬\반찬 치킨.jpg" />
     <Resource Include="Assets\Menu\sideDish\실속반찬\반찬 카레.jpg" />
     <Resource Include="Assets\Menu\sideDish\실속반찬\반찬 통치즈돈까스.jpg" />
-    <Resource Include="Assets\Menu\sideDish\한솥밥.jpg" />
-    <Resource Include="Assets\Menu\sideDish\현미밥.jpg" />
+    <Content Include="Assets\Menu\sideDish\한솥밥.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Menu\sideDish\현미밥.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kiosk.UIManager;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,5 +25,25 @@ namespace Hansot_kiosk.Control
         {
             InitializeComponent();
         }
+
+        private void PreviusBtn_Click(object sender, RoutedEventArgs e)
+        {
+            App.uIStateManager.Pop();
+        }
+
+        private void CreditBtn_Click(object sender, RoutedEventArgs e)
+        {
+            UserControl uc = App.uIStateManager.Get(UICategory.PAYCREDIT);
+            if (uc != null)
+                App.uIStateManager.Push(uc);
+        }
+
+        private void CashBtn_Click(object sender, RoutedEventArgs e)
+        {
+            UserControl uc = App.uIStateManager.Get(UICategory.PAYCASH);
+            if (uc != null)
+                App.uIStateManager.Push(uc);
+        }
+
     }
 }

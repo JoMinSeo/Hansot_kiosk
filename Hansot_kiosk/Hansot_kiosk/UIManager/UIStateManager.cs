@@ -36,17 +36,26 @@ namespace UIManager
         /// <returns>if true, visible</returns>
         public bool Pop()
         {
-            UIStack.Pop();
             UserControl uc = UIStack.Peek();
 
-            if (uc != null)
+            if (uc == null)
             {
                 return false;
             }
 
             SetVisible(uc, Visibility.Collapsed);
-
+            UIStack.Pop();
             return true;
+        }
+
+        public void AllPop()
+        {
+            while(UIStack.Count > 1)
+            {
+                UserControl uc = UIStack.Peek();
+                SetVisible(uc, Visibility.Collapsed);
+                UIStack.Pop();
+            }
         }
 
         /// <summary>

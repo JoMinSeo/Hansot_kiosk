@@ -19,8 +19,10 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Background="#373737">
             <DockPanel>
-                <Image Source="Assets/baseline_home_white_48dp.png"/>
-                <TextBlock Text="asdf" FontSize="70" Foreground="White" DockPanel.Dock="Right" TextAlignment="Right" Width="500"/>
+                <Button Background="#373737" Click="HomeBtn_Click" BorderThickness="0">
+                    <Image Source="Assets/baseline_home_white_48dp.png"/>
+                </Button>
+                <TextBlock Name="dClock" FontSize="32" VerticalAlignment="Center" Foreground="White" DockPanel.Dock="Right" TextAlignment="Center" Width="500"></TextBlock>
             </DockPanel>
         </Grid>
         <Grid Grid.Row="1" x:Name="CtrlGrid">

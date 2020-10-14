@@ -24,5 +24,10 @@ namespace Hansot_kiosk.Control
         {
             InitializeComponent();
         }
+
+        private void CloseBtn_Click(object sender, RoutedEventArgs e)
+        {
+            App.uIStateManager.AllPop();
+        }
     }
 }
