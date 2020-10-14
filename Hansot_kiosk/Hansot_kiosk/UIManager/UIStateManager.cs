@@ -1,4 +1,5 @@
-﻿using Kiosk.UIManager;
+﻿using Hansot_kiosk.Control;
+using Kiosk.UIManager;
 using System;
 using System.Collections.Generic;
 using System.Windows;
@@ -29,7 +30,6 @@ namespace UIManager
             uc.Visibility = Visibility.Collapsed;
         }
 
-
         /// <summary>
         /// 현재 최상위 유저컨트롤을 꺼내서 보여준다
         /// </summary>
@@ -50,7 +50,7 @@ namespace UIManager
         }
 
         /// <summary>
-        /// 
+        /// visible을 조정한다
         /// </summary>
         /// <param name="ctrl">user control</param>
         /// <param name="visible">ui Visiblity</param>

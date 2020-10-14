@@ -27,13 +27,19 @@ namespace Hansot_kiosk
         {
             InitializeComponent();
             initUI();
-
         }
 
         private void initUI()
         {
             App.uIStateManager.Set(UICategory.HOME, readyCtrl);
             App.uIStateManager.Set(UICategory.ORDER, orderCtrl);
+            App.uIStateManager.Set(UICategory.PLACE, placeCtrl);
+            App.uIStateManager.Set(UICategory.SEATSELECT, seatSelectCtrl);
+            App.uIStateManager.Set(UICategory.PAYSELECT, paySelectCtrl);
+            App.uIStateManager.Set(UICategory.PAYCREDIT, payCreditCtrl);
+            App.uIStateManager.Set(UICategory.PAYCASH, payCashCtrl);
+            App.uIStateManager.Set(UICategory.COMPLETE, completeCtrl);
+
             //chris - add user control. please~!!
 
             App.uIStateManager.Push(readyCtrl);
