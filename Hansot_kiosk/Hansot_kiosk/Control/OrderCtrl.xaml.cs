@@ -1,4 +1,5 @@
 ﻿using Hansot_kiosk.Common;
+using Hansot_kiosk.Manager;
 using Hansot_kiosk.ViewModel;
 using System.Linq;
 using System.Windows;
@@ -12,6 +13,7 @@ namespace Hansot_kiosk.Control
     public partial class OrderCtrl : UserControl
     {
         private OrderViewModel orderViewModel = new OrderViewModel();
+        private OrderManager orderManager = new OrderManager();
         public OrderCtrl()
         {
             InitializeComponent();
@@ -27,7 +29,7 @@ namespace Hansot_kiosk.Control
         private void init()
         {
             orderViewModel.LoadMenu();
-            lbMenus.ItemsSource = orderViewModel.lstMenu.Where(x => x.Category == Category.meatmeat).ToList();
+            lbMenus.ItemsSource = orderManager.lstMenu.Where(x => x.Category == Category.meatmeat).ToList();
         }
     }
 }
