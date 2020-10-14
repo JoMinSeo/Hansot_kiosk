@@ -19,17 +19,13 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Background="#373737">
             <DockPanel>
+                <Image Source="Assets/baseline_home_white_48dp.png"/>
                 <TextBlock Text="asdf" FontSize="70" Foreground="White" DockPanel.Dock="Right" TextAlignment="Right" Width="500"/>
-                <Image />
             </DockPanel>
         </Grid>
         <Grid Grid.Row="1" x:Name="CtrlGrid">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1865*"/>
-                <ColumnDefinition Width="47*"/>
-            </Grid.ColumnDefinitions>
-            <control:ReadyCtrl x:Name="readyCtrl" Grid.ColumnSpan="2"/>
-            <control:OrderCtrl x:Name="orderCtrl" Grid.ColumnSpan="2"/>
+            <control:ReadyCtrl x:Name="readyCtrl"/>
+            <control:OrderCtrl x:Name="orderCtrl"/>
         </Grid>
     </Grid>
 </Window>
