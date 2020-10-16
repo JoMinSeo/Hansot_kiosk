@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hansot_kiosk.Manager;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -16,5 +17,6 @@ namespace Hansot_kiosk
     public partial class App : Application
     {
         public static UIStateManager uIStateManager = new UIStateManager();
+        public static OrderManager orderManager = new OrderManager();
     }
 }

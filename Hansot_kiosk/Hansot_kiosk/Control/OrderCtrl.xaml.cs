@@ -1,6 +1,6 @@
 ﻿using Hansot_kiosk.Common;
 using Hansot_kiosk.Manager;
-using Hansot_kiosk.ViewModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,12 +12,11 @@ namespace Hansot_kiosk.Control
     /// </summary>
     public partial class OrderCtrl : UserControl
     {
-        private OrderViewModel orderViewModel = new OrderViewModel();
+        private OrderMenuManager OrderMenuManager = new OrderMenuManager();
         public OrderCtrl()
         {
             InitializeComponent();
             this.Loaded += OrderCtrl_Loaded;
-
         }
 
         private void OrderCtrl_Loaded(object sender, RoutedEventArgs e)
@@ -27,8 +26,14 @@ namespace Hansot_kiosk.Control
 
         private void init()
         {
-            orderViewModel.LoadMenu();
-            lbMenus.ItemsSource = orderManager.lstMenu.Where(x => x.Category == Category.meatmeat).ToList();
+            lbMenus.ItemsSource = OrderMenuManager.ListMenu.Where(x => x.Category == Category.meatmeat).ToList();
+        }
+
+        private void lbMenus_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Model.Menu model = lbMenus.SelectedItem as Model.Menu;
+            App.orderManager.SelectedMenus.Add(model);
+            lvOrderdMenus.ItemsSource = App.orderManager.SelectedMenus;
         }
     }
 }
