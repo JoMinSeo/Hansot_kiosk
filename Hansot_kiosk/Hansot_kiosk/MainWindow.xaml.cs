@@ -28,16 +28,20 @@ namespace Hansot_kiosk
         {
             InitializeComponent();
             initUI();
+            setTime();
+        }
 
+        private void setTime()
+        {
             DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = new TimeSpan(0, 0, 1);
-            timer.Tick += Timer_Tick;
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += new EventHandler(Timer_Tick);
             timer.Start();
         }
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            dClock.Text = DateTime.Now.ToString();
+            dClock.Content = String.Format("{0:yyyy년 MM월 dd일 HH시 mm분 ss초}", DateTime.Now);
         }
 
         private void initUI()
