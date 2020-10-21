@@ -22,7 +22,7 @@
                 <Button Background="#373737" Click="HomeBtn_Click" BorderThickness="0">
                     <Image Source="Assets/baseline_home_white_48dp.png"/>
                 </Button>
-                <TextBlock Name="dClock" FontSize="32" VerticalAlignment="Center" Foreground="White" DockPanel.Dock="Right" TextAlignment="Center" Width="500"></TextBlock>
+                <Label Content="yyyy-mm-dd hh:mm:ss" Name="dClock" FontSize="32" VerticalAlignment="Center" Foreground="White" DockPanel.Dock="Right" Width="500"></Label>
             </DockPanel>
         </Grid>
         <Grid Grid.Row="1" x:Name="CtrlGrid">
