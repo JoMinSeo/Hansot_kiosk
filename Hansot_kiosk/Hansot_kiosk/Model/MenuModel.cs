@@ -2,7 +2,7 @@
 
 namespace Hansot_kiosk.Model
 {
-    public class Menu
+    public class MenuModel
     {
         public int IDX { get; set; }
         public string Name { get; set; }

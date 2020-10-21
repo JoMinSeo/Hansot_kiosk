@@ -21,7 +21,8 @@
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
                 <ListBox x:Name="lbCategory"
-                         VerticalAlignment="Top">
+                         VerticalAlignment="Top"
+                         SelectionChanged="lbCategory_SelectionChanged">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <VirtualizingStackPanel IsItemsHost="True"
@@ -57,8 +58,8 @@
                         </Style>
                     </ListBox.ItemContainerStyle>
 
-                    <ListBoxItem>프리미엄</ListBoxItem>
-                    <ListBoxItem Content="프리미엄"/>
+                    <ListBoxItem>전체</ListBoxItem>
+                    <ListBoxItem Content="고기고기"/>
                     <ListBoxItem>세트</ListBoxItem>
                     <ListBoxItem>도시락</ListBoxItem>
                     <ListBoxItem>사이드 메뉴</ListBoxItem>

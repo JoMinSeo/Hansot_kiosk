@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Hansot_kiosk.Model
 {
-    public class Order
+    public class OrderModel
     {
         public int IDX { get; set; }
         public int User_IDX { get; set; }

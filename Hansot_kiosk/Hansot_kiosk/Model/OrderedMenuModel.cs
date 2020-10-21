@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Hansot_kiosk.Model
 {
-    public class OrderedMenu
+    public class OrderedMenuModel
     {
         public int MenuIDX { get; set; }
         public int OrderIdx { get; set; }

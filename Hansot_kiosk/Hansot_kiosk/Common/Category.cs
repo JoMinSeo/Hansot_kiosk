@@ -2,9 +2,10 @@
 {
     public enum Category
     {
-        meatmeat,
-        set,
-        bowlLunchbox,
-        sideDish
+        ALL,
+        MEATMEAT,
+        SET,
+        BOWLLUNCHBOX,
+        SIDEDISH
     }
 }
