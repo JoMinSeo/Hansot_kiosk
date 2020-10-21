@@ -28,7 +28,7 @@ namespace Hansot_kiosk.Control
         private void init()
         {
             orderViewModel.LoadMenu();
-            lbMenus.ItemsSource = orderManager.lstMenu.Where(x => x.Category == Category.meatmeat).ToList();
+            lbMenus.ItemsSource = orderViewModel.lstMenu.Where(x => x.Category == Category.meatmeat).ToList();
         }
     }
 }

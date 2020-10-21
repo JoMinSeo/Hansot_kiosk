@@ -4,13 +4,16 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Hansot_kiosk.Control"
+             xmlns:qrcode="clr-namespace:KQRCode;assembly=KQRCode"
              mc:Ignorable="d" 
-             d:DesignHeight="1080" d:DesignWidth="1920">
+             d:DesignHeight="1080" d:DesignWidth="1920"
+             Loaded="PayCreditCtrl_Loaded">
     <Grid Background="White">
         <Grid Margin="60,60,0,0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="250"/>
-                <RowDefinition Height="250"/>
+                <RowDefinition Height="200"/>
+                <RowDefinition Height="200"/>
+                <RowDefinition Height="400"/>
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0">
                 <Label Content="카드계산을 선택하셨습니다." HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" FontSize="52"/>
@@ -18,11 +21,24 @@
             </StackPanel>
             <StackPanel Grid.Row="1">
                 <Label Content="결제금액: 16,000원." HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" FontSize="40"/>
-                <Label Content="회원명: 가면라이더." HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" FontSize="40"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="300"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="이름: " FontSize="52"/>
+                    <TextBox Grid.Column="1"  x:Name="txtQrcode" Width="300" Height="100" HorizontalAlignment="Left" HorizontalContentAlignment="Center" FontSize="52"/>
+                </Grid>
+            </StackPanel>
+            <StackPanel Grid.Row="2">
+                <ComboBox x:Name="cboDevice" Height="50" Width="300"/>
+                <qrcode:KQRWebCam x:Name="webcam" Margin="12" QrDecoded="webcam_QrDecoded" Width="300" Height="300"/>
             </StackPanel>
         </Grid>
         <Grid>
             <Button Content="이전" Margin="20,0,0,20" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="200" Height="70" Background="#D9D9D9" Click="PreviousBtn_Click" BorderThickness="0"/>
         </Grid>
+        
     </Grid>
 </UserControl>
+ 
