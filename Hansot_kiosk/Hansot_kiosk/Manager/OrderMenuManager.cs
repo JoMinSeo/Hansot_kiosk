@@ -1,17 +1,18 @@
 ﻿using Hansot_kiosk.Common;
 using Hansot_kiosk.Model;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace Hansot_kiosk.Manager
 {
     public class OrderMenuManager
     {
-        public List<MenuModel> ListMenu { get; set; } = new List<MenuModel>();
+        public ObservableCollection<MenuModel> ListMenu { get; set; } = new ObservableCollection<MenuModel>();
         public OrderMenuManager()
         {
             if (ListMenu == null)
             {
-                ListMenu = new List<MenuModel>();
+                ListMenu = new ObservableCollection<MenuModel>();
             }
             loadMenu();
         }

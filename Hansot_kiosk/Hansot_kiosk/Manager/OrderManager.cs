@@ -1,6 +1,7 @@
 ﻿using Hansot_kiosk.Common;
 using Hansot_kiosk.Model;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 
 namespace Hansot_kiosk.Manager
@@ -17,8 +18,8 @@ namespace Hansot_kiosk.Manager
                 OnPropertyChanged(nameof(CurrentOrder));
             }
         }
-        private List<MenuModel> _orderedMenus;
-        public List<MenuModel> OrderedMenus
+        private ObservableCollection<MenuModel> _orderedMenus;
+        public ObservableCollection<MenuModel> OrderedMenus
         {
             get { return _orderedMenus; }
             set
@@ -31,21 +32,7 @@ namespace Hansot_kiosk.Manager
         public OrderManager()
         {
             CurrentOrder = new OrderModel();
-            OrderedMenus = new List<MenuModel>();
-            //OrderedMenus.Add(new MenuModel()
-            //{
-            //    Category = Category.MEATMEAT,
-            //    Name = "고기고기",
-            //    Path = "Assets/Menu/meatmeat/고기고기.jpg",
-            //    Page = 1
-            //});
-            //OrderedMenus.Add(new MenuModel()
-            //{
-            //    Category = Category.MEATMEAT,
-            //    Name = "돈까스고기고기",
-            //    Path = @"Assets/Menu/meatmeat/돈까스도련님고기고기.jpg",
-            //    Page = 1
-            //});
+            OrderedMenus = new ObservableCollection<MenuModel>();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

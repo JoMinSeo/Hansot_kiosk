@@ -54,7 +54,6 @@ namespace Hansot_kiosk.Control
 
             MenuModel model = lbMenus.SelectedItem as MenuModel;
             App.orderManager.OrderedMenus.Add(model);
-            lvOrderdMenus.ItemsSource = App.orderManager.OrderedMenus;
         }
     }
 }
