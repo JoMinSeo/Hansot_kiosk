@@ -140,7 +140,7 @@
       <DependentUpon>SeatSelectCtrl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Manager\OrderManager.cs" />
-    <Compile Include="Manager\OrderMenuManager.cs" />
+    <Compile Include="Manager\MenuManager.cs" />
     <Compile Include="UIManager\UICategory.cs" />
     <Compile Include="UIManager\UIStateManager.cs" />
     <Compile Include="ViewModel\OrderViewModel.cs" />

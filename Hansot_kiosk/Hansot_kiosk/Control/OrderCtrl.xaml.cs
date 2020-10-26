@@ -12,7 +12,7 @@ namespace Hansot_kiosk.Control
     /// </summary>
     public partial class OrderCtrl : UserControl
     {
-        private OrderMenuManager OrderMenuManager = new OrderMenuManager();
+        private MenuManager MenuManager = new MenuManager();
         public OrderCtrl()
         {
             InitializeComponent();
@@ -26,7 +26,7 @@ namespace Hansot_kiosk.Control
 
         private void init()
         {
-            lbMenus.ItemsSource = OrderMenuManager.ListMenu;
+            lbMenus.ItemsSource = MenuManager.ListMenu;
             lvOrderdMenus.ItemsSource = App.orderManager.OrderedMenus;
         }
         private void lbCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -37,12 +37,12 @@ namespace Hansot_kiosk.Control
             }
             else if (lbCategory.SelectedIndex == 0)
             {
-                lbMenus.ItemsSource = OrderMenuManager.ListMenu;
+                lbMenus.ItemsSource = MenuManager.ListMenu;
             }
             else
             {
                 Category category = (Category)lbCategory.SelectedIndex;
-                lbMenus.ItemsSource = OrderMenuManager.ListMenu.Where(x => x.Category == category).ToList();
+                lbMenus.ItemsSource = MenuManager.ListMenu.Where(x => x.Category == category).ToList();
             }
         }
         private void lbMenus_SelectionChanged(object sender, SelectionChangedEventArgs e)

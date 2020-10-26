@@ -5,10 +5,10 @@ using System.Collections.ObjectModel;
 
 namespace Hansot_kiosk.Manager
 {
-    public class OrderMenuManager
+    public class MenuManager
     {
         public ObservableCollection<MenuModel> ListMenu { get; set; } = new ObservableCollection<MenuModel>();
-        public OrderMenuManager()
+        public MenuManager()
         {
             if (ListMenu == null)
             {
