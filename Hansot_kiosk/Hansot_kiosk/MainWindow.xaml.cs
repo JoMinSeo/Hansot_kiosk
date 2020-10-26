@@ -17,7 +17,7 @@ namespace Hansot_kiosk
             initUI();
             setTime();
         }
-
+        #region TimeControl
         private void setTime()
         {
             DispatcherTimer timer = new DispatcherTimer();
@@ -30,7 +30,8 @@ namespace Hansot_kiosk
         {
             dClock.Content = String.Format("{0:yyyy년 MM월 dd일 HH시 mm분 ss초}", DateTime.Now);
         }
-
+        #endregion
+        #region UIControl
         private void initUI()
         {
             App.uIStateManager.Set(UICategory.HOME, readyCtrl);
@@ -51,5 +52,6 @@ namespace Hansot_kiosk
         {
             App.uIStateManager.AllPop();
         }
+        #endregion
     }
 }

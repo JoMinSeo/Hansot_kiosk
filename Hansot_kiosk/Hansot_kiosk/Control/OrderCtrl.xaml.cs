@@ -12,6 +12,7 @@ namespace Hansot_kiosk.Control
     /// </summary>
     public partial class OrderCtrl : UserControl
     {
+        #region Init
         private MenuManager MenuManager = new MenuManager();
         public OrderCtrl()
         {
@@ -29,6 +30,8 @@ namespace Hansot_kiosk.Control
             lbMenus.ItemsSource = MenuManager.ListMenu;
             lvOrderdMenus.ItemsSource = App.orderManager.OrderedMenus;
         }
+        #endregion
+        #region SelectionChanged
         private void lbCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (lbCategory.SelectedIndex == -1)
@@ -55,5 +58,6 @@ namespace Hansot_kiosk.Control
             MenuModel model = lbMenus.SelectedItem as MenuModel;
             App.orderManager.OrderedMenus.Add(model);
         }
+        #endregion
     }
 }

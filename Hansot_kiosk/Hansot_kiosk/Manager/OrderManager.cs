@@ -1,6 +1,4 @@
-﻿using Hansot_kiosk.Common;
-using Hansot_kiosk.Model;
-using System.Collections.Generic;
+﻿using Hansot_kiosk.Model;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 
@@ -8,6 +6,7 @@ namespace Hansot_kiosk.Manager
 {
     public class OrderManager : INotifyPropertyChanged
     {
+        #region Property
         private OrderModel _currentOrder;
         public OrderModel CurrentOrder
         {
@@ -28,13 +27,20 @@ namespace Hansot_kiosk.Manager
                 OnPropertyChanged(nameof(OrderedMenus));
             }
         }
+        #endregion
 
         public OrderManager()
         {
-            CurrentOrder = new OrderModel();
-            OrderedMenus = new ObservableCollection<MenuModel>();
+            if (CurrentOrder == null)
+            {
+                CurrentOrder = new OrderModel();
+            }
+            if(OrderedMenus == null)
+            {
+                OrderedMenus = new ObservableCollection<MenuModel>();
+            }
         }
-
+        #region PropertyChangedEvent
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propetryName)
         {
@@ -43,5 +49,6 @@ namespace Hansot_kiosk.Manager
                 PropertyChanged(this, new PropertyChangedEventArgs(propetryName));
             }
         }
+        #endregion
     }
 }

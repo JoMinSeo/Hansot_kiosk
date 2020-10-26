@@ -89,19 +89,13 @@
                 <RowDefinition Height="0.2*"/>
             </Grid.RowDefinitions>
             <ListView x:Name="lvOrderdMenus" Margin="10,0,0,0" FontSize="20" FontWeight="SemiBold" VerticalAlignment="Top" BorderBrush="Transparent" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                <ListView.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel />
-                    </ItemsPanelTemplate>
-                </ListView.ItemsPanel>
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Width="250" Height="250">
-                            <Image Source="{Binding Path}"/>
-                            <TextBlock Text="{Binding Name}" Margin="0,24,0,0" HorizontalAlignment="Center"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="메뉴" Width="150"/>
+                        <GridViewColumn Header="수량" Width="150"/>
+                        <GridViewColumn Header="가격" Width="150"/>
+                    </GridView>
+                </ListView.View>
             </ListView>
             <Grid Grid.Row="1">
 
