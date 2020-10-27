@@ -1,4 +1,5 @@
-﻿using Hansot_kiosk.Manager;
+using Hansot_kiosk.Manager;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -18,5 +19,8 @@ namespace Hansot_kiosk
     {
         public static UIStateManager uIStateManager = new UIStateManager();
         public static OrderManager orderManager = new OrderManager();
+        public static MySqlConnection connection;
+        public static bool DataSaveResult = false;
+        public static bool DataSearchResult = false;
     }
 }
