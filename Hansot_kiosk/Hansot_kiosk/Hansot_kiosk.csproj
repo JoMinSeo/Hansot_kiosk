@@ -139,6 +139,7 @@
     <Compile Include="Control\SeatSelectCtrl.xaml.cs">
       <DependentUpon>SeatSelectCtrl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converter\MenuConverter.cs" />
     <Compile Include="Manager\OrderManager.cs" />
     <Compile Include="Manager\MenuManager.cs" />
     <Compile Include="UIManager\UICategory.cs" />
@@ -238,8 +239,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\baseline_home_white_48dp.png" />
-    <Content Include="Assets\hansot_1080.mp4" />
+    <Content Include="Assets\baseline_home_white_48dp.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\hansot_1080.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Menu\bowlLunchbox\덮밥\돈까스 덮밥.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -315,16 +320,16 @@
     <Content Include="Assets\Menu\bowlLunchbox\철판볶음밥\한솥 철판볶음밥.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Menu\meatmeat\고기고기.jpg">
+    <Content Include="Assets\Menu\meatmeat\donchiMeatmeat.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Menu\meatmeat\meatmeat.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Menu\meatmeat\SechiMeatmeat.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Menu\meatmeat\돈까스도련님고기고기.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Menu\meatmeat\돈치 고기고기.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Menu\meatmeat\새치 고기고기.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Menu\meatmeat\생선까스도련님고기고기.jpg">
@@ -433,8 +438,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Converter\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

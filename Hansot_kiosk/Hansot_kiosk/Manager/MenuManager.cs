@@ -22,7 +22,7 @@ namespace Hansot_kiosk.Manager
             {
                 Category = Category.MEATMEAT,
                 Name = "고기고기",
-                Path = "Assets/Menu/meatmeat/고기고기.jpg",
+                Path = "Assets/Menu/meatmeat/meatmeat.jpg",
                 Page = 1
             });
             ListMenu.Add(new MenuModel()
@@ -36,14 +36,14 @@ namespace Hansot_kiosk.Manager
             {
                 Category = Category.MEATMEAT,
                 Name = "돈치고기고기",
-                Path = @"Assets/Menu/meatmeat/돈치 고기고기.jpg",
+                Path = @"Assets/Menu/meatmeat/donchiMeatmeat.jpg",
                 Page = 1
             });
             ListMenu.Add(new MenuModel()
             {
                 Category = Category.MEATMEAT,
                 Name = "새치고기고기",
-                Path = @"Assets/Menu/meatmeat/새치 고기고기.jpg",
+                Path = @"Assets/Menu/meatmeat/SechiMeatmeat.jpg",
                 Page = 1
             });
             ListMenu.Add(new MenuModel()
