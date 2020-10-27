@@ -29,7 +29,7 @@
                     <ColumnDefinition Width="300"/>
                 </Grid.ColumnDefinitions>
                 <Label Grid.Column="0" Content="인식된 카드번호:" FontSize="52" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                <TextBox x:Name="barcodeTb" Grid.Column="1" FontSize="52" VerticalAlignment="Center" HorizontalAlignment="Left" Width="300" TextChanged="barcodeTb_TextChanged"/>
+                <TextBox x:Name="barcodeTb" Grid.Column="1" FontSize="52" VerticalAlignment="Center" HorizontalAlignment="Left" Width="300" />
             </Grid>
             <Grid Grid.Row="3" HorizontalAlignment="Center">
                 <Grid.ColumnDefinitions>
@@ -46,3 +46,6 @@
         </Grid>
     </Grid>
 </UserControl>
+
+
+<!--TextChanged="barcodeTb_TextChanged"-->
