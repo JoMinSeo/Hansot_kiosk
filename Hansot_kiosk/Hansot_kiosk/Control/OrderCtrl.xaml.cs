@@ -57,6 +57,7 @@ namespace Hansot_kiosk.Control
 
             MenuModel model = lbMenus.SelectedItem as MenuModel;
             App.orderManager.OrderedMenus.Add(model);
+            lbMenus.UnselectAll(); //선택된것을 해제하는 코드로, 같은 메뉴를 두번 클릭이 가능함
         }
         #endregion
     }
