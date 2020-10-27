@@ -39,6 +39,8 @@ namespace Hansot_kiosk.Manager
             {
                 OrderedMenus = new ObservableCollection<MenuModel>();
             }
+
+            CurrentOrder.IDX = -1;
         }
         #region PropertyChangedEvent
         public event PropertyChangedEventHandler PropertyChanged;
