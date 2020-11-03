@@ -23,21 +23,27 @@ namespace Hansot_kiosk.Manager
                 Category = Category.MEATMEAT,
                 Name = "고기고기",
                 Path = @"https://www.hsd.co.kr/images/93ceb60dc7c04f2aa9dd4f044d8ad1ea20190628094358.jpg",
-                Page = 1
+                Page = 1,
+                Price = 4000,
+                Amount = 0
             });
             ListMenu.Add(new MenuModel()
             {
                 Category = Category.MEATMEAT,
                 Name = "돈까스고기고기",
-                Path = @"Assets/Menu/meatmeat/돈까스도련님고기고기.jpg",
-                Page = 1
+                Path = @"https://www.hsd.co.kr/images/93ceb60dc7c04f2aa9dd4f044d8ad1ea20190628094358.jpg",
+                Page = 1,
+                Price = 4000,
+                Amount = 0
             });
             ListMenu.Add(new MenuModel()
             {
                 Category = Category.MEATMEAT,
                 Name = "돈치고기고기",
-                Path = @"Assets/Menu/meatmeat/donchiMeatmeat.jpg",
-                Page = 1
+                Path = @"https://www.hsd.co.kr/images/93ceb60dc7c04f2aa9dd4f044d8ad1ea20190628094358.jpg",
+                Page = 1,
+                Price = 4000,
+                Amount = 0
             });
             ListMenu.Add(new MenuModel()
             {

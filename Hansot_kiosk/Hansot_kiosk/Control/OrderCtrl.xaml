@@ -74,7 +74,7 @@
                     </ListBox.ItemsPanel>
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Width="250" Height="350">
+                            <StackPanel Width="250" Height="300">
                                 <Image Source="{Binding Path}"/>
                                 <TextBlock Text="{Binding Name}" Margin="0,24,0,0" HorizontalAlignment="Center"/>
                             </StackPanel>
@@ -91,9 +91,9 @@
             <ListView x:Name="lvOrderdMenus" Margin="10,0,0,0" FontSize="20" FontWeight="SemiBold" VerticalAlignment="Top" BorderBrush="Transparent" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="메뉴" Width="150"/>
-                        <GridViewColumn Header="수량" Width="150"/>
-                        <GridViewColumn Header="가격" Width="150"/>
+                        <GridViewColumn Header="메뉴" Width="150" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="수량" Width="150" DisplayMemberBinding="{Binding Amount}"/>
+                        <GridViewColumn Header="가격" Width="150" DisplayMemberBinding="{Binding Price}"/>
                     </GridView>
                 </ListView.View>
             </ListView>

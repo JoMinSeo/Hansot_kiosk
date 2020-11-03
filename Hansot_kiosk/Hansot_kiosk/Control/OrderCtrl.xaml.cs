@@ -1,6 +1,7 @@
 ﻿using Hansot_kiosk.Common;
 using Hansot_kiosk.Manager;
 using Hansot_kiosk.Model;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,6 +13,7 @@ namespace Hansot_kiosk.Control
     /// </summary>
     public partial class OrderCtrl : UserControl
     {
+        List<MenuModel> menuList;
         #region Init
         private MenuManager MenuManager = new MenuManager();
         public OrderCtrl()
@@ -27,10 +29,13 @@ namespace Hansot_kiosk.Control
 
         private void init()
         {
-            lbMenus.ItemsSource = MenuManager.ListMenu;
+            menuList = App.sQLManager.SelectMenu();
+
+            lbMenus.ItemsSource = menuList;
             lvOrderdMenus.ItemsSource = App.orderManager.OrderedMenus;
         }
         #endregion
+        // 홈버튼 누를 시 메뉴 있다고 메세지 창 띄우기
         #region SelectionChanged
         private void lbCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -40,12 +45,12 @@ namespace Hansot_kiosk.Control
             }
             else if (lbCategory.SelectedIndex == 0)
             {
-                lbMenus.ItemsSource = MenuManager.ListMenu;
+                lbMenus.ItemsSource = menuList;
             }
             else
             {
                 Category category = (Category)lbCategory.SelectedIndex;
-                lbMenus.ItemsSource = MenuManager.ListMenu.Where(x => x.Category == category).ToList();
+                lbMenus.ItemsSource = menuList.Where(x => x.Category == category).ToList();
             }
         }
         private void lbMenus_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -56,7 +61,19 @@ namespace Hansot_kiosk.Control
             }
 
             MenuModel model = (MenuModel)lbMenus.SelectedItem;
-            App.orderManager.OrderedMenus.Add(model);
+
+            MenuModel sameMenu;
+
+            sameMenu = App.orderManager.OrderedMenus.Where(m => m.IDX == model.IDX).FirstOrDefault();
+
+            if (sameMenu == null)
+            {
+                App.orderManager.OrderedMenus.Add(model);
+            }
+            else
+            {
+                sameMenu.Amount++;
+            }
             lbMenus.UnselectAll(); //선택된것을 해제하는 코드로, 같은 메뉴를 두번 클릭이 가능함
         }
         #endregion

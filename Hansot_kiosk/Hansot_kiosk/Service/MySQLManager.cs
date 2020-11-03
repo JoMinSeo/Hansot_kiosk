@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Windows.Media.Animation;
-using System.Windows.Controls;
 using Hansot_kiosk.Model;
 using Hansot_kiosk.Common;
 
@@ -15,12 +9,13 @@ namespace Hansot_kiosk.Service
 {
     public class MySQLManager
     {
-
-        public void Initialize()
+        public MySQLManager()
         {
             Debug.WriteLine("Database Initialize");
 
-            string connectionPath = "";
+            string connectionPath = "Server = 10.80.163.155; Database=kiosk; " +
+            "Uid=root;Pwd=y28645506;Charset=utf8";
+
             App.connection = new MySqlConnection(connectionPath);
         }
 
@@ -89,9 +84,9 @@ namespace Hansot_kiosk.Service
             }
         }
 
-        public List<MenuModel> SelectMenu(string tableName)
+        public List<MenuModel> SelectMenu()
         {
-            string query = "SELECT * FROM" + " " + tableName;
+            string query = "SELECT * FROM menu";
 
             List<MenuModel> menus = new List<MenuModel>();
 
