@@ -8,6 +8,7 @@ using System.Windows.Controls;
 
 namespace Hansot_kiosk.Control
 {
+    
     /// <summary>
     /// Interaction logic for OrderCtrl.xaml
     /// </summary>
@@ -15,7 +16,6 @@ namespace Hansot_kiosk.Control
     {
         List<MenuModel> menuList;
         #region Init
-        private MenuManager MenuManager = new MenuManager();
         public OrderCtrl()
         {
             InitializeComponent();
@@ -68,11 +68,12 @@ namespace Hansot_kiosk.Control
 
             if (sameMenu == null)
             {
+                model.Amount = 1;
                 App.orderManager.OrderedMenus.Add(model);
             }
             else
             {
-                sameMenu.Amount++;
+                sameMenu.Amount += 1;
             }
             lbMenus.UnselectAll(); //선택된것을 해제하는 코드로, 같은 메뉴를 두번 클릭이 가능함
         }
