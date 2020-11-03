@@ -89,11 +89,11 @@ namespace Hansot_kiosk.Service
             }
         }
 
-        public List<Model.Menu> SelectMenu(string tableName, int columnCnt, string name)
+        public List<MenuModel> SelectMenu(string tableName)
         {
             string query = "SELECT * FROM" + " " + tableName;
 
-            List<Model.Menu> menus = new List<Model.Menu>();
+            List<MenuModel> menus = new List<MenuModel>();
 
 
             if (this.OpenMySqlConnection() == true)
@@ -103,83 +103,25 @@ namespace Hansot_kiosk.Service
 
                 while (dataReader.Read())
                 {
-                    Model.Menu menu = new Model.Menu();
+                    MenuModel menu = new MenuModel();
                     menu.IDX = dataReader.GetInt32(dataReader.GetOrdinal("IDX"));
                     menu.Name = dataReader["Name"].ToString();
                     menu.Price = dataReader.GetInt32(dataReader.GetOrdinal("Price"));
                     menu.Path = dataReader["Path"].ToString();
                     menu.Category = (Category)int.Parse(dataReader["Category"].ToString());
 
+                    menus.Add(menu);
                 }
 
-                // 추가된 코드
-                //if (element != null)
-                //{
-                //    for (int i = 0; i < element[0].Count; i++)
-                //    {
-                //        if (element[0][i].Contains(name))
-                //        {
-                //            for (int j = 0; j < element[1].Count; i++)
-                //            {
-                //                if (element[1][i].Contains(name))
-                //                {
-                //                    App.DataSearchResult = true;
-                //                    break;
-                //                }
-                //            }
-                //        }
-                //        break;
-                //    }
-                //}
-
-                dataReader.Close();
-                this.CloseMySqlConnection();
-
-                return menus;
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        public List<string>[] SelectBarcode(string tableName, int columnCnt, int barcode)
-        {
-            string query = "SELECT * FROM" + " " + tableName;
-
-            List<string>[] element = new List<string>[columnCnt];
-
-            for (int index = 0; index < element.Length; index++)
-            {
-                element[index] = new List<string>();
-            }
-
-            if (this.OpenMySqlConnection() == true)
-            {
-                MySqlCommand command = CreateCommand(query);
-                MySqlDataReader dataReader = command.ExecuteReader();
-
-                while (dataReader.Read())
+                if (menus != null)
                 {
-                    element[0].Add(dataReader["id"].ToString());
-                    element[1].Add(dataReader["pw"].ToString());
-                }
-
-                // 추가된 코드
-                if (element != null)
-                {
-                    for (int i = 0; i < element[0].Count; i++)
+                    for (int i = 0; i < menus.Count; i++)
                     {
-                        if (element[0][i].Contains(id))
+                        if (!menus?.Any() ?? false)
                         {
-                            for (int j = 0; j < element[1].Count; i++)
-                            {
-                                if (element[1][i].Contains(pw))
-                                {
-                                    App.DataSearchResult = true;
-                                    break;
-                                }
-                            }
+                            App.DataSearchResult = true;
+                            break;
+
                         }
                         break;
                     }
@@ -187,8 +129,7 @@ namespace Hansot_kiosk.Service
 
                 dataReader.Close();
                 this.CloseMySqlConnection();
-
-                return element;
+                return menus;
             }
             else
             {
@@ -197,4 +138,4 @@ namespace Hansot_kiosk.Service
         }
     }
 }
-}
+
