@@ -18,8 +18,7 @@
                     <EventTrigger.Actions>
                         <BeginStoryboard>
                             <Storyboard>
-                                <MediaTimeline Source="C:\Users\minse\github\Hansot_kiosk\Hansot_kiosk\Hansot_kiosk\Assets\hansot_1080.mp4" Storyboard.TargetName="VideoControl"  
-                 RepeatBehavior="Forever" />
+                                <MediaTimeline Source="Assets\hansot_1080.mp4" Storyboard.TargetName="VideoControl" RepeatBehavior="Forever" />
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger.Actions>
