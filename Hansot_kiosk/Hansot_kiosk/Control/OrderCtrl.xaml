@@ -74,7 +74,7 @@
                     </ListBox.ItemsPanel>
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Width="250" Height="250">
+                            <StackPanel Width="250" Height="350">
                                 <Image Source="{Binding Path}"/>
                                 <TextBlock Text="{Binding Name}" Margin="0,24,0,0" HorizontalAlignment="Center"/>
                             </StackPanel>

@@ -10,5 +10,6 @@ namespace Hansot_kiosk.Model
         public string Path { get; set; }
         public Category Category { get; set; }
         public int Page { get; set; }
+        public int Amount { get; set; }
     }
 }

@@ -13,7 +13,7 @@ using Hansot_kiosk.Common;
 
 namespace Hansot_kiosk.Service
 {
-    class MySQLManager
+    public class MySQLManager
     {
 
         public void Initialize()
@@ -117,7 +117,7 @@ namespace Hansot_kiosk.Service
                 {
                     for (int i = 0; i < menus.Count; i++)
                     {
-                        if (!menus?.Any() ?? false)
+                        if (!menus?.Any() ?? true)
                         {
                             App.DataSearchResult = true;
                             break;

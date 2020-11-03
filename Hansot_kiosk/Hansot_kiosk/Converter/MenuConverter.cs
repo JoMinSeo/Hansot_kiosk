@@ -1,24 +1,31 @@
-﻿//using Hansot_kiosk.Model;
-//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
+﻿using Hansot_kiosk.Model;
+using System;
+using System.Globalization;
+using System.Windows.Data;
 
-//namespace Hansot_kiosk.Converter
-//{
-//    public class MenuConverter
-//    {
+namespace Hansot_kiosk.Converter
+{
+    public class MenuConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
 
-//        public OrderedMenuModel MenuToOrderedMenu(MenuModel menu)
-//        {
-//            OrderedMenuModel orderedMenu = new OrderedMenuModel();
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
 
-//            orderedMenu.MenuIDX = menu.IDX;
-//            orderedMenu.MenuName = menu.Name;
-           
+        public OrderedMenuModel MenuToOrderedMenu(MenuModel menu)
+        {
+            OrderedMenuModel orderedMenu = new OrderedMenuModel();
 
-//            return orderedMenu;
-//        }
-//    }
-//}
+            orderedMenu.MenuIDX = menu.IDX;
+            orderedMenu.MenuName = menu.Name;
+            orderedMenu.Category = menu.Category;
+
+            return orderedMenu;
+        }
+    }
+}

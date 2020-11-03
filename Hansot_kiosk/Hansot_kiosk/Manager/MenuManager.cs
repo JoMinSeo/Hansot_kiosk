@@ -22,7 +22,7 @@ namespace Hansot_kiosk.Manager
             {
                 Category = Category.MEATMEAT,
                 Name = "고기고기",
-                Path = "Assets/Menu/meatmeat/meatmeat.jpg",
+                Path = @"https://www.hsd.co.kr/images/93ceb60dc7c04f2aa9dd4f044d8ad1ea20190628094358.jpg",
                 Page = 1
             });
             ListMenu.Add(new MenuModel()
