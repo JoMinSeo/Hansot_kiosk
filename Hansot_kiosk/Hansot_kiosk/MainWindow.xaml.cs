@@ -52,6 +52,7 @@ namespace Hansot_kiosk
         private void init()
         {
             App.uIStateManager.AllPop();
+            App.orderManager.init();
         }
 
         private void HomeBtn_Click(object sender, RoutedEventArgs e)

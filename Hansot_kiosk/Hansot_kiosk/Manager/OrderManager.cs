@@ -17,7 +17,7 @@ namespace Hansot_kiosk.Manager
                 OnPropertyChanged(nameof(CurrentOrder));
             }
         }
-        private ObservableCollection<MenuModel> _orderedMenus;
+        private ObservableCollection<MenuModel> _orderedMenus = new ObservableCollection<MenuModel>();
         public ObservableCollection<MenuModel> OrderedMenus
         {
             get { return _orderedMenus; }
@@ -45,10 +45,10 @@ namespace Hansot_kiosk.Manager
         {
             init();
         }
-        private void init()
+        public void init()
         {
             CurrentOrder = new OrderModel();
-            OrderedMenus = new ObservableCollection<MenuModel>();
+            OrderedMenus.Clear();
 
             TotalPrice = 0;
 
