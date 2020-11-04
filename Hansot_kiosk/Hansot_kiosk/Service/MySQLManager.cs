@@ -4,6 +4,8 @@ using MySql.Data.MySqlClient;
 using System.Diagnostics;
 using Hansot_kiosk.Model;
 using Hansot_kiosk.Common;
+using System.Windows.Markup;
+using System.Windows;
 
 namespace Hansot_kiosk.Service
 {
@@ -105,26 +107,45 @@ namespace Hansot_kiosk.Service
                     menus.Add(menu);
                 }
 
-                if (menus != null)
-                {
-                    for (int i = 0; i < menus.Count; i++)
-                    {
-                        if (!menus?.Any() ?? true)
-                        {
-                            App.DataSearchResult = true;
-                            break;
-
-                        }
-                        break;
-                    }
-                }
-
                 dataReader.Close();
                 this.CloseMySqlConnection();
                 return menus;
             }
             else
             {
+                MessageBox.Show("메뉴를 불러오는것에 실패하였습니다.");
+                return null;
+            }
+        }
+
+        public List<UserModel> selectUser()
+        {
+            string query = "SELECT * FROM user";
+            List<UserModel> users = new List<UserModel>();
+
+            if(this.OpenMySqlConnection() == true)
+            {
+                MySqlCommand command = CreateCommand(query);
+                MySqlDataReader dataReader = command.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+                    UserModel user = new UserModel();
+                    user.IDX = dataReader.GetInt32(dataReader.GetOrdinal("IDX"));
+                    user.Name = dataReader["Name"].ToString();
+                    user.Value = dataReader["Value"].ToString();
+
+                    users.Add(user);
+                }
+
+
+                dataReader.Close();
+                this.CloseMySqlConnection();
+                return users;
+            }
+            else
+            {
+                MessageBox.Show("유저를 불러오는데 실패하였습니다.");
                 return null;
             }
         }
