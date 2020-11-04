@@ -14,7 +14,8 @@ namespace Hansot_kiosk.Control
     /// </summary>
     public partial class OrderCtrl : UserControl
     {
-        private List<MenuModel> menuList;
+        private List<MenuModel> menuList { get; set; }
+
         #region Init
         public OrderCtrl()
         {
@@ -83,8 +84,21 @@ namespace Hansot_kiosk.Control
         #region OrderedMenusAmountControl
         private void menuAmountUp(MenuModel menu)
         {
-            menu.Amount++;
-            App.orderManager.TotalPrice += menu.Price;
+            if (menu != null)
+            {
+                menu.Amount++;
+                App.orderManager.TotalPrice += menu.Price;
+            }
+
+        }
+        private void orderedMenuRemove(MenuModel menu)
+        {
+            if (menu != null)
+            {
+                App.orderManager.OrderedMenus.Remove(menu);
+                App.orderManager.TotalPrice -= (menu.Price * menu.Amount);
+                menu.Amount = 0;
+            }
         }
         private void btn_AmountUpClick(object sender, RoutedEventArgs e)
         {
@@ -102,19 +116,13 @@ namespace Hansot_kiosk.Control
                 }
                 else
                 {
-                    App.orderManager.OrderedMenus.Remove(senderMenu);
-                    App.orderManager.TotalPrice -= senderMenu.Price;
+                    orderedMenuRemove(senderMenu);
                 }
             }
         }
         private void btn_MenuDeleteClick(object sender, RoutedEventArgs e)
         {
-            MenuModel senderMenu = (sender as Button).DataContext as MenuModel;
-            if (senderMenu != null)
-            {
-                App.orderManager.OrderedMenus.Remove(senderMenu);
-                App.orderManager.TotalPrice -= (senderMenu.Price * senderMenu.Amount);
-            }
+            orderedMenuRemove((sender as Button).DataContext as MenuModel);
         }
         #endregion
     }

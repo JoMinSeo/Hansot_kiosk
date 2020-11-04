@@ -86,6 +86,10 @@
                     </ListBox.ItemTemplate>
                 </ListBox>
             </Grid>
+            <Grid Grid.Row="2" Margin="20">
+                <Button x:Name="btn_CategoryPrev" Content="이전" FontSize="30px" Width="200px"/>
+                <Button x:Name="btn_CategoryNext" Content="다음" FontSize="30px" Width="200px" HorizontalAlignment="Right"/>
+            </Grid>
         </Grid>
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>

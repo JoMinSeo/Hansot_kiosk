@@ -1,6 +1,7 @@
 using Hansot_kiosk.Manager;
 using Hansot_kiosk.Service;
 using MySql.Data.MySqlClient;
+using System.Collections.ObjectModel;
 using System.Windows;
 using UIManager;
 
