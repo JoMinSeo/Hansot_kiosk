@@ -29,7 +29,7 @@ namespace Hansot_kiosk
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            dClock.Content = String.Format("{0:yyyy년 MM월 dd일 HH시 mm분 ss초}", DateTime.Now);
+            dClock.Content = String.Format("{0:yyyy년 MM월 dd일 tt hh시 mm분 ss초}", DateTime.Now);
         }
         #endregion
         #region UIControl
