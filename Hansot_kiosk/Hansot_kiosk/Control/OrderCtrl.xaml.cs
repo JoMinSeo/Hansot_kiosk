@@ -8,7 +8,6 @@ using System.Windows.Controls;
 
 namespace Hansot_kiosk.Control
 {
-
     /// <summary>
     /// Interaction logic for OrderCtrl.xaml
     /// </summary>
@@ -38,7 +37,7 @@ namespace Hansot_kiosk.Control
             lvOrderdMenus.ItemsSource = App.orderManager.OrderedMenus;
         }
         #endregion
-        // 홈버튼 누를 시 메뉴 있다고 메세지 창 띄우기
+
         #region SelectionChanged
         private void lbCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

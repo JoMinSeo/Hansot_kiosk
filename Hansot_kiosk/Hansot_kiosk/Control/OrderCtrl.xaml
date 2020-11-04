@@ -87,17 +87,20 @@
                 </ListBox>
             </Grid>
             <Grid Grid.Row="2" Margin="20">
-                <Button x:Name="btn_CategoryPrev" Content="이전" FontSize="30px" Width="200px"/>
-                <Button x:Name="btn_CategoryNext" Content="다음" FontSize="30px" Width="200px" HorizontalAlignment="Right"/>
+                <Button x:Name="btn_CategoryPrev" 
+                        Content="이전" FontSize="30px" Width="200px" HorizontalAlignment="Left"/>
+                <Button x:Name="btn_CategoryNext" 
+                        Content="다음" FontSize="30px" Width="200px" HorizontalAlignment="Right"/>
             </Grid>
         </Grid>
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="0.2*"/>
             </Grid.RowDefinitions>
-            <ListView x:Name="lvOrderdMenus" Margin="10,0,0,0" FontSize="20" FontWeight="SemiBold" 
-                      VerticalAlignment="Top" BorderBrush="Transparent" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListView x:Name="lvOrderdMenus" Margin="30,50" FontSize="20" FontWeight="SemiBold" Height="650"
+                      VerticalAlignment="Top" BorderBrush="Transparent" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="메뉴" Width="150" DisplayMemberBinding="{Binding Name}"/>
@@ -132,10 +135,18 @@
                     </GridView>
                 </ListView.View>
             </ListView>
-            <StackPanel Grid.Row="1" Orientation="Horizontal">
-                <TextBlock Text="총 가격 : " FontSize="50px" TextAlignment="Center" VerticalAlignment="Center"/>
-                <TextBlock x:Name="tbk_TotalPrice" Text="{Binding TotalPrice}" FontSize="50px" TextAlignment="Center" VerticalAlignment="Center"/>
-            </StackPanel>
+            <Grid Grid.Row="1">
+                <Button HorizontalAlignment="Left" Width="200px" Content="메뉴 초기화" Height="100" FontSize="24" Margin="16"/>
+                <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="30">
+                    <TextBlock Text="총 가격 : " FontSize="36px" TextAlignment="Center" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="tbk_TotalPrice" Text="{Binding TotalPrice}" FontSize="36px" TextAlignment="Center" VerticalAlignment="Center" Width="150px"/>
+                    <TextBlock Text="원" FontSize="36px" TextAlignment="Center" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Button Width="180px" Height="80px" HorizontalAlignment="Left" Content="이전 화면" FontSize="32" Margin="16"/>
+                <Button Width="180px" Height="80px" HorizontalAlignment="Right" Content="주문하기" FontSize="32" Margin="16"/>
+            </Grid>
         </Grid>
     </Grid>
 </UserControl>
