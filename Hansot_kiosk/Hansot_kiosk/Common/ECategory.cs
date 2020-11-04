@@ -1,6 +1,6 @@
 ﻿namespace Hansot_kiosk.Common
 {
-    public enum Category
+    public enum ECategory
     {
         ALL,
         MEATMEAT,

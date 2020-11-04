@@ -57,8 +57,8 @@ namespace Hansot_kiosk.Model
                 OnPropertyChanged(nameof(Path));
             }
         }
-        private Category _category;
-        public Category Category
+        private ECategory _category;
+        public ECategory Category
         {
             get
             {

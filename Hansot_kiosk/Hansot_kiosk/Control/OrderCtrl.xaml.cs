@@ -8,13 +8,13 @@ using System.Windows.Controls;
 
 namespace Hansot_kiosk.Control
 {
-    
+
     /// <summary>
     /// Interaction logic for OrderCtrl.xaml
     /// </summary>
     public partial class OrderCtrl : UserControl
     {
-        List<MenuModel> menuList;
+        private List<MenuModel> menuList;
         #region Init
         public OrderCtrl()
         {
@@ -29,6 +29,8 @@ namespace Hansot_kiosk.Control
 
         private void init()
         {
+            this.DataContext = App.orderManager;
+
             menuList = App.sQLManager.SelectMenu();
 
             lbMenus.ItemsSource = menuList;
@@ -49,7 +51,7 @@ namespace Hansot_kiosk.Control
             }
             else
             {
-                Category category = (Category)lbCategory.SelectedIndex;
+                ECategory category = (ECategory)lbCategory.SelectedIndex;
                 lbMenus.ItemsSource = menuList.Where(x => x.Category == category).ToList();
             }
         }
@@ -68,14 +70,51 @@ namespace Hansot_kiosk.Control
 
             if (sameMenu == null)
             {
-                model.Amount = 1;
                 App.orderManager.OrderedMenus.Add(model);
+                menuAmountUp(model);
             }
             else
             {
-                sameMenu.Amount += 1;
+                menuAmountUp(model);
             }
             lbMenus.UnselectAll(); //선택된것을 해제하는 코드로, 같은 메뉴를 두번 클릭이 가능함
+        }
+        #endregion
+        #region OrderedMenusAmountControl
+        private void menuAmountUp(MenuModel menu)
+        {
+            menu.Amount++;
+            App.orderManager.TotalPrice += menu.Price;
+        }
+        private void btn_AmountUpClick(object sender, RoutedEventArgs e)
+        {
+            menuAmountUp((sender as Button).DataContext as MenuModel);
+        }
+        private void btn_AmountDownClick(object sender, RoutedEventArgs e)
+        {
+            MenuModel senderMenu = (sender as Button).DataContext as MenuModel;
+            if (senderMenu != null)
+            {
+                if (senderMenu.Amount > 1)
+                {
+                    senderMenu.Amount--;
+                    App.orderManager.TotalPrice -= senderMenu.Price;
+                }
+                else
+                {
+                    App.orderManager.OrderedMenus.Remove(senderMenu);
+                    App.orderManager.TotalPrice -= senderMenu.Price;
+                }
+            }
+        }
+        private void btn_MenuDeleteClick(object sender, RoutedEventArgs e)
+        {
+            MenuModel senderMenu = (sender as Button).DataContext as MenuModel;
+            if (senderMenu != null)
+            {
+                App.orderManager.OrderedMenus.Remove(senderMenu);
+                App.orderManager.TotalPrice -= (senderMenu.Price * senderMenu.Amount);
+            }
         }
         #endregion
     }

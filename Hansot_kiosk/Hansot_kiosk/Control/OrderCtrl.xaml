@@ -1,4 +1,4 @@
-﻿ <UserControl x:Class="Hansot_kiosk.Control.OrderCtrl"
+﻿<UserControl x:Class="Hansot_kiosk.Control.OrderCtrl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -58,11 +58,11 @@
                         </Style>
                     </ListBox.ItemContainerStyle>
 
-                    <ListBoxItem>전체</ListBoxItem>
+                    <ListBoxItem Content="전체"/>
                     <ListBoxItem Content="고기고기"/>
-                    <ListBoxItem>세트</ListBoxItem>
-                    <ListBoxItem>도시락</ListBoxItem>
-                    <ListBoxItem>사이드 메뉴</ListBoxItem>
+                    <ListBoxItem Content="세트"/>
+                    <ListBoxItem Content="도시락"/>
+                    <ListBoxItem Content="사이드"/>
                 </ListBox>
             </Grid>
             <Grid Grid.Row="1">
@@ -92,18 +92,46 @@
                 <RowDefinition/>
                 <RowDefinition Height="0.2*"/>
             </Grid.RowDefinitions>
-            <ListView x:Name="lvOrderdMenus" Margin="10,0,0,0" FontSize="20" FontWeight="SemiBold" VerticalAlignment="Top" BorderBrush="Transparent" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListView x:Name="lvOrderdMenus" Margin="10,0,0,0" FontSize="20" FontWeight="SemiBold" 
+                      VerticalAlignment="Top" BorderBrush="Transparent" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="메뉴" Width="150" DisplayMemberBinding="{Binding Name}"/>
-                        <GridViewColumn Header="수량" Width="150" DisplayMemberBinding="{Binding Amount}"/>
-                        <GridViewColumn Header="가격" Width="150" DisplayMemberBinding="{Binding Price}"/>
+                        <GridViewColumn Width="250" Header="메뉴 수량">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="수량: "  VerticalAlignment="Center" />
+                                        <TextBlock Text="{Binding Amount}"
+                                                       VerticalAlignment="Center" FontSize="18px" />
+
+                                        <StackPanel Margin="5px 0 0 0">
+                                            <Button Click="btn_AmountUpClick" Content="↑" Width="30px"/>
+                                            <Button Click="btn_AmountDownClick" Content="↓" Width="30px"/>
+                                        </StackPanel>
+
+                                        <Button Click="btn_MenuDeleteClick" Content="제거" Margin="5px 0 0 0"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="가격" Width="150">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Price}" FontSize="18px"/>
+                                        <TextBlock Text="원" FontSize="18px"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>
-            <Grid Grid.Row="1">
-
-            </Grid>
+            <StackPanel Grid.Row="1" Orientation="Horizontal">
+                <TextBlock Text="총 가격 : " FontSize="50px" TextAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock x:Name="tbk_TotalPrice" Text="{Binding TotalPrice}" FontSize="50px" TextAlignment="Center" VerticalAlignment="Center"/>
+            </StackPanel>
         </Grid>
     </Grid>
 </UserControl>

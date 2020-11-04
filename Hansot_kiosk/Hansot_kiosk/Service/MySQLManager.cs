@@ -100,7 +100,7 @@ namespace Hansot_kiosk.Service
                     menu.Name = dataReader["Name"].ToString();
                     menu.Price = dataReader.GetInt32(dataReader.GetOrdinal("Price"));
                     menu.Path = dataReader["Path"].ToString();
-                    menu.Category = (Category)int.Parse(dataReader["Category"].ToString());
+                    menu.Category = (ECategory)int.Parse(dataReader["Category"].ToString());
 
                     menus.Add(menu);
                 }

@@ -27,18 +27,30 @@ namespace Hansot_kiosk.Manager
                 OnPropertyChanged(nameof(OrderedMenus));
             }
         }
+        private int _totalPrice;
+        public int TotalPrice
+        {
+            get
+            {
+                return _totalPrice;
+            }
+            set
+            {
+                _totalPrice = value;
+                OnPropertyChanged(nameof(TotalPrice));
+            }
+        }
         #endregion
-
         public OrderManager()
         {
-            if (CurrentOrder == null)
-            {
-                CurrentOrder = new OrderModel();
-            }
-            if(OrderedMenus == null)
-            {
-                OrderedMenus = new ObservableCollection<MenuModel>();
-            }
+            init();
+        }
+        private void init()
+        {
+            CurrentOrder = new OrderModel();
+            OrderedMenus = new ObservableCollection<MenuModel>();
+
+            TotalPrice = 0;
 
             CurrentOrder.IDX = -1;
         }
@@ -46,7 +58,7 @@ namespace Hansot_kiosk.Manager
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propetryName)
         {
-            if(PropertyChanged != null)
+            if (PropertyChanged != null)
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propetryName));
             }

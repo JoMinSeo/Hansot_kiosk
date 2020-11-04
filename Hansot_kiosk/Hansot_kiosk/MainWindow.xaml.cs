@@ -1,5 +1,7 @@
-﻿using Kiosk.UIManager;
+﻿using Hansot_kiosk.Manager;
+using Kiosk.UIManager;
 using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Threading;
 
@@ -10,7 +12,6 @@ namespace Hansot_kiosk
     /// </summary>
     public partial class MainWindow : Window
     {
-        
         public MainWindow()
         {
             InitializeComponent();
@@ -48,9 +49,23 @@ namespace Hansot_kiosk
             App.uIStateManager.Push(readyCtrl);
         }
 
-        private void HomeBtn_Click(object sender, RoutedEventArgs e)
+        private void init()
         {
             App.uIStateManager.AllPop();
+        }
+
+        private void HomeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (App.orderManager.OrderedMenus.Any())
+            {
+                if (MessageBoxResult.Yes == MessageBox.Show("주문이 초기화 됩니다. 괜찮으십니까?",
+                "메인화면으로 가기", MessageBoxButton.YesNo, MessageBoxImage.Warning))
+                {
+                    init();
+                }
+                return;
+            }
+            init();
         }
         #endregion
     }
