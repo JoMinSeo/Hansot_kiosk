@@ -1,7 +1,9 @@
 ﻿using Hansot_kiosk.Common;
 using Hansot_kiosk.Manager;
 using Hansot_kiosk.Model;
+using Kiosk.UIManager;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,7 +15,70 @@ namespace Hansot_kiosk.Control
     /// </summary>
     public partial class OrderCtrl : UserControl
     {
-        private List<MenuModel> menuList { get; set; }
+        private int pagingNum = 9;
+        private List<MenuModel> menuList;
+        private List<MenuModel> _currentCategoryMenuList;
+        private List<MenuModel> currentCategoryMenuList
+        {
+            get
+            {
+                return _currentCategoryMenuList;
+            }
+            set
+            {
+                _currentCategoryMenuList = value;
+                _currentPage = 1;
+
+                paging();
+
+                btn_CategoryPrev.IsEnabled = false;
+                if (currentCategoryMenuList.Count> pagingNum)
+                {
+                    btn_CategoryNext.IsEnabled = true;
+                }
+                else
+                {
+                    btn_CategoryNext.IsEnabled = false;
+                }
+            }
+        }
+
+
+        private ObservableCollection<MenuModel> _pagingMenuList;
+        private ObservableCollection<MenuModel> pagingMenuList
+        {
+            get { return _pagingMenuList; }
+            set
+            {
+                _pagingMenuList = value;
+                lbMenus.ItemsSource = _pagingMenuList;
+            }
+        }
+        private int _currentPage = 1;
+        private int currentPage
+        {
+            get
+            {
+                return _currentPage;
+            }
+            set
+            {
+                _currentPage = value;
+                btn_CategoryPrev.IsEnabled = false;
+                btn_CategoryNext.IsEnabled = false;
+
+                paging();
+
+                if (currentPage > 1)
+                {
+                    btn_CategoryPrev.IsEnabled = true;
+                }
+                if (currentCategoryMenuList.Count - (currentPage * pagingNum) > 0)
+                {
+                    btn_CategoryNext.IsEnabled = true;
+                }
+            }
+        }
 
         #region Init
         public OrderCtrl()
@@ -32,27 +97,42 @@ namespace Hansot_kiosk.Control
             this.DataContext = App.orderManager;
 
             menuList = App.sQLManager.SelectMenu();
+            currentCategoryMenuList = menuList;
 
-            lbMenus.ItemsSource = menuList;
+            lbMenus.ItemsSource = pagingMenuList;
+
             lvOrderdMenus.ItemsSource = App.orderManager.OrderedMenus;
         }
         #endregion
-
+        private void paging()
+        {
+            var list = currentCategoryMenuList;
+            if (list.Count - (currentPage * 9 - 9) < 9 && list.Count - (currentPage * 9 - 9) > 0)
+            {
+                pagingMenuList = new ObservableCollection<MenuModel>(list.GetRange(currentPage * 9 - 9, list.Count - (currentPage * 9 - 9)).ToList());
+            }
+            else if (list.Count - (currentPage * 9 - 9) >= 9)
+            {
+                pagingMenuList = new ObservableCollection<MenuModel>(list.GetRange(currentPage * 9 - 9, 9).ToList());
+            }
+        }
         #region SelectionChanged
         private void lbCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            currentPage = 1;
             if (lbCategory.SelectedIndex == -1)
             {
                 return;
             }
             else if (lbCategory.SelectedIndex == 0)
             {
-                lbMenus.ItemsSource = menuList;
+                currentCategoryMenuList = menuList;
             }
             else
             {
                 ECategory category = (ECategory)lbCategory.SelectedIndex;
-                lbMenus.ItemsSource = menuList.Where(x => x.Category == category).ToList();
+
+                currentCategoryMenuList = menuList.Where(x => x.Category == category).ToList();
             }
         }
         private void lbMenus_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -124,5 +204,38 @@ namespace Hansot_kiosk.Control
             orderedMenuRemove((sender as Button).DataContext as MenuModel);
         }
         #endregion
+        private void btnMenuReset_Click(object sender, RoutedEventArgs e)
+        {
+            foreach(var m in App.orderManager.OrderedMenus)
+            {
+                m.Amount = 0;
+            }
+            App.orderManager.OrderedMenus.Clear();
+            App.orderManager.TotalPrice = 0;
+        }
+
+        private void btn_Order_Click(object sender, RoutedEventArgs e)
+        {
+            UserControl uc = App.uIStateManager.Get(UICategory.PLACE);
+            if (uc != null)
+            {
+                App.uIStateManager.Push(uc);
+            }
+        }
+
+        private void btn_PrevCtrl_Click(object sender, RoutedEventArgs e)
+        {
+            App.uIStateManager.Pop();
+        }
+
+        private void btn_CategoryPrev_Click(object sender, RoutedEventArgs e)
+        {
+            currentPage--;
+        }
+
+        private void btn_CategoryNext_Click(object sender, RoutedEventArgs e)
+        {
+            currentPage++;
+        }
     }
 }
