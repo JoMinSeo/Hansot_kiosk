@@ -92,8 +92,10 @@ namespace Hansot_kiosk.Control
             init();
         }
 
-        private void init()
+        public void init()
         {
+            btn_MenuReset.IsEnabled = false;
+            btn_Order.IsEnabled = false;
             this.DataContext = App.orderManager;
 
             menuList = App.sQLManager.SelectMenu();
@@ -106,14 +108,16 @@ namespace Hansot_kiosk.Control
         #endregion
         private void paging()
         {
-            var list = currentCategoryMenuList;
-            if (list.Count - (currentPage * 9 - 9) < 9 && list.Count - (currentPage * 9 - 9) > 0)
+            if (currentCategoryMenuList.Count - (currentPage * pagingNum - pagingNum) < pagingNum && currentCategoryMenuList.Count - (currentPage * pagingNum - pagingNum) > 0)
             {
-                pagingMenuList = new ObservableCollection<MenuModel>(list.GetRange(currentPage * 9 - 9, list.Count - (currentPage * 9 - 9)).ToList());
+                pagingMenuList = new ObservableCollection<MenuModel>(currentCategoryMenuList.GetRange(
+                    currentPage * pagingNum - pagingNum, 
+                    currentCategoryMenuList.Count - (currentPage * pagingNum - pagingNum)).ToList());
             }
-            else if (list.Count - (currentPage * 9 - 9) >= 9)
+            else if (currentCategoryMenuList.Count - (currentPage * pagingNum - pagingNum) >= pagingNum)
             {
-                pagingMenuList = new ObservableCollection<MenuModel>(list.GetRange(currentPage * 9 - 9, 9).ToList());
+                pagingMenuList = new ObservableCollection<MenuModel>(currentCategoryMenuList.GetRange(
+                    currentPage * pagingNum - pagingNum, pagingNum).ToList());
             }
         }
         #region SelectionChanged
@@ -158,6 +162,9 @@ namespace Hansot_kiosk.Control
                 menuAmountUp(model);
             }
             lbMenus.UnselectAll(); //선택된것을 해제하는 코드로, 같은 메뉴를 두번 클릭이 가능함
+
+            btn_MenuReset.IsEnabled = true;
+            btn_Order.IsEnabled = true;
         }
         #endregion
         #region OrderedMenusAmountControl
@@ -168,7 +175,6 @@ namespace Hansot_kiosk.Control
                 menu.Amount++;
                 App.orderManager.TotalPrice += menu.Price;
             }
-
         }
         private void orderedMenuRemove(MenuModel menu)
         {
@@ -177,6 +183,12 @@ namespace Hansot_kiosk.Control
                 App.orderManager.OrderedMenus.Remove(menu);
                 App.orderManager.TotalPrice -= (menu.Price * menu.Amount);
                 menu.Amount = 0;
+
+                if (!App.orderManager.OrderedMenus.Any())
+                {
+                    btn_MenuReset.IsEnabled = false;
+                    btn_Order.IsEnabled = false;
+                }
             }
         }
         private void btn_AmountUpClick(object sender, RoutedEventArgs e)
@@ -204,7 +216,7 @@ namespace Hansot_kiosk.Control
             orderedMenuRemove((sender as Button).DataContext as MenuModel);
         }
         #endregion
-        private void btnMenuReset_Click(object sender, RoutedEventArgs e)
+        private void btn_MenuReset_Click(object sender, RoutedEventArgs e)
         {
             foreach(var m in App.orderManager.OrderedMenus)
             {
@@ -212,6 +224,9 @@ namespace Hansot_kiosk.Control
             }
             App.orderManager.OrderedMenus.Clear();
             App.orderManager.TotalPrice = 0;
+
+            btn_MenuReset.IsEnabled = false;
+            btn_Order.IsEnabled = false;
         }
 
         private void btn_Order_Click(object sender, RoutedEventArgs e)
