@@ -1,18 +1,6 @@
 ﻿using Kiosk.UIManager;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Hansot_kiosk.Control
 {
@@ -35,6 +23,7 @@ namespace Hansot_kiosk.Control
 
         private void TakeOutBtn_Click(object sender, RoutedEventArgs e)
         {
+            App.orderManager.CurrentOrder.Table = 0;
             UserControl uc = App.uIStateManager.Get(UICategory.PAYSELECT);
             if (uc != null)
                 App.uIStateManager.Push(uc);
