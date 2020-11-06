@@ -26,6 +26,10 @@ namespace UIManager
 
         public void Set(UICategory category, UserControl uc)
         {
+            if (DicUserControl.ContainsKey(category))
+            {
+                DicUserControl.Remove(category);
+            }
             DicUserControl.Add(category, uc);
             uc.Visibility = Visibility.Collapsed;
         }

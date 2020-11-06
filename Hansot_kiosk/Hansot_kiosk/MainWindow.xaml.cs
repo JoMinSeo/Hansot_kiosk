@@ -1,4 +1,5 @@
-﻿using Hansot_kiosk.Manager;
+﻿using Hansot_kiosk.Control;
+using Hansot_kiosk.Manager;
 using Kiosk.UIManager;
 using System;
 using System.Linq;
@@ -12,6 +13,12 @@ namespace Hansot_kiosk
     /// </summary>
     public partial class MainWindow : Window
     {
+        private void init()
+        {
+            App.uIStateManager.AllPop();
+            App.orderManager.init();
+            orderCtrl.init();
+        }
         public MainWindow()
         {
             InitializeComponent();
@@ -47,12 +54,6 @@ namespace Hansot_kiosk
             //chris - add user control. please~!!
 
             App.uIStateManager.Push(readyCtrl);
-        }
-
-        private void init()
-        {
-            App.uIStateManager.AllPop();
-            App.orderManager.init();
         }
 
         private void HomeBtn_Click(object sender, RoutedEventArgs e)
