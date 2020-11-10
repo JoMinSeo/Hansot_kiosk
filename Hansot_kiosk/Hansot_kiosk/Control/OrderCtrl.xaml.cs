@@ -15,6 +15,7 @@ namespace Hansot_kiosk.Control
     /// </summary>
     public partial class OrderCtrl : UserControl
     {
+        #region property
         private int pagingNum = 9;
         private List<MenuModel> menuList;
         private List<MenuModel> _currentCategoryMenuList;
@@ -79,6 +80,7 @@ namespace Hansot_kiosk.Control
                 }
             }
         }
+        #endregion
 
         #region Init
         public OrderCtrl()

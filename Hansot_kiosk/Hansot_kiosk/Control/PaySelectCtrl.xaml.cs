@@ -12,11 +12,13 @@ namespace Hansot_kiosk.Control
         public PaySelectCtrl()
         {
             InitializeComponent();
+            init();
         }
 
         private void init()
         {
             lvOrderdMenus.ItemsSource = App.orderManager.OrderedMenus;
+            this.DataContext = App.orderManager;
         }
 
         private void PreviusBtn_Click(object sender, RoutedEventArgs e)
@@ -37,6 +39,5 @@ namespace Hansot_kiosk.Control
             if (uc != null)
                 App.uIStateManager.Push(uc);
         }
-
     }
-}
+}                                            
