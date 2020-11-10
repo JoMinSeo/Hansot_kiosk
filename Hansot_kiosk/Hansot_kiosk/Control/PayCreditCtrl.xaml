@@ -27,7 +27,7 @@
                         <ColumnDefinition Width="300"/>
                     </Grid.ColumnDefinitions>
                     <Label Grid.Column="0" Content="이름: " FontSize="52"/>
-                    <TextBox Grid.Column="1"  x:Name="txtQrcode" Width="300" Height="100" HorizontalAlignment="Left" HorizontalContentAlignment="Center" FontSize="52"/>
+                    <TextBox Grid.Column="1"  x:Name="txtQrcode" Width="300" Height="100" HorizontalAlignment="Left" HorizontalContentAlignment="Center" FontSize="52" TextChanged="txtQrcode_TextChanged"/>
                 </Grid>
             </StackPanel>
             <StackPanel Grid.Row="2">
@@ -37,6 +37,7 @@
         </Grid>
         <Grid>
             <Button Content="이전" Margin="20,0,0,20" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="200" Height="70" Background="#D9D9D9" Click="PreviousBtn_Click" BorderThickness="0"/>
+            <Button x:Name="comfirmBtn" Content="확인" Margin="0,0,0,20" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="400" Height="70" FontSize="32" Background="#F6CA00" Click="Button_Click" BorderThickness="0" IsEnabled="False"/>
         </Grid>
         
     </Grid>
