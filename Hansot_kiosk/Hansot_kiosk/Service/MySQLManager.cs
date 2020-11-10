@@ -147,6 +147,12 @@ namespace Hansot_kiosk.Service
                 return null;
             }
         }
+
+        public string createOrderCommand(OrderModel orderModel)
+        {
+            string command = string.Format("INSERT INTO order (User_IDX, Table, isCard, OrderedTime) VALUES ( {0}, {1}, {2}, {3} )", orderModel.User_IDX, orderModel.Table, orderModel.IsCard, orderModel.OrderedTime);
+            return command;
+        }
     }
 }
 

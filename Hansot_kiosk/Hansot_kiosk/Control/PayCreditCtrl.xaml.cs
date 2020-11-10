@@ -8,7 +8,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -19,6 +18,8 @@ using AForge.Video.DirectShow;
 using System.Windows.Threading;
 using ZXing;
 using System.IO;
+using Hansot_kiosk.Model;
+using Kiosk.UIManager;
 
 namespace Hansot_kiosk.Control
 {
@@ -55,5 +56,24 @@ namespace Hansot_kiosk.Control
             txtQrcode.Text = e;
         }
 
+        private void txtQrcode_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            String barcode = txtQrcode.Text;
+            UserModel currentUser = App.userManager.compareName(barcode);
+
+            if (currentUser != null)
+            {
+                App.orderManager.CurrentOrder.User_IDX = currentUser.IDX;
+                comfirmBtn.IsEnabled = true;
+                return;
+            }
+        }
+
+        private void comfirmBtn_Click(object sender, RoutedEventArgs e)
+        {
+            UserControl uc = App.uIStateManager.Get(UICategory.COMPLETE);
+            if (uc != null)
+                App.uIStateManager.Push(uc);
+        }
     }
 }

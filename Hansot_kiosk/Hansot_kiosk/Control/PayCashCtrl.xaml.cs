@@ -1,4 +1,6 @@
-﻿using Kiosk.UIManager;
+﻿using Hansot_kiosk.Manager;
+using Hansot_kiosk.Model;
+using Kiosk.UIManager;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -68,16 +70,15 @@ namespace Hansot_kiosk.Control
         /// <param name="e"></param>
         private void barcodeTb_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (barcodeTb.Text.Equals(""))
+            String barcode = barcodeTb.Text;
+            UserModel currentUser = App.userManager.compareName(barcode);
+            
+            if (currentUser != null)
             {
-                // 함수 종료 
+                App.orderManager.CurrentOrder.User_IDX = currentUser.IDX;
+                comfirmBtn.IsEnabled = true;
                 return;
             }
-            String barcode = barcodeTb.Text;
-            barcodeTb.Text = "";
-            UserControl uc = App.uIStateManager.Get(UICategory.COMPLETE);
-            if (uc != null)
-                App.uIStateManager.Push(uc);
         }
     }
 }
