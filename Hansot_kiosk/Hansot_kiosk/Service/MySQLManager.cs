@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using MySql.Data.MySqlClient;
 using System.Diagnostics;
 using Hansot_kiosk.Model;
 using Hansot_kiosk.Common;
-using System.Windows.Markup;
 using System.Windows;
 
 namespace Hansot_kiosk.Service

@@ -15,6 +15,7 @@ namespace Hansot_kiosk.Control
     /// </summary>
     public partial class OrderCtrl : UserControl
     {
+        #region property
         private int pagingNum = 9;
         private List<MenuModel> menuList;
         private List<MenuModel> _currentCategoryMenuList;
@@ -31,14 +32,14 @@ namespace Hansot_kiosk.Control
 
                 paging();
 
-                btn_CategoryPrev.IsEnabled = false;
+                CategoryPrevBtn.IsEnabled = false;
                 if (currentCategoryMenuList.Count> pagingNum)
                 {
-                    btn_CategoryNext.IsEnabled = true;
+                    CategoryNextBtn.IsEnabled = true;
                 }
                 else
                 {
-                    btn_CategoryNext.IsEnabled = false;
+                    CategoryNextBtn.IsEnabled = false;
                 }
             }
         }
@@ -64,21 +65,22 @@ namespace Hansot_kiosk.Control
             set
             {
                 _currentPage = value;
-                btn_CategoryPrev.IsEnabled = false;
-                btn_CategoryNext.IsEnabled = false;
+                CategoryPrevBtn.IsEnabled = false;
+                CategoryNextBtn.IsEnabled = false;
 
                 paging();
 
                 if (currentPage > 1)
                 {
-                    btn_CategoryPrev.IsEnabled = true;
+                    CategoryPrevBtn.IsEnabled = true;
                 }
                 if (currentCategoryMenuList.Count - (currentPage * pagingNum) > 0)
                 {
-                    btn_CategoryNext.IsEnabled = true;
+                    CategoryNextBtn.IsEnabled = true;
                 }
             }
         }
+        #endregion
 
         #region Init
         public OrderCtrl()
@@ -94,16 +96,16 @@ namespace Hansot_kiosk.Control
 
         public void init()
         {
-            btn_MenuReset.IsEnabled = false;
-            btn_Order.IsEnabled = false;
+            MenuResetBtn.IsEnabled = false;
+            OrderBtn.IsEnabled = false;
             this.DataContext = App.orderManager;
 
             menuList = App.sQLManager.SelectMenu();
             currentCategoryMenuList = menuList;
 
-            lbMenus.ItemsSource = pagingMenuList;
-
             lvOrderdMenus.ItemsSource = App.orderManager.OrderedMenus;
+
+            lbCategory.SelectedIndex = 0;
         }
         #endregion
         private void paging()
@@ -163,8 +165,8 @@ namespace Hansot_kiosk.Control
             }
             lbMenus.UnselectAll(); //선택된것을 해제하는 코드로, 같은 메뉴를 두번 클릭이 가능함
 
-            btn_MenuReset.IsEnabled = true;
-            btn_Order.IsEnabled = true;
+            MenuResetBtn.IsEnabled = true;
+            OrderBtn.IsEnabled = true;
         }
         #endregion
         #region OrderedMenusAmountControl
@@ -186,16 +188,16 @@ namespace Hansot_kiosk.Control
 
                 if (!App.orderManager.OrderedMenus.Any())
                 {
-                    btn_MenuReset.IsEnabled = false;
-                    btn_Order.IsEnabled = false;
+                    MenuResetBtn.IsEnabled = false;
+                    OrderBtn.IsEnabled = false;
                 }
             }
         }
-        private void btn_AmountUpClick(object sender, RoutedEventArgs e)
+        private void AmountUpBtn_Click(object sender, RoutedEventArgs e)
         {
             menuAmountUp((sender as Button).DataContext as MenuModel);
         }
-        private void btn_AmountDownClick(object sender, RoutedEventArgs e)
+        private void AmountDownBtn_Click(object sender, RoutedEventArgs e)
         {
             MenuModel senderMenu = (sender as Button).DataContext as MenuModel;
             if (senderMenu != null)
@@ -211,12 +213,12 @@ namespace Hansot_kiosk.Control
                 }
             }
         }
-        private void btn_MenuDeleteClick(object sender, RoutedEventArgs e)
+        private void MenuDeleteBtn_Click(object sender, RoutedEventArgs e)
         {
             orderedMenuRemove((sender as Button).DataContext as MenuModel);
         }
         #endregion
-        private void btn_MenuReset_Click(object sender, RoutedEventArgs e)
+        private void MenuResetBtn_Click(object sender, RoutedEventArgs e)
         {
             foreach(var m in App.orderManager.OrderedMenus)
             {
@@ -225,11 +227,11 @@ namespace Hansot_kiosk.Control
             App.orderManager.OrderedMenus.Clear();
             App.orderManager.TotalPrice = 0;
 
-            btn_MenuReset.IsEnabled = false;
-            btn_Order.IsEnabled = false;
+            MenuResetBtn.IsEnabled = false;
+            OrderBtn.IsEnabled = false;
         }
 
-        private void btn_Order_Click(object sender, RoutedEventArgs e)
+        private void OrderBtn_Click(object sender, RoutedEventArgs e)
         {
             UserControl uc = App.uIStateManager.Get(UICategory.PLACE);
             if (uc != null)
@@ -238,17 +240,17 @@ namespace Hansot_kiosk.Control
             }
         }
 
-        private void btn_PrevCtrl_Click(object sender, RoutedEventArgs e)
+        private void PrevCtrlBtn_Click(object sender, RoutedEventArgs e)
         {
             App.uIStateManager.Pop();
         }
 
-        private void btn_CategoryPrev_Click(object sender, RoutedEventArgs e)
+        private void CategoryPrevBtn_Click(object sender, RoutedEventArgs e)
         {
             currentPage--;
         }
 
-        private void btn_CategoryNext_Click(object sender, RoutedEventArgs e)
+        private void CategoryNextBtn_Click(object sender, RoutedEventArgs e)
         {
             currentPage++;
         }
