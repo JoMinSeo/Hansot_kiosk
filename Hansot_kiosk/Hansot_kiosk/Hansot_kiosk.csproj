@@ -141,6 +141,7 @@
     </Compile>
     <Compile Include="Converter\MenuConverter.cs" />
     <Compile Include="Manager\OrderManager.cs" />
+    <Compile Include="Manager\UserManager.cs" />
     <Compile Include="Model\MenuModel.cs" />
     <Compile Include="Service\MySQLManager.cs" />
     <Compile Include="UIManager\UICategory.cs" />
