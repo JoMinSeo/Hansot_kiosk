@@ -87,9 +87,9 @@
                 </ListBox>
             </Grid>
             <Grid Grid.Row="2" Margin="20">
-                <Button x:Name="btn_CategoryPrev" Click="btn_CategoryPrev_Click" 
+                <Button x:Name="CategoryPrevBtn" Click="CategoryPrevBtn_Click" 
                         Content="이전" FontSize="30px" Width="200px" HorizontalAlignment="Left"/>
-                <Button x:Name="btn_CategoryNext" Click="btn_CategoryNext_Click"
+                <Button x:Name="CategoryNextBtn" Click="CategoryNextBtn_Click"
                         Content="다음" FontSize="30px" Width="200px" HorizontalAlignment="Right"/>
             </Grid>
         </Grid>
@@ -110,6 +110,12 @@
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Text="{Binding Amount}" VerticalAlignment="Center" FontSize="18px" />
                                         <TextBlock Text="개" VerticalAlignment="Center" FontSize="18px"/>
+                                        <StackPanel Margin="5px 0 0 0">
+                                            <Button Click="AmountUpBtn_Click" Content="↑" Width="30px"/>
+                                            <Button Click="AmountDownBtn_Click" Content="↓" Width="30px"/>
+                                        </StackPanel>
+
+                                        <Button Click="MenuDeleteBtn_Click" Content="제거" Margin="5px 0 0 0"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
@@ -128,7 +134,7 @@
                 </ListView.View>
             </ListView>
             <Grid Grid.Row="1">
-                <Button x:Name="btn_MenuReset" Click="btn_MenuReset_Click" HorizontalAlignment="Left" Width="200px" Content="메뉴 초기화" Height="100" FontSize="24" Margin="16"/>
+                <Button x:Name="MenuResetBtn" Click="MenuResetBtn_Click" HorizontalAlignment="Left" Width="200px" Content="메뉴 초기화" Height="100" FontSize="24" Margin="16"/>
                 <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="30">
                     <TextBlock Text="총 가격 : " FontSize="36px" TextAlignment="Center" VerticalAlignment="Center"/>
                     <TextBlock x:Name="tbk_TotalPrice" Text="{Binding TotalPrice}" FontSize="36px" TextAlignment="Center" VerticalAlignment="Center" Width="150px"/>
@@ -136,8 +142,8 @@
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="2">
-                <Button x:Name="btn_PrevCtrl" Click="btn_PrevCtrl_Click" Width="180px" Height="80px" HorizontalAlignment="Left" Content="이전 화면" FontSize="32" Margin="16"/>
-                <Button x:Name="btn_Order" Click="btn_Order_Click" Width="180px" Height="80px" HorizontalAlignment="Right" Content="주문하기" FontSize="32" Margin="16"/>
+                <Button x:Name="PrevCtrlBtn" Click="PrevCtrlBtn_Click" Width="180px" Height="80px" HorizontalAlignment="Left" Content="이전 화면" FontSize="32" Margin="16"/>
+                <Button x:Name="OrderBtn" Click="OrderBtn_Click" Width="180px" Height="80px" HorizontalAlignment="Right" Content="주문하기" FontSize="32" Margin="16"/>
             </Grid>
         </Grid>
     </Grid>
