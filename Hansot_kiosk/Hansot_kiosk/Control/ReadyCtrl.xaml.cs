@@ -1,4 +1,5 @@
-﻿using Kiosk.UIManager;
+﻿using Hansot_kiosk.view;
+using Kiosk.UIManager;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -19,6 +20,25 @@ namespace Hansot_kiosk.Control
             UserControl uc = App.uIStateManager.Get(UICategory.ORDER);
             if(uc != null)
                 App.uIStateManager.Push(uc);
+        }
+
+        private void ReadyControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (Properties.Settings.Default.isAutoLogin == true)
+            {
+                App.isLogined = true;
+                //Properties.Settings.Default.isAutoLogin = false;
+                //Properties.Settings.Default.Save();
+                MessageBox.Show("자동로그인 되었습니다.");
+            }else if (App.isLogined == false)
+            {
+                LoginWindow loginWindow = new LoginWindow();
+                loginWindow.Show();
+            }
+            else
+            {
+                MessageBox.Show("이미 로그인되어있습니다.");
+            }
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using Hansot_kiosk.Control;
-using Hansot_kiosk.Manager;
-using Kiosk.UIManager;
+﻿using Kiosk.UIManager;
 using System;
 using System.Linq;
 using System.Windows;
@@ -39,6 +37,7 @@ namespace Hansot_kiosk
             dClock.Content = String.Format("{0:yyyy년 MM월 dd일 tt hh시 mm분 ss초}", DateTime.Now);
         }
         #endregion
+
         #region UIControl
         private void initUI()
         {

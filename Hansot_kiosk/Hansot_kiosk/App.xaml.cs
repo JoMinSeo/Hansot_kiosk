@@ -17,5 +17,6 @@ namespace Hansot_kiosk
         public static OrderManager orderManager = new OrderManager();
         public static MySqlConnection connection;
         public static bool DataSaveResult = false;
+        public static bool isLogined = false;
     }
 }
