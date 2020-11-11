@@ -5,18 +5,18 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Hansot_kiosk.Control"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="1080" d:DesignWidth="1920">
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="0.35*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0">
-            <ListView x:Name="lvOrderdMenus" Margin="20 20 20 0" FontSize="20" FontWeight="SemiBold" Height="250px"
+            <ListView x:Name="lvOrderdMenus" Margin="20 20 20 0" FontSize="20" FontWeight="SemiBold" Height="700px"
                       VerticalAlignment="Top" BorderBrush="Transparent" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="메뉴" Width="150" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="메뉴" Width="350" DisplayMemberBinding="{Binding Name}"/>
                         <GridViewColumn Width="250" Header="메뉴 수량">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
