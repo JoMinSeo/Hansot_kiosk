@@ -21,7 +21,7 @@
                     <ColumnDefinition Width="300"/>
                 </Grid.ColumnDefinitions>
                 <Label Grid.Column="0" Content="결제금액: " FontSize="52" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label Grid.Column="1" Content="결제금액" FontSize="52" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label Grid.Column="1" x:Name="TotalPriceLab" FontSize="52" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Grid>
             <Grid Grid.Row="2" HorizontalAlignment="Center">
                 <Grid.ColumnDefinitions>
@@ -29,7 +29,7 @@
                     <ColumnDefinition Width="300"/>
                 </Grid.ColumnDefinitions>
                 <Label Grid.Column="0" Content="인식된 카드번호:" FontSize="52" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                <TextBox x:Name="barcodeTb" Grid.Column="1" FontSize="52" VerticalAlignment="Center" HorizontalAlignment="Left" Width="300" />
+                <TextBox x:Name="barcodeTb" Grid.Column="1" FontSize="52" VerticalAlignment="Center" HorizontalAlignment="Left" Width="300" TextChanged="barcodeTb_TextChanged"/>
             </Grid>
             <Grid Grid.Row="3" HorizontalAlignment="Center">
                 <Grid.ColumnDefinitions>
@@ -37,7 +37,7 @@
                     <ColumnDefinition Width="300"/>
                 </Grid.ColumnDefinitions>
                 <Label Grid.Column="0" Content="회원명:" FontSize="52" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label Grid.Column="1" Content="이름" FontSize="52" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Label Grid.Column="1" x:Name="UserNameLab" FontSize="52" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             </Grid>
         </Grid>
         <Grid>

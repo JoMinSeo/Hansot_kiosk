@@ -1,22 +1,9 @@
-﻿using Hansot_kiosk.Manager;
-using Hansot_kiosk.Model;
+﻿using Hansot_kiosk.Model;
 using Kiosk.UIManager;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
-using UIManager;
 
 namespace Hansot_kiosk.Control
 {
@@ -60,6 +47,8 @@ namespace Hansot_kiosk.Control
                 {
                     barcodeTb.Focus();
                 }));
+
+                TotalPriceLab.Content = App.orderManager.TotalPrice;
             }
         }
 
@@ -70,13 +59,15 @@ namespace Hansot_kiosk.Control
         /// <param name="e"></param>
         private void barcodeTb_TextChanged(object sender, TextChangedEventArgs e)
         {
-            String barcode = barcodeTb.Text;
+            string barcode = barcodeTb.Text;
             UserModel currentUser = App.userManager.compareName(barcode);
             
             if (currentUser != null)
             {
                 App.orderManager.CurrentOrder.User_IDX = currentUser.IDX;
+                UserNameLab.Content = currentUser.Name;
                 comfirmBtn.IsEnabled = true;
+                barcodeTb.IsEnabled = false;
                 return;
             }
         }
