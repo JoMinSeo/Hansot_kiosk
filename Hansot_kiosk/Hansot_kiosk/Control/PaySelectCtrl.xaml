@@ -5,18 +5,18 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Hansot_kiosk.Control"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="1080" d:DesignWidth="1920">
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition/>
-            <RowDefinition Height="0.35*"/>
+            <RowDefinition Height="0.1*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0">
-            <ListView x:Name="lvOrderdMenus" Margin="20 20 20 0" FontSize="20" FontWeight="SemiBold" Height="250px"
+            <ListView x:Name="lvOrderdMenus" Margin="20 20 20 0" FontSize="20" FontWeight="SemiBold" Height="700px"
                       VerticalAlignment="Top" BorderBrush="Transparent" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="메뉴" Width="150" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="메뉴" Width="350" DisplayMemberBinding="{Binding Name}"/>
                         <GridViewColumn Width="250" Header="메뉴 수량">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
@@ -41,9 +41,9 @@
                 </ListView.View>
             </ListView>
             <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 10 10 10">
-                <TextBlock Text="총 가격 : " FontSize="30px" TextAlignment="Center" VerticalAlignment="Center"/>
-                <TextBlock x:Name="tbk_TotalPrice" Text="{Binding TotalPrice}" FontSize="30px" TextAlignment="Center" VerticalAlignment="Center" Width="150px"/>
-                <TextBlock Text="원" FontSize="30px" TextAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="총 가격 : " FontSize="35px" TextAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock x:Name="tbk_TotalPrice" Text="{Binding TotalPrice}" FontSize="35px" TextAlignment="Center" VerticalAlignment="Center" Width="150px"/>
+                <TextBlock Text="원" FontSize="35px" TextAlignment="Center" VerticalAlignment="Center"/>
             </StackPanel>
         </StackPanel>
         <Grid Grid.Row="1">

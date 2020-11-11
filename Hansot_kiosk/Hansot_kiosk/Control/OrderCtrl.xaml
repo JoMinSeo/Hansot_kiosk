@@ -103,7 +103,7 @@
                       VerticalAlignment="Top" BorderBrush="Transparent" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="메뉴" Width="150" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="메뉴" Width="350" DisplayMemberBinding="{Binding Name}"/>
                         <GridViewColumn Width="250" Header="메뉴 수량">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
