@@ -7,13 +7,36 @@
              mc:Ignorable="d" 
              d:DesignHeight="1080" d:DesignWidth="1920">
     <Grid Background="White">
-        <Grid>
-            <Label Content="좌석을 선택하여주세요." HorizontalAlignment="Left" FontSize="52" Margin="40,40,0,0" VerticalAlignment="Top"/>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="0.1*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <StackPanel>
+                <Grid>
+                    <Label Content="좌석을 선택하여주세요." HorizontalAlignment="Left" FontSize="52" Margin="40,40,0,0" VerticalAlignment="Top"/>
+                </Grid>
+                <ListBox x:Name="lbTables" FontSize="20">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel />
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Width="250" Height="275">
+                                <TextBlock Text="{Binding Name}" Margin="4,4,0,0" HorizontalAlignment="Left"/>
+                                <TextBlock Text="{Binding RemainingSec}" Margin="4,4,0,0" HorizontalAlignment="Left"/>
+                                <TextBlock Text=":" Margin="4,4,0,0" HorizontalAlignment="Left"/>
+                                <TextBlock Text="{Binding RemainingMin}" Margin="4,4,0,0" HorizontalAlignment="Left"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
         </Grid>
-        <ListBox>
-
-        </ListBox>
-        <Grid>
+        
+        <Grid Grid.Row="1">
             <Button Content="이전" Margin="20,0,0,20" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="200" Height="70" Background="#D9D9D9" Click="PreviusBtn_Click" BorderThickness="0"/>
             <Button Content="다음" Margin="0,0,20,20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="200" Height="70" Background="#D9D9D9" Click="NextBtn_Click" BorderThickness="0"/>
         </Grid>
