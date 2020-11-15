@@ -8,10 +8,7 @@ namespace Hansot_kiosk.Model
         private int _idx;
         public int IDX
         {
-            get
-            {
-                return _idx;
-            }
+            get => _idx;
             set
             {
                 _idx = value;
@@ -21,10 +18,7 @@ namespace Hansot_kiosk.Model
         private string _name;
         public string Name
         {
-            get
-            {
-                return _name;
-            }
+            get => _name;
             set
             {
                 _name = value;
@@ -34,10 +28,7 @@ namespace Hansot_kiosk.Model
         private int _price;
         public int Price
         {
-            get
-            {
-                return _price;
-            }
+            get => _price;
             set
             {
                 _price = value;
@@ -47,10 +38,7 @@ namespace Hansot_kiosk.Model
         private string _path;
         public string Path
         {
-            get
-            {
-                return _path;
-            }
+            get => _path;
             set
             {
                 _path = value;
@@ -60,10 +48,7 @@ namespace Hansot_kiosk.Model
         private ECategory _category;
         public ECategory Category
         {
-            get
-            {
-                return _category;
-            }
+            get => _category;
             set
             {
                 _category = value;
@@ -73,10 +58,7 @@ namespace Hansot_kiosk.Model
         private int _page;
         public int Page
         {
-            get
-            {
-                return _page;
-            }
+            get => _page;
             set
             {
                 _page = value;
@@ -86,10 +68,7 @@ namespace Hansot_kiosk.Model
         private int _amount;
         public int Amount
         {
-            get
-            {
-                return _amount;
-            }
+            get => _amount;
             set
             {
                 _amount = value;

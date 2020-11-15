@@ -10,7 +10,7 @@ namespace Hansot_kiosk.Manager
         private OrderModel _currentOrder;
         public OrderModel CurrentOrder
         {
-            get { return _currentOrder; }
+            get => _currentOrder;
             set
             {
                 _currentOrder = value;
@@ -20,7 +20,7 @@ namespace Hansot_kiosk.Manager
         private ObservableCollection<MenuModel> _orderedMenus = new ObservableCollection<MenuModel>();
         public ObservableCollection<MenuModel> OrderedMenus
         {
-            get { return _orderedMenus; }
+            get => _orderedMenus;
             set
             {
                 _orderedMenus = value;
@@ -30,10 +30,7 @@ namespace Hansot_kiosk.Manager
         private int _totalPrice;
         public int TotalPrice
         {
-            get
-            {
-                return _totalPrice;
-            }
+            get => _totalPrice;
             set
             {
                 _totalPrice = value;
