@@ -81,7 +81,6 @@ namespace Hansot_kiosk.Control
             }
         }
         #endregion
-
         #region Init
         public OrderCtrl()
         {
@@ -218,6 +217,7 @@ namespace Hansot_kiosk.Control
             orderedMenuRemove((sender as Button).DataContext as MenuModel);
         }
         #endregion
+        #region BtnClickEvent
         private void MenuResetBtn_Click(object sender, RoutedEventArgs e)
         {
             foreach(var m in App.orderManager.OrderedMenus)
@@ -254,5 +254,6 @@ namespace Hansot_kiosk.Control
         {
             currentPage++;
         }
+        #endregion
     }
 }
