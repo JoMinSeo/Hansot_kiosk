@@ -153,7 +153,6 @@
     <Compile Include="Service\MySQLManager.cs" />
     <Compile Include="UIManager\UICategory.cs" />
     <Compile Include="UIManager\UIStateManager.cs" />
-    <Compile Include="ViewModel\OrderViewModel.cs" />
     <Compile Include="view\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
