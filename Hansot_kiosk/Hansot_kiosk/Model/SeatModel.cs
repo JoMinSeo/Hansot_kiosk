@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,54 +10,55 @@ namespace Hansot_kiosk.Model
 {
     public class SeatModel : INotifyPropertyChanged
     {
-        private string _name;
-        public string Name
+        private int _idx;
+        public int IDX
         {
-            get => _name;
+            get => _idx;
             set
             {
-                _name = value;
-                OnPropertyChanged(nameof(Name));
+                _idx = value;
+                OnPropertyChanged(nameof(_idx));
             }
         }
-        private string _remainingSec;
-        public string RemainingSec
+        private string _remainingTime;
+        public string RemainingTime
         {
-            get => _remainingSec;
+            get => _remainingTime;
             set
             {
-                _remainingSec = value;
-                OnPropertyChanged(nameof(RemainingSec));
+                _remainingTime = value;
+                OnPropertyChanged(nameof(RemainingTime));
             }
         }
-        private string _remainingMin;
-        public string RemainingMin
+        private bool _isEnable;
+        public bool IsEnable
         {
-            get => _remainingMin;
+            get => _isEnable;
             set
             {
-                _remainingMin = value;
-                OnPropertyChanged(nameof(RemainingMin));
+                _isEnable = value;
+                OnPropertyChanged(nameof(IsEnable));
             }
         }
+        private DateTime criteria = default(DateTime);
         public SeatModel(int num)
         {
-            this.Name = num + "번 테이블";
+            this.IDX = num;
+            this.IsEnable = true;
 
-            RemainingMin = "01";
-            RemainingSec = "00";
+            criteria = App.sQLManager.selectLastOrderDate(num);
 
-            DateTime criteria = App.sQLManager.selectLastOrderDate(num);
+            if (0 > DateTime.Now.AddMinutes(-1.0).CompareTo(criteria)) //criteria가 1분 이내임
+            {
+                this.IsEnable = false;
+            }
         }
 
         #region PropertyChangedEvent
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propetryName)
         {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propetryName));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propetryName));
         }
         #endregion
     }
