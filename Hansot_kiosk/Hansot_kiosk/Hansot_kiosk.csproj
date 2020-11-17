@@ -143,7 +143,7 @@
     <Compile Include="Manager\OrderManager.cs" />
     <Compile Include="Manager\UserManager.cs" />
     <Compile Include="Model\MenuModel.cs" />
-    <Compile Include="Model\TableModel.cs" />
+    <Compile Include="Model\SeatModel.cs" />
     <Compile Include="Service\MySQLManager.cs" />
     <Compile Include="UIManager\UICategory.cs" />
     <Compile Include="UIManager\UIStateManager.cs" />
