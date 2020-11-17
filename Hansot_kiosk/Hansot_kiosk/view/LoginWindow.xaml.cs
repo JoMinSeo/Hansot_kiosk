@@ -37,6 +37,7 @@ namespace Hansot_kiosk.view
                     Properties.Settings.Default.Save();
                 }
                 App.isLogined = true;
+                App.tcpManager.PostMessage();
                 MessageBox.Show("로그인되었습니다.");
 
                 this.Close();

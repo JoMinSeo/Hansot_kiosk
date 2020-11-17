@@ -63,6 +63,9 @@
     <Reference Include="MySql.Data, Version=8.0.21.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.8.0.21\lib\net452\MySql.Data.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Renci.SshNet, Version=2016.1.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
       <HintPath>..\packages\SSH.NET.2016.1.0\lib\net40\Renci.SshNet.dll</HintPath>
     </Reference>
@@ -141,9 +144,13 @@
     </Compile>
     <Compile Include="Converter\MenuConverter.cs" />
     <Compile Include="Manager\OrderManager.cs" />
+    <Compile Include="Manager\ServerIP.cs" />
+    <Compile Include="Manager\TCPManager.cs" />
     <Compile Include="Manager\UserManager.cs" />
     <Compile Include="Model\MenuModel.cs" />
     <Compile Include="Model\SeatModel.cs" />
+    <Compile Include="Model\TableModel.cs" />
+    <Compile Include="Model\TcpModel.cs" />
     <Compile Include="Service\MySQLManager.cs" />
     <Compile Include="UIManager\UICategory.cs" />
     <Compile Include="UIManager\UIStateManager.cs" />

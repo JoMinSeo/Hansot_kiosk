@@ -29,6 +29,7 @@ namespace Hansot_kiosk.Control
                 App.isLogined = true;
                 //Properties.Settings.Default.isAutoLogin = false;
                 //Properties.Settings.Default.Save();
+                App.tcpManager.PostMessage();
                 MessageBox.Show("자동로그인 되었습니다.");
             }else if (App.isLogined == false)
             {
