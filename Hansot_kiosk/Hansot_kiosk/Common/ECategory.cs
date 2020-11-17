@@ -9,4 +9,11 @@
         SIDEDISH
     }
 
+
+    public enum EMessageType
+    {
+        LOGIN,
+        COMMONMESSAGE,
+        ORDERINFO
+    }
 }

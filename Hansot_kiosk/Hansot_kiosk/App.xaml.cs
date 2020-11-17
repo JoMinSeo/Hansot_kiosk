@@ -15,6 +15,7 @@ namespace Hansot_kiosk
         public static MySQLManager sQLManager = new MySQLManager();
         public static UserManager userManager = new UserManager();
         public static OrderManager orderManager = new OrderManager();
+        public static TCPManager tcpManager = new TCPManager();
         public static MySqlConnection connection;
         public static bool DataSaveResult = false;
         public static bool isLogined = false;
