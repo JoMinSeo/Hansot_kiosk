@@ -6,7 +6,7 @@ namespace Hansot_kiosk.Model
     {
         public int IDX { get; set; }
         public int User_IDX { get; set; }
-        public int Table { get; set; }
+        public int Seat { get; set; }
         public bool IsCard { get; set; }
         public DateTime OrderedTime { get; set; }
     }
