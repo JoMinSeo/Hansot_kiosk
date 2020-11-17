@@ -42,6 +42,11 @@ namespace Hansot_kiosk.Model
         public TableModel(int num)
         {
             this.Name = num + "번 테이블";
+
+            RemainingMin = "01";
+            RemainingSec = "00";
+
+            DateTime criteria = App.sQLManager.selectLastOrderDate(num);
         }
 
         #region PropertyChangedEvent
