@@ -35,7 +35,7 @@ namespace UIManager
         }
 
         /// <summary>
-        /// 현재 최상위 유저컨트롤을 꺼내서 보여준다
+        /// 현재 최상위 유저컨트롤을 꺼내서 삭제한다.
         /// </summary>
         /// <returns>if true, visible</returns>
         public bool Pop()
