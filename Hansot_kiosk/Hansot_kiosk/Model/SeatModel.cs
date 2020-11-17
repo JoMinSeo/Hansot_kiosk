@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Hansot_kiosk.Model
 {
-    public class TableModel : INotifyPropertyChanged
+    public class SeatModel : INotifyPropertyChanged
     {
         private string _name;
         public string Name
@@ -39,7 +39,7 @@ namespace Hansot_kiosk.Model
                 OnPropertyChanged(nameof(RemainingMin));
             }
         }
-        public TableModel(int num)
+        public SeatModel(int num)
         {
             this.Name = num + "번 테이블";
 

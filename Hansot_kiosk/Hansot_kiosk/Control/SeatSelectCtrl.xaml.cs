@@ -12,8 +12,8 @@ namespace Hansot_kiosk.Control
     /// </summary>
     public partial class SeatSelectCtrl : UserControl, INotifyPropertyChanged
     {
-        private ObservableCollection<TableModel> _tables = new ObservableCollection<TableModel>();
-        public ObservableCollection<TableModel> Tables
+        private ObservableCollection<SeatModel> _tables = new ObservableCollection<SeatModel>();
+        public ObservableCollection<SeatModel> Tables
         {
             get => _tables;
             set
@@ -31,7 +31,7 @@ namespace Hansot_kiosk.Control
         {
             for (int i = 1; i <= 10; i++)
             {
-                TableModel temp = new TableModel(i);
+                SeatModel temp = new SeatModel(i);
                 Tables.Add(temp);
             }
             this.DataContext = this;
