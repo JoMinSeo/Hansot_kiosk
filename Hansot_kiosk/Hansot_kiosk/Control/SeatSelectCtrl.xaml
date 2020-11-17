@@ -16,7 +16,7 @@
                 <Grid>
                     <Label Content="좌석을 선택하여주세요." HorizontalAlignment="Center" FontSize="55" Margin="20" VerticalAlignment="Top"/>
                 </Grid>
-                <ListBox x:Name="lbTables" FontSize="20" VerticalAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="850px" SelectionChanged="lbTables_SelectionChanged">
+                <ListBox x:Name="lbSeats" FontSize="20" VerticalAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="850px" SelectionChanged="lbSeats_SelectionChanged">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel />
@@ -27,11 +27,7 @@
                             <Grid Width="350" Height="350" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" Background="AliceBlue">
                                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                                     <TextBlock Text="{Binding Name}" Margin="4,4,0,0" HorizontalAlignment="Center"/>
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                        <TextBlock Text="{Binding RemainingMin}" Margin="4,4,0,0" HorizontalAlignment="Center"/>
-                                        <TextBlock Text=":" Margin="4,4,0,0" HorizontalAlignment="Left"/>
-                                        <TextBlock Text="{Binding RemainingSec}" Margin="4,4,0,0" HorizontalAlignment="Center"/>
-                                    </StackPanel>
+                                    <TextBlock Text="{Binding RemainingTime}"/>
                                 </StackPanel>
                             </Grid>
                         </DataTemplate>
