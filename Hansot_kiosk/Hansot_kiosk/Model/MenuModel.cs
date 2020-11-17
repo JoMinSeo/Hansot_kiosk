@@ -80,10 +80,7 @@ namespace Hansot_kiosk.Model
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propetryName)
         {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propetryName));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propetryName));
         }
         #endregion
     }
