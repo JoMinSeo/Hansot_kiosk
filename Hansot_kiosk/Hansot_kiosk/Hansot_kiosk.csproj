@@ -149,7 +149,6 @@
     <Compile Include="Manager\UserManager.cs" />
     <Compile Include="Model\MenuModel.cs" />
     <Compile Include="Model\SeatModel.cs" />
-    <Compile Include="Model\TableModel.cs" />
     <Compile Include="Model\TcpModel.cs" />
     <Compile Include="Service\MySQLManager.cs" />
     <Compile Include="UIManager\UICategory.cs" />
