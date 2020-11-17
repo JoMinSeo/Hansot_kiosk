@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 using System.Diagnostics;
 using Hansot_kiosk.Model;
 using Hansot_kiosk.Common;
 using System.Windows;
+
 
 namespace Hansot_kiosk.Service
 {
@@ -145,6 +147,37 @@ namespace Hansot_kiosk.Service
             {
                 MessageBox.Show("유저를 불러오는데 실패하였습니다.");
                 return null;
+            }
+        }
+
+        public DateTime selectLastOrderDate(int tableIdx)
+        {
+            DateTime lastOrderDate = default(DateTime);
+
+            string sSeatIdx = "'" + tableIdx + "'";
+
+            string query = "SELECT OrderedTime FROM kiosk.order WHERE Seat = " + sSeatIdx +
+                " ORDER BY OrderedTime DESC LIMIT 1";
+
+            if (this.OpenMySqlConnection() == true)
+            {
+                MySqlCommand command = CreateCommand(query);
+                MySqlDataReader dataReader = command.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+                    lastOrderDate = Convert.ToDateTime(dataReader["OrderedTime"].ToString());
+                }
+
+
+                dataReader.Close();
+                this.CloseMySqlConnection();
+                return lastOrderDate;
+            }
+            else
+            {
+                MessageBox.Show("테이블의 마지막 시간을 불러오는데 실패하였습니다.");
+                return lastOrderDate;
             }
         }
 
