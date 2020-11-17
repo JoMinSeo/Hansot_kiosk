@@ -29,12 +29,13 @@ namespace Hansot_kiosk.Control
         }
         private void init()
         {
-            for (int i = 1; i <= 9; i++)
+            for (int i = 1; i <= 10; i++)
             {
                 TableModel temp = new TableModel(i);
                 Tables.Add(temp);
             }
             this.DataContext = this;
+            lbTables.ItemsSource = Tables;
         }
 
         #region UIControl
@@ -61,5 +62,10 @@ namespace Hansot_kiosk.Control
             }
         }
         #endregion
+
+        private void lbTables_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
