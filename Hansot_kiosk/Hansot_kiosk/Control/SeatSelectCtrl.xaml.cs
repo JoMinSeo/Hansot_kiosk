@@ -12,14 +12,14 @@ namespace Hansot_kiosk.Control
     /// </summary>
     public partial class SeatSelectCtrl : UserControl, INotifyPropertyChanged
     {
-        private ObservableCollection<SeatModel> _tables = new ObservableCollection<SeatModel>();
-        public ObservableCollection<SeatModel> Tables
+        private ObservableCollection<SeatModel> _seats = new ObservableCollection<SeatModel>();
+        public ObservableCollection<SeatModel> Seats
         {
-            get => _tables;
+            get => _seats;
             set
             {
-                _tables = value;
-                OnPropertyChanged(nameof(Tables));
+                _seats = value;
+                OnPropertyChanged(nameof(Seats));
             }
         }
         public SeatSelectCtrl()
@@ -31,11 +31,21 @@ namespace Hansot_kiosk.Control
         {
             for (int i = 1; i <= 10; i++)
             {
-                SeatModel temp = new SeatModel(i);
-                Tables.Add(temp);
+                Seats.Add(new SeatModel(i));
             }
             this.DataContext = this;
-            lbTables.ItemsSource = Tables;
+            lbSeats.ItemsSource = Seats;
+        }
+
+        private void lbSeats_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (lbSeats.SelectedItems.Count < 1)
+            {
+                return;
+            }
+            SeatModel model = (SeatModel)lbSeats.SelectedItem;
+            App.orderManager.CurrentOrder.Seat = model.IDX;
+            App.uIStateManager.Push(App.uIStateManager.Get(UICategory.PAYSELECT));
         }
 
         #region UIControl
@@ -51,7 +61,6 @@ namespace Hansot_kiosk.Control
                 App.uIStateManager.Push(uc);
         }
         #endregion
-
         #region PropertyChangedEvent
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propetryName)
@@ -59,10 +68,5 @@ namespace Hansot_kiosk.Control
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propetryName));
         }
         #endregion
-
-        private void lbTables_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
     }
 }
