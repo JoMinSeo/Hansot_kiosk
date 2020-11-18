@@ -1,4 +1,5 @@
-﻿using Hansot_kiosk.view;
+﻿using Hansot_kiosk.Model;
+using Hansot_kiosk.view;
 using Kiosk.UIManager;
 using System.Windows;
 using System.Windows.Controls;
@@ -24,12 +25,17 @@ namespace Hansot_kiosk.Control
 
         private void ReadyControl_Loaded(object sender, RoutedEventArgs e)
         {
+            TcpModel tcpModel = new TcpModel()
+            {
+                MSGType = 0,
+            };
+
             if (Properties.Settings.Default.isAutoLogin == true)
             {
                 App.isLogined = true;
                 //Properties.Settings.Default.isAutoLogin = false;
                 //Properties.Settings.Default.Save();
-                App.tcpManager.PostMessage();
+                App.tcpManager.PostMessage(tcpModel);
                 MessageBox.Show("자동로그인 되었습니다.");
             }else if (App.isLogined == false)
             {

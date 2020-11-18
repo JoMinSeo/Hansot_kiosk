@@ -75,6 +75,16 @@ namespace Hansot_kiosk.Model
                 OnPropertyChanged(nameof(Amount));
             }
         }
+        private int _discountedPer;
+        public int DiscountedPer
+        {
+            get => _discountedPer;
+            set
+            {
+                _discountedPer = value;
+                OnPropertyChanged(nameof(DiscountedPer));
+            }
+        }
 
         #region PropertyChangedEvent
         public event PropertyChangedEventHandler PropertyChanged;

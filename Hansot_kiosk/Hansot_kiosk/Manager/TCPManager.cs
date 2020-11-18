@@ -21,13 +21,9 @@ namespace Hansot_kiosk.Manager
         NetworkStream networkStream = null;
         TcpClient tcpClient = null;
 
-        public string PostMessage()
+        public string PostMessage(TcpModel tcpModel)
         {
-            TcpModel model = new TcpModel();
-            model.MSGType = 0;
-            model.Id = "2219";
-
-            string json = JsonConvert.SerializeObject(model);
+            string json = JsonConvert.SerializeObject(tcpModel);
             this.sendData = Encoding.UTF8.GetBytes(json);
 
             try

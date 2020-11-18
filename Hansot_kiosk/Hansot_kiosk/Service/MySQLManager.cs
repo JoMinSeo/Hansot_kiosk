@@ -103,6 +103,7 @@ namespace Hansot_kiosk.Service
                     menu.Price = dataReader.GetInt32(dataReader.GetOrdinal("Price"));
                     menu.Path = dataReader["Path"].ToString();
                     menu.Category = (ECategory)int.Parse(dataReader["Category"].ToString());
+                    menu.DiscountedPer = dataReader.GetInt32(dataReader.GetOrdinal("DiscountedPer"));
 
                     menus.Add(menu);
                 }
@@ -156,7 +157,7 @@ namespace Hansot_kiosk.Service
 
             string sSeatIdx = "'" + tableIdx + "'";
 
-            string query = "SELECT OrderedTime FROM kiosk.order WHERE Seat = " + sSeatIdx +
+            string query = "SELECT OrderedTime FROM kiosk.order WHERE Seat_IDX = " + sSeatIdx +
                 " ORDER BY OrderedTime DESC LIMIT 1";
 
             if (this.OpenMySqlConnection() == true)

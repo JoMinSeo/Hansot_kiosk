@@ -11,7 +11,8 @@ namespace Hansot_kiosk.Model
         public int MSGType = 0;
         public string Id = "2219";
         public string Content = string.Empty;
-        public string ShopName = string.Empty;
+        public string ShopName = "한솥 구지점";
+        public bool Group = false;
         public List<OrderInfo> orderinfo = new List<OrderInfo>();
         public string OrderNumber = string.Empty;
     }
