@@ -1,4 +1,5 @@
 ﻿using Hansot_kiosk.Model;
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 
@@ -40,16 +41,20 @@ namespace Hansot_kiosk.Manager
         #endregion
         public OrderManager()
         {
-            init();
+            Init();
         }
-        public void init()
+        public void Init()
         {
             CurrentOrder = new OrderModel();
             OrderedMenus.Clear();
 
             TotalPrice = 0;
+        }
+        public void CompleteOrder()
+        {
+            this.CurrentOrder.OrderedTime = DateTime.Now;
+            // DB로 전송하는 코드
 
-            CurrentOrder.IDX = -1;
         }
         #region PropertyChangedEvent
         public event PropertyChangedEventHandler PropertyChanged;
