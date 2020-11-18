@@ -5,7 +5,7 @@ using System.Diagnostics;
 using Hansot_kiosk.Model;
 using Hansot_kiosk.Common;
 using System.Windows;
-
+using System.Collections.ObjectModel;
 
 namespace Hansot_kiosk.Service
 {
@@ -16,6 +16,10 @@ namespace Hansot_kiosk.Service
             string connectionPath = "Server = 10.80.163.155; Database=kiosk; " +
             "Uid=root;Pwd=y28645506;Charset=utf8";
             App.connection = new MySqlConnection(connectionPath);
+
+            App.Menus = new ObservableCollection<MenuModel>(this.SelectAllMenus());
+            App.Orders = new ObservableCollection<OrderModel>(this.SelectAllOrders());
+            App.Users = new ObservableCollection<UserModel>(this.selectAllUsers());
         }
 
         public MySqlCommand CreateCommand(string query)
@@ -83,7 +87,7 @@ namespace Hansot_kiosk.Service
             }
         }
 
-        public List<MenuModel> SelectMenu()
+        public List<MenuModel> SelectAllMenus()
         {
             string query = "SELECT * FROM menu";
 
@@ -98,9 +102,9 @@ namespace Hansot_kiosk.Service
                 while (dataReader.Read())
                 {
                     MenuModel menu = new MenuModel();
-                    menu.IDX = dataReader.GetInt32(dataReader.GetOrdinal("IDX"));
+                    menu.IDX = dataReader.GetInt32("IDX");
                     menu.Name = dataReader["Name"].ToString();
-                    menu.Price = dataReader.GetInt32(dataReader.GetOrdinal("Price"));
+                    menu.Price = dataReader.GetInt32("Price");
                     menu.Path = dataReader["Path"].ToString();
                     menu.Category = (ECategory)int.Parse(dataReader["Category"].ToString());
 
@@ -118,7 +122,7 @@ namespace Hansot_kiosk.Service
             }
         }
 
-        public List<UserModel> selectUser()
+        public List<UserModel> selectAllUsers()
         {
             string query = "SELECT * FROM user";
             List<UserModel> users = new List<UserModel>();
@@ -131,7 +135,7 @@ namespace Hansot_kiosk.Service
                 while (dataReader.Read())
                 {
                     UserModel user = new UserModel();
-                    user.IDX = dataReader.GetInt32(dataReader.GetOrdinal("IDX"));
+                    user.IDX = dataReader.GetInt32("IDX");
                     user.Name = dataReader["Name"].ToString();
                     user.Value = dataReader["Value"].ToString();
 
@@ -149,6 +153,39 @@ namespace Hansot_kiosk.Service
                 return null;
             }
         }
+        public List<OrderModel> SelectAllOrders()
+        {
+            string query = "SELECT * FROM menu";
+
+            List<OrderModel> orders = new List<OrderModel>();
+
+
+            if (this.OpenMySqlConnection() == true)
+            {
+                MySqlCommand command = CreateCommand(query);
+                MySqlDataReader dataReader = command.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+                    OrderModel order = new OrderModel();
+                    order.IDX = dataReader.GetInt32("IDX");
+                    order.User_IDX = dataReader.GetInt32(dataReader.GetOrdinal("User_IDX"));
+                    order.Seat_IDX = dataReader.GetInt32(dataReader.GetOrdinal("Seat_IDX"));
+
+                    orders.Add(order);
+                }
+
+                dataReader.Close();
+                this.CloseMySqlConnection();
+                return orders;
+            }
+            else
+            {
+                MessageBox.Show("메뉴를 불러오는것에 실패하였습니다.");
+                return null;
+            }
+        }
+
 
         public DateTime selectLastOrderDate(int tableIdx)
         {
@@ -156,7 +193,7 @@ namespace Hansot_kiosk.Service
 
             string sSeatIdx = "'" + tableIdx + "'";
 
-            string query = "SELECT OrderedTime FROM kiosk.order WHERE Seat = " + sSeatIdx +
+            string query = "SELECT OrderedTime FROM kiosk.order WHERE Seat_IDX = " + sSeatIdx +
                 " ORDER BY OrderedTime DESC LIMIT 1";
 
             if (this.OpenMySqlConnection() == true)
