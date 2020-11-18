@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hansot_kiosk.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,7 +30,12 @@ namespace Hansot_kiosk.view
             string id = idTb.Text;
             string pass = passTb.Text;
 
-            if(Properties.Settings.Default.id == id && Properties.Settings.Default.pass == pass)
+            TcpModel tcpModel = new TcpModel()
+            {
+                MSGType = 0,
+            };
+
+            if (Properties.Settings.Default.id == id && Properties.Settings.Default.pass == pass)
             {
                 if(autoLoginCheck.IsChecked == true)
                 {
@@ -37,7 +43,7 @@ namespace Hansot_kiosk.view
                     Properties.Settings.Default.Save();
                 }
                 App.isLogined = true;
-                App.tcpManager.PostMessage();
+                App.tcpManager.PostMessage(tcpModel);
                 MessageBox.Show("로그인되었습니다.");
 
                 this.Close();
