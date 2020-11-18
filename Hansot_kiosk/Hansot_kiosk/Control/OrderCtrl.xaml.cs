@@ -99,7 +99,7 @@ namespace Hansot_kiosk.Control
             OrderBtn.IsEnabled = false;
             this.DataContext = App.orderManager;
 
-            menuList = App.sQLManager.SelectMenu();
+            menuList = App.sQLManager.SelectAllMenus();
             currentCategoryMenuList = menuList;
 
             lvOrderdMenus.ItemsSource = App.orderManager.OrderedMenus;
