@@ -35,6 +35,14 @@ namespace Hansot_kiosk.Model
             set
             {
                 _isEnableClick = value;
+                if (value)
+                {
+                    this.BackGroundColor = new SolidColorBrush(Colors.AliceBlue);
+                }
+                else if (!value)
+                {
+                    this.BackGroundColor = new SolidColorBrush(Colors.OrangeRed);
+                }
                 OnPropertyChanged(nameof(_isEnableClick));
             }
         }
@@ -49,19 +57,22 @@ namespace Hansot_kiosk.Model
             }
         }
         #endregion
-        private DateTime criteria = default(DateTime);
+        private DateTime _criteria = default(DateTime);
+        public string SCriteria
+        {
+            get => _criteria.ToString("최근 주문 : mm월 dd일 tt hh:mm");
+        }
         private DispatcherTimer timer = new DispatcherTimer();
         public SeatModel(int num)
         {
             this.IDX = num;
             this._isEnableClick = true;
-            this.BackGroundColor = new SolidColorBrush(Colors.AliceBlue);
 
-            criteria = App.sQLManager.selectLastOrderDate(num);
+            _criteria = App.sQLManager.selectLastOrderDate(num);
 
             StartTimer();
 
-            if (0 > DateTime.Now.AddMinutes(-1.0).CompareTo(criteria)) //criteria가 1분 이내임
+            if (0 > DateTime.Now.AddMinutes(-1.0).CompareTo(_criteria)) //criteria가 1분 이내임
             {
                 this._isEnableClick = false;
                 BackGroundColor = new SolidColorBrush(Colors.OrangeRed);
@@ -79,14 +90,16 @@ namespace Hansot_kiosk.Model
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            int remainingSec = Convert.ToInt32(Math.Truncate((DateTime.Now - criteria).TotalSeconds));
+            int remainingSec = Convert.ToInt32(Math.Truncate((DateTime.Now - _criteria).TotalSeconds));
 
             if (remainingSec < 60)
             {
+                remainingSec = 60 - remainingSec;
                 RemainingTime = "00 : " + remainingSec;
             }
             else
             {
+                this.IsEnableClick = true;
                 timer.Tick -= new EventHandler(Timer_Tick);
             }
         }

@@ -28,6 +28,7 @@
                                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                                     <TextBlock Text="{Binding IDX}" Margin="4,4,0,0" HorizontalAlignment="Center"/>
                                     <TextBlock Text="{Binding RemainingTime}"/>
+                                    <TextBlock Text="{Binding SCriteria}"/>
                                 </StackPanel>
                             </Grid>
                         </DataTemplate>
