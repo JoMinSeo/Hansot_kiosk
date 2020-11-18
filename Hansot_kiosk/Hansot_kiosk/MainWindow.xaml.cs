@@ -14,8 +14,9 @@ namespace Hansot_kiosk
         private void init()
         {
             App.uIStateManager.AllPop();
-            App.orderManager.init();
+            App.orderManager.Init();
             orderCtrl.init();
+            seatSelectCtrl.init();
         }
         public MainWindow()
         {
