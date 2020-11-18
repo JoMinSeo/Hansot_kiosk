@@ -17,7 +17,10 @@
                 <RowDefinition Height="100"/>
             </Grid.RowDefinitions>
             <Label Grid.Row="0" Content="결제되었습니다" FontSize="72" HorizontalAlignment="Center" Margin="0,0,0,100"/>
-            <Label Grid.Row="1" Content="결제 금액:" FontSize="52" HorizontalAlignment="Center"/>
+            <StackPanel Grid.Row="1">
+                <Label Content="결제 금액:" FontSize="52" HorizontalAlignment="Center"/>
+                <TextBlock Text="{Binding }"/>
+            </StackPanel>
             <Label Grid.Row="2" Content="주문 번호:" FontSize="60" HorizontalAlignment="Center"/>
         </Grid>
     </Grid>
