@@ -24,6 +24,11 @@ namespace Hansot_kiosk.Control
         {
             InitializeComponent();
         }
+        private void CompleteOrder()
+        {
+
+            App.orderManager.CompleteOrder();
+        }
 
         private void CloseBtn_Click(object sender, RoutedEventArgs e)
         {
