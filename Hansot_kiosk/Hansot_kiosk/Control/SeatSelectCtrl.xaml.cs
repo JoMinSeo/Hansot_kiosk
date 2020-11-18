@@ -27,7 +27,7 @@ namespace Hansot_kiosk.Control
             InitializeComponent();
             init();
         }
-        private void init()
+        public void init()
         {
             if (Seats.Count > 0)
             {
