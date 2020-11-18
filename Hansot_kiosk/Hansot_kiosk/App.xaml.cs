@@ -1,6 +1,8 @@
 using Hansot_kiosk.Manager;
+using Hansot_kiosk.Model;
 using Hansot_kiosk.Service;
 using MySql.Data.MySqlClient;
+using System.Collections.ObjectModel;
 using System.Windows;
 using UIManager;
 
@@ -11,11 +13,16 @@ namespace Hansot_kiosk
     /// </summary>
     public partial class App : Application
     {
-        public static UIStateManager uIStateManager = new UIStateManager();
-        public static MySQLManager sQLManager = new MySQLManager();
-        public static UserManager userManager = new UserManager();
-        public static OrderManager orderManager = new OrderManager();
-        public static TCPManager tcpManager = new TCPManager();
+        public static ObservableCollection<MenuModel> Menus;
+        public static ObservableCollection<OrderModel> Orders;
+        public static ObservableCollection<UserModel> Users;
+
+        public static readonly UIStateManager uIStateManager = new UIStateManager();
+        public static readonly MySQLManager sQLManager = new MySQLManager();
+        public static readonly UserManager userManager = new UserManager();
+        public static readonly OrderManager orderManager = new OrderManager();
+        public static readonly TCPManager tcpManager = new TCPManager();
+
         public static MySqlConnection connection;
         public static bool DataSaveResult = false;
         public static bool isLogined = false;
