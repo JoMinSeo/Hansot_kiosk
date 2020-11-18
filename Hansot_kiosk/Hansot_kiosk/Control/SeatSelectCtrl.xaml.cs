@@ -29,6 +29,10 @@ namespace Hansot_kiosk.Control
         }
         private void init()
         {
+            if (Seats.Count > 0)
+            {
+                Seats.Clear();
+            }
             for (int i = 1; i <= 10; i++)
             {
                 Seats.Add(new SeatModel(i));
