@@ -44,8 +44,11 @@ namespace Hansot_kiosk.Control
                 return;
             }
             SeatModel model = (SeatModel)lbSeats.SelectedItem;
-            App.orderManager.CurrentOrder.Seat = model.IDX;
-            App.uIStateManager.Push(App.uIStateManager.Get(UICategory.PAYSELECT));
+            if (model.IsEnableClick)
+            {
+                App.orderManager.CurrentOrder.Seat = model.IDX;
+                App.uIStateManager.Push(App.uIStateManager.Get(UICategory.PAYSELECT));
+            }
         }
 
         #region UIControl
