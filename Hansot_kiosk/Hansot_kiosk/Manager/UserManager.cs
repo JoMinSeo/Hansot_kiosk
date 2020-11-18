@@ -11,7 +11,7 @@ namespace Hansot_kiosk.Manager
 
         public UserManager()
         {
-            userList = mySQLManager.selectUser();
+            userList = mySQLManager.selectAllUsers();
         }
         
         public UserModel compareName(string tbValue)
