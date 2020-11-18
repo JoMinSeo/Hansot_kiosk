@@ -21,10 +21,10 @@ namespace Hansot_kiosk
         {
             InitializeComponent();
             initUI();
-            setTime();
+            StartTimer();
         }
         #region TimeControl
-        private void setTime()
+        private void StartTimer()
         {
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
