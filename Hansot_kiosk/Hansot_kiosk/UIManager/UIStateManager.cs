@@ -56,9 +56,7 @@ namespace UIManager
         {
             while(UIStack.Count > 1)
             {
-                UserControl uc = UIStack.Peek();
-                SetVisible(uc, Visibility.Collapsed);
-                UIStack.Pop();
+                Pop();
             }
         }
 
