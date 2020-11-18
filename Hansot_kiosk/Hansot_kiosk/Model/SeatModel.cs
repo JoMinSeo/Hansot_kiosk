@@ -35,6 +35,7 @@ namespace Hansot_kiosk.Model
             set
             {
                 _isEnableClick = value;
+
                 if (value)
                 {
                     this.BackGroundColor = new SolidColorBrush(Colors.AliceBlue);
@@ -43,6 +44,7 @@ namespace Hansot_kiosk.Model
                 {
                     this.BackGroundColor = new SolidColorBrush(Colors.OrangeRed);
                 }
+
                 OnPropertyChanged(nameof(_isEnableClick));
             }
         }
@@ -60,22 +62,19 @@ namespace Hansot_kiosk.Model
         private DateTime _criteria = default(DateTime);
         public string SCriteria
         {
-            get => _criteria.ToString("최근 주문 : mm월 dd일 tt hh:mm");
+            get => _criteria.ToString("최근 주문 : MM월 dd일 tt hh:mm");
         }
         private DispatcherTimer timer = new DispatcherTimer();
         public SeatModel(int num)
         {
             this.IDX = num;
-            this._isEnableClick = true;
+            this.IsEnableClick = true;
 
             _criteria = App.sQLManager.selectLastOrderDate(num);
 
-            StartTimer();
-
             if (0 > DateTime.Now.AddMinutes(-1.0).CompareTo(_criteria)) //criteria가 1분 이내임
             {
-                this._isEnableClick = false;
-                BackGroundColor = new SolidColorBrush(Colors.OrangeRed);
+                this.IsEnableClick = false;
 
                 StartTimer();
             }
@@ -95,16 +94,23 @@ namespace Hansot_kiosk.Model
             if (remainingSec < 60)
             {
                 remainingSec = 60 - remainingSec;
-                RemainingTime = "00 : " + remainingSec;
+                if(remainingSec < 10)
+                {
+                    RemainingTime = "00 : 0" + remainingSec;
+                }
+                else
+                {
+                    RemainingTime = "00 : " + remainingSec;
+                }
             }
             else
             {
                 this.IsEnableClick = true;
+                this.RemainingTime = "";
                 timer.Tick -= new EventHandler(Timer_Tick);
             }
         }
         #endregion
-
         #region PropertyChangedEvent
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propetryName)
