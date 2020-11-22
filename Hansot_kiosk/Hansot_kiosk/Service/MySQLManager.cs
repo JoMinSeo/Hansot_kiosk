@@ -13,11 +13,11 @@ namespace Hansot_kiosk.Service
     {
         public MySQLManager()
         {
-            string connectionPath = "Server = 10.80.163.155; Database=kiosk; " +
+            string connectionPath = "Server = localhost; Database=kiosk; " +
             "Uid=root;Pwd=y28645506;Charset=utf8";
             App.connection = new MySqlConnection(connectionPath);
 
-            App.Menus = new ObservableCollection<MenuModel>(this.SelectAllMenus());
+            App.Menus = this.SelectAllMenus();
             App.Orders = new ObservableCollection<OrderModel>(this.SelectAllOrders());
             App.Users = new ObservableCollection<UserModel>(this.selectAllUsers());
         }
@@ -106,8 +106,8 @@ namespace Hansot_kiosk.Service
                     menu.Name = dataReader["Name"].ToString();
                     menu.Price = dataReader.GetInt32("Price");
                     menu.Path = dataReader["Path"].ToString();
-                    menu.Category = (ECategory)int.Parse(dataReader["Category"].ToString());
-                    menu.DiscountedPer = dataReader.GetInt32(dataReader.GetOrdinal("DiscountedPer"));
+                    menu.Category = (ECategory)dataReader.GetInt32("Category");
+                    menu.DiscountedPer = dataReader.GetInt32("DiscountedPer");
 
                     menus.Add(menu);
                 }
@@ -125,7 +125,7 @@ namespace Hansot_kiosk.Service
 
         public List<UserModel> selectAllUsers()
         {
-            string query = "SELECT * FROM user";
+            string query = "SELECT * FROM kiosk.user";
             List<UserModel> users = new List<UserModel>();
 
             if(this.OpenMySqlConnection() == true)
@@ -156,7 +156,7 @@ namespace Hansot_kiosk.Service
         }
         public List<OrderModel> SelectAllOrders()
         {
-            string query = "SELECT * FROM menu";
+            string query = "SELECT * FROM kiosk.order";
 
             List<OrderModel> orders = new List<OrderModel>();
 
@@ -172,6 +172,8 @@ namespace Hansot_kiosk.Service
                     order.IDX = dataReader.GetInt32("IDX");
                     order.User_IDX = dataReader.GetInt32(dataReader.GetOrdinal("User_IDX"));
                     order.Seat_IDX = dataReader.GetInt32(dataReader.GetOrdinal("Seat_IDX"));
+                    order.IsCard = Convert.ToBoolean(dataReader.GetInt32(dataReader.GetOrdinal("isCard")));
+                    order.OrderedTime = Convert.ToDateTime(dataReader["OrderedTime"].ToString());
 
                     orders.Add(order);
                 }
@@ -221,7 +223,7 @@ namespace Hansot_kiosk.Service
 
         public string createOrderCommand(OrderModel orderModel)
         {
-            string command = string.Format("INSERT INTO order (User_IDX, Table, isCard, OrderedTime) VALUES ( {0}, {1}, {2}, {3} )", orderModel.User_IDX, orderModel.Seat, orderModel.IsCard, orderModel.OrderedTime);
+            string command = string.Format("INSERT INTO order (User_IDX, Table, isCard, OrderedTime) VALUES ( {0}, {1}, {2}, {3} )", orderModel.User_IDX, orderModel, orderModel.IsCard, orderModel.OrderedTime);
             return command;
         }
     }
