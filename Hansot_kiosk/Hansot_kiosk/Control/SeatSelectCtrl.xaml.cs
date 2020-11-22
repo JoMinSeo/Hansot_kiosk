@@ -1,7 +1,9 @@
 ﻿using Hansot_kiosk.Model;
 using Kiosk.UIManager;
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -35,7 +37,9 @@ namespace Hansot_kiosk.Control
             }
             for (int i = 1; i <= 10; i++)
             {
-                Seats.Add(new SeatModel(i));
+                DateTime criteriaDate = (from orderModel in App.Orders where orderModel.Seat_IDX == i 
+                                         select orderModel).Max(orderModel => orderModel.OrderedTime);
+                Seats.Add(new SeatModel(i, criteriaDate));
             }
             this.DataContext = this;
             lbSeats.ItemsSource = Seats;

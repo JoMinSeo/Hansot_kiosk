@@ -59,20 +59,20 @@ namespace Hansot_kiosk.Model
             }
         }
         #endregion
-        private DateTime _criteria = default(DateTime);
+        private DateTime criteriaDate = default(DateTime);
         public string SCriteria
         {
-            get => _criteria.ToString("최근 주문 : MM월 dd일 tt hh:mm");
+            get => criteriaDate.ToString("최근 주문 : MM월 dd일 tt hh:mm");
         }
         private DispatcherTimer timer = new DispatcherTimer();
-        public SeatModel(int num)
+        public SeatModel(int num, DateTime criteriaDateTime)
         {
             this.IDX = num;
             this.IsEnableClick = true;
 
-            _criteria = App.sQLManager.selectLastOrderDate(num);
+            criteriaDate = criteriaDateTime;
 
-            if (0 > DateTime.Now.AddMinutes(-1.0).CompareTo(_criteria)) //criteria가 1분 이내임
+            if (0 > DateTime.Now.AddMinutes(-1.0).CompareTo(criteriaDate)) //criteria가 1분 이내임
             {
                 this.IsEnableClick = false;
 
@@ -89,7 +89,7 @@ namespace Hansot_kiosk.Model
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            int remainingSec = Convert.ToInt32(Math.Truncate((DateTime.Now - _criteria).TotalSeconds));
+            int remainingSec = Convert.ToInt32(Math.Truncate((DateTime.Now - criteriaDate).TotalSeconds));
 
             if (remainingSec < 60)
             {
