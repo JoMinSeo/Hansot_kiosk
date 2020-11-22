@@ -14,6 +14,7 @@ namespace Hansot_kiosk.Control
     /// </summary>
     public partial class SeatSelectCtrl : UserControl, INotifyPropertyChanged
     {
+        #region Property
         private ObservableCollection<SeatModel> _seats = new ObservableCollection<SeatModel>();
         public ObservableCollection<SeatModel> Seats
         {
@@ -24,6 +25,7 @@ namespace Hansot_kiosk.Control
                 OnPropertyChanged(nameof(Seats));
             }
         }
+        #endregion
         public SeatSelectCtrl()
         {
             InitializeComponent();
