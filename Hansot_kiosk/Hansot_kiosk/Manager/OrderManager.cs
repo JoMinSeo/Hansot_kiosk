@@ -2,6 +2,7 @@
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 
 namespace Hansot_kiosk.Manager
 {
@@ -47,6 +48,8 @@ namespace Hansot_kiosk.Manager
         {
             CurrentOrder = new OrderModel();
             OrderedMenus.Clear();
+
+            CurrentOrder.IDX = (from orderModel in App.Orders select orderModel).Max(orderModel => orderModel.IDX);
 
             TotalPrice = 0;
         }
