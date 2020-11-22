@@ -2,6 +2,7 @@ using Hansot_kiosk.Manager;
 using Hansot_kiosk.Model;
 using Hansot_kiosk.Service;
 using MySql.Data.MySqlClient;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 using UIManager;
@@ -13,7 +14,7 @@ namespace Hansot_kiosk
     /// </summary>
     public partial class App : Application
     {
-        public static ObservableCollection<MenuModel> Menus;
+        public static List<MenuModel> Menus;
         public static ObservableCollection<OrderModel> Orders;
         public static ObservableCollection<UserModel> Users;
 
