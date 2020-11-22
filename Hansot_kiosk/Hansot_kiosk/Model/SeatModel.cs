@@ -58,12 +58,12 @@ namespace Hansot_kiosk.Model
                 OnPropertyChanged(nameof(BackGroundColor));
             }
         }
-        #endregion
         private DateTime criteriaDate = default(DateTime);
         public string SCriteria
         {
             get => criteriaDate.ToString("최근 주문 : MM월 dd일 tt hh:mm");
         }
+        #endregion
         private DispatcherTimer timer = new DispatcherTimer();
         public SeatModel(int num, DateTime criteriaDateTime)
         {
@@ -86,7 +86,6 @@ namespace Hansot_kiosk.Model
             timer.Tick += new EventHandler(Timer_Tick);
             timer.Start();
         }
-
         private void Timer_Tick(object sender, EventArgs e)
         {
             int remainingSec = Convert.ToInt32(Math.Truncate((DateTime.Now - criteriaDate).TotalSeconds));
