@@ -50,7 +50,7 @@ namespace Hansot_kiosk.Control
             SeatModel model = (SeatModel)lbSeats.SelectedItem;
             if (model.IsEnableClick)
             {
-                App.orderManager.CurrentOrder.Seat = model.IDX;
+                App.orderManager.CurrentOrder.Seat_IDX = model.IDX;
                 App.uIStateManager.Push(App.uIStateManager.Get(UICategory.PAYSELECT));
             }
         }
