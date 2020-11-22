@@ -23,7 +23,7 @@ namespace Hansot_kiosk.Control
 
         private void TakeOutBtn_Click(object sender, RoutedEventArgs e)
         {
-            App.orderManager.CurrentOrder.Seat = 0;
+            App.orderManager.CurrentOrder.Seat_IDX = 0;
             UserControl uc = App.uIStateManager.Get(UICategory.PAYSELECT);
             if (uc != null)
                 App.uIStateManager.Push(uc);
