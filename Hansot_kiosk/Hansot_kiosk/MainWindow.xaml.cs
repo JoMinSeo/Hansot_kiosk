@@ -11,18 +11,18 @@ namespace Hansot_kiosk
     /// </summary>
     public partial class MainWindow : Window
     {
-        private void init()
-        {
-            App.uIStateManager.AllPop();
-            App.orderManager.Init();
-            orderCtrl.init();
-            seatSelectCtrl.init();
-        }
         public MainWindow()
         {
             InitializeComponent();
             initUI();
             StartTimer();
+        }
+        public void Init()
+        {
+            App.uIStateManager.AllPop();
+            App.orderManager.Init();
+            orderCtrl.init();
+            seatSelectCtrl.init();
         }
         #region TimeControl
         private void StartTimer()
@@ -63,11 +63,11 @@ namespace Hansot_kiosk
                 if (MessageBoxResult.Yes == MessageBox.Show("주문이 초기화 됩니다. 괜찮으십니까?",
                 "메인화면으로 가기", MessageBoxButton.YesNo, MessageBoxImage.Warning))
                 {
-                    init();
+                    Init();
                 }
                 return;
             }
-            init();
+            Init();
         }
         #endregion
     }
