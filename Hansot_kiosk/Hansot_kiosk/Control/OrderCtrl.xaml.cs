@@ -74,6 +74,12 @@ namespace Hansot_kiosk.Control
                 }
             }
         }
+        private ObservableCollection<string> _categorys = new ObservableCollection<string>();
+        public ObservableCollection<string> Categorys
+        {
+            get => _categorys;
+            set => _categorys = value;
+        }
         #endregion
         #region Init
         public OrderCtrl()
@@ -98,6 +104,20 @@ namespace Hansot_kiosk.Control
 
             lvOrderdMenus.ItemsSource = App.orderManager.OrderedMenus;
 
+            categoryInit();
+        }
+
+        private void categoryInit()
+        {
+            if (this.Categorys.Count == 0)
+            {
+                this.Categorys.Add("전체");
+                this.Categorys.Add("고기고기");
+                this.Categorys.Add("세트");
+                this.Categorys.Add("도시락");
+                this.Categorys.Add("사이드");
+            }
+            lbCategory.ItemsSource = this.Categorys;
             lbCategory.SelectedIndex = 0;
         }
         #endregion
