@@ -1,23 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using AForge.Video;
 using AForge.Video.DirectShow;
-using System.Windows.Threading;
-using ZXing;
-using System.IO;
 using Hansot_kiosk.Model;
 using Kiosk.UIManager;
 
@@ -32,6 +16,7 @@ namespace Hansot_kiosk.Control
         {
             InitializeComponent();
             webcam.CameraIndex = 0;
+            this.DataContext = App.orderManager.CurrentOrder;
         }
 
         FilterInfoCollection filterInfoCollection;
