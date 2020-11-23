@@ -12,12 +12,12 @@ namespace Hansot_kiosk.Control
     /// </summary>
     public partial class PayCashCtrl : UserControl
     {
-
         public PayCashCtrl()
         {
             InitializeComponent();
             this.IsVisibleChanged += new DependencyPropertyChangedEventHandler
                              (LoginControl_IsVisibleChanged);
+            this.DataContext = App.orderManager.CurrentOrder;
         }
 
         private void PreviousBtn_Click(object sender, RoutedEventArgs e)
@@ -47,8 +47,6 @@ namespace Hansot_kiosk.Control
                 {
                     barcodeTb.Focus();
                 }));
-
-                TotalPriceLab.Content = App.orderManager.TotalPrice;
             }
         }
 
