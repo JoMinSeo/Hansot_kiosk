@@ -23,6 +23,8 @@ namespace Hansot_kiosk.Control
         public CompleteCtrl()
         {
             InitializeComponent();
+
+            this.DataContext = App.orderManager.CurrentOrder;
         }
         private void CompleteOrder()
         {
@@ -32,7 +34,7 @@ namespace Hansot_kiosk.Control
 
         private void CloseBtn_Click(object sender, RoutedEventArgs e)
         {
-            App.uIStateManager.AllPop();
+            ((MainWindow)System.Windows.Application.Current.MainWindow).Init();
         }
     }
 }
