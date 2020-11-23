@@ -20,8 +20,8 @@
                     <ColumnDefinition Width="300"/>
                     <ColumnDefinition Width="300"/>
                 </Grid.ColumnDefinitions>
-                <Label Grid.Column="0" Content="결제금액: " FontSize="52" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label Grid.Column="1" x:Name="TotalPriceLab" FontSize="52" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Grid.Column="0" Text="결제금액: " FontSize="52" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Grid.Column="1" Text="{Binding TotalPrice}" FontSize="52" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Grid>
             <Grid Grid.Row="2" HorizontalAlignment="Center">
                 <Grid.ColumnDefinitions>
