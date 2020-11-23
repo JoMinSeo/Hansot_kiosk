@@ -31,7 +31,6 @@
                                                     Orientation="Horizontal"/>
                         </ItemsPanelTemplate>
                     </ListBox.ItemsPanel>
-
                     <ListBox.ItemContainerStyle>
                         <Style TargetType="{x:Type ListBoxItem}">
                             <Setter Property="Foreground" Value="Gray" />
@@ -59,12 +58,6 @@
                             </Setter>
                         </Style>
                     </ListBox.ItemContainerStyle>
-
-                    <ListBoxItem Content="전체"/>
-                    <ListBoxItem Content="고기고기"/>
-                    <ListBoxItem Content="세트"/>
-                    <ListBoxItem Content="도시락"/>
-                    <ListBoxItem Content="사이드"/>
                 </ListBox>
             </Grid>
             <Grid Grid.Row="1">
@@ -76,9 +69,15 @@
                     </ListBox.ItemsPanel>
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Width="250" Height="275">
-                                <Image Source="{Binding Path}"/>
-                                <TextBlock Text="{Binding Name}" Margin="4,4,0,0" HorizontalAlignment="Left"/>
+                            <StackPanel Width="275" Height="275" Margin="1" Background="WhiteSmoke">
+                                <Image Width="230" Source="{Binding Path}"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Name}" Margin="4,4,10,4" HorizontalAlignment="Left"/>
+                                    <TextBlock Text="{Binding DiscountedPer}" FontSize="17"
+                                               Visibility="{Binding IsDiscounted, Converter={StaticResource BoolToVisibility}}"/>
+                                    <TextBlock Text="% 할인!" FontSize="17" 
+                                               Visibility="{Binding IsDiscounted, Converter={StaticResource BoolToVisibility}}"/>
+                                </StackPanel>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="0.5*"/>
@@ -86,11 +85,10 @@
                                     </Grid.ColumnDefinitions>
                                     <StackPanel Grid.Column="0" Orientation="Horizontal" Margin="4,0,0,0"
                                                 Visibility="{Binding IsDiscounted, Converter={StaticResource BoolToVisibility}}">
-                                        <TextBlock Text="{Binding Price}" HorizontalAlignment="Left" />
-                                        <TextBlock Text="원"/>
+                                        <TextBlock Text="{Binding Price}" HorizontalAlignment="Left" FontSize="15" Foreground="Gray"/>
+                                        <TextBlock Text="원" FontSize="15" Foreground="Gray"/>
                                     </StackPanel>
                                     <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="4,0,0,0">
-                                        <TextBlock />
                                         <TextBlock Text="{Binding DiscountedPrice}" HorizontalAlignment="Left"/>
                                         <TextBlock Text="원"/>
                                     </StackPanel>
