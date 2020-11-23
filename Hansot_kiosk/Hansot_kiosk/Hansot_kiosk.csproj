@@ -142,7 +142,7 @@
     <Compile Include="Control\SeatSelectCtrl.xaml.cs">
       <DependentUpon>SeatSelectCtrl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Converter\MenuConverter.cs" />
+    <Compile Include="Converter\BoolToVisibilityConverter.cs" />
     <Compile Include="Manager\OrderManager.cs" />
     <Compile Include="Manager\ServerIP.cs" />
     <Compile Include="Manager\TCPManager.cs" />
