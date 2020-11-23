@@ -9,7 +9,7 @@ namespace Hansot_kiosk.Manager
     public class OrderManager : INotifyPropertyChanged
     {
         #region Property
-        private OrderModel _currentOrder;
+        private OrderModel _currentOrder = new OrderModel();
         public OrderModel CurrentOrder
         {
             get => _currentOrder;
@@ -29,16 +29,6 @@ namespace Hansot_kiosk.Manager
                 OnPropertyChanged(nameof(OrderedMenus));
             }
         }
-        private int _totalPrice;
-        public int TotalPrice
-        {
-            get => _totalPrice;
-            set
-            {
-                _totalPrice = value;
-                OnPropertyChanged(nameof(TotalPrice));
-            }
-        }
         #endregion
         public OrderManager()
         {
@@ -46,12 +36,10 @@ namespace Hansot_kiosk.Manager
         }
         public void Init()
         {
-            CurrentOrder = new OrderModel();
+            CurrentOrder.init();
             OrderedMenus.Clear();
 
             CurrentOrder.IDX = (from orderModel in App.Orders select orderModel).Max(orderModel => orderModel.IDX);
-
-            TotalPrice = 0;
         }
         public void CompleteOrder()
         {
