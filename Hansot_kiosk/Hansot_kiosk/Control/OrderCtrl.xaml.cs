@@ -21,10 +21,7 @@ namespace Hansot_kiosk.Control
         private List<MenuModel> _currentCategoryMenuList;
         private List<MenuModel> currentCategoryMenuList
         {
-            get
-            {
-                return _currentCategoryMenuList;
-            }
+            get => _currentCategoryMenuList;
             set
             {
                 _currentCategoryMenuList = value;
@@ -48,7 +45,7 @@ namespace Hansot_kiosk.Control
         private ObservableCollection<MenuModel> _pagingMenuList;
         private ObservableCollection<MenuModel> pagingMenuList
         {
-            get { return _pagingMenuList; }
+            get => _pagingMenuList;
             set
             {
                 _pagingMenuList = value;
@@ -58,10 +55,7 @@ namespace Hansot_kiosk.Control
         private int _currentPage = 1;
         private int currentPage
         {
-            get
-            {
-                return _currentPage;
-            }
+            get => _currentPage;
             set
             {
                 _currentPage = value;
@@ -97,7 +91,7 @@ namespace Hansot_kiosk.Control
         {
             MenuResetBtn.IsEnabled = false;
             OrderBtn.IsEnabled = false;
-            this.DataContext = App.orderManager;
+            this.DataContext = App.orderManager.CurrentOrder;
 
             menuList = App.Menus;
             currentCategoryMenuList = menuList;
@@ -174,7 +168,7 @@ namespace Hansot_kiosk.Control
             if (menu != null)
             {
                 menu.Amount++;
-                App.orderManager.TotalPrice += menu.Price;
+                App.orderManager.CurrentOrder.TotalPrice += menu.Price;
             }
         }
         private void orderedMenuRemove(MenuModel menu)
@@ -182,7 +176,7 @@ namespace Hansot_kiosk.Control
             if (menu != null)
             {
                 App.orderManager.OrderedMenus.Remove(menu);
-                App.orderManager.TotalPrice -= (menu.Price * menu.Amount);
+                App.orderManager.CurrentOrder.TotalPrice -= (menu.Price * menu.Amount);
                 menu.Amount = 0;
 
                 if (!App.orderManager.OrderedMenus.Any())
@@ -204,7 +198,7 @@ namespace Hansot_kiosk.Control
                 if (senderMenu.Amount > 1)
                 {
                     senderMenu.Amount--;
-                    App.orderManager.TotalPrice -= senderMenu.Price;
+                    App.orderManager.CurrentOrder.TotalPrice -= senderMenu.Price;
                 }
                 else
                 {
@@ -225,7 +219,7 @@ namespace Hansot_kiosk.Control
                 m.Amount = 0;
             }
             App.orderManager.OrderedMenus.Clear();
-            App.orderManager.TotalPrice = 0;
+            App.orderManager.CurrentOrder.TotalPrice = 0;
 
             MenuResetBtn.IsEnabled = false;
             OrderBtn.IsEnabled = false;
@@ -236,6 +230,7 @@ namespace Hansot_kiosk.Control
             UserControl uc = App.uIStateManager.Get(UICategory.PLACE);
             if (uc != null)
             {
+                App.orderManager.CurrentOrder.TotalPrice = App.orderManager.CurrentOrder.TotalPrice;
                 App.uIStateManager.Push(uc);
             }
         }
