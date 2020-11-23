@@ -79,6 +79,7 @@
                                 <TextBlock Text="{Binding Name}" Margin="4,4,0,0" HorizontalAlignment="Left"/>
                                 <StackPanel Orientation="Horizontal" Margin="4,0,0,0">
                                     <TextBlock Text="{Binding Price}" HorizontalAlignment="Left"/>
+                                    <TextBlock Text="{Binding DiscountedPrice}" HorizontalAlignment="Left"/>
                                     <TextBlock Text="원"/>
                                 </StackPanel>
                             </StackPanel>
