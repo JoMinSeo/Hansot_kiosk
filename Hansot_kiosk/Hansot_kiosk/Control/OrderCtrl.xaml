@@ -77,11 +77,20 @@
                             <StackPanel Width="250" Height="275">
                                 <Image Source="{Binding Path}"/>
                                 <TextBlock Text="{Binding Name}" Margin="4,4,0,0" HorizontalAlignment="Left"/>
-                                <StackPanel Orientation="Horizontal" Margin="4,0,0,0">
-                                    <TextBlock Text="{Binding Price}" HorizontalAlignment="Left"/>
-                                    <TextBlock Text="{Binding DiscountedPrice}" HorizontalAlignment="Left"/>
-                                    <TextBlock Text="원"/>
-                                </StackPanel>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.5*"/>
+                                        <ColumnDefinition Width="0.5*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Grid.Column="0" Orientation="Horizontal" Margin="4,0,0,0">
+                                        <TextBlock Text="{Binding Price}" HorizontalAlignment="Left"/>
+                                        <TextBlock Text="원"/>
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="4,0,0,0">
+                                        <TextBlock Text="{Binding DiscountedPrice}" HorizontalAlignment="Left"/>
+                                        <TextBlock Text="원"/>
+                                    </StackPanel>
+                                </Grid>
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
