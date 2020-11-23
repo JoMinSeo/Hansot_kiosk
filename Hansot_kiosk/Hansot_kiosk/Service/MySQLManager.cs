@@ -223,7 +223,7 @@ namespace Hansot_kiosk.Service
 
         public string createOrderCommand(OrderModel orderModel)
         {
-            string command = string.Format("INSERT INTO order (User_IDX, Seat_IDX, isCard, OrderedTime) VALUES ( {0}, {1}, {2}, {3} )", orderModel.User_IDX, orderModel.Seat_IDX, orderModel.IsCard, orderModel.OrderedTime);
+            string command = string.Format("INSERT INTO order (User_IDX, Seat_IDX, isCard, OrderedTime, TotalPrice) VALUES ( {0}, {1}, {2}, {3}, {4} )", orderModel.User_IDX, orderModel.Seat_IDX, orderModel.IsCard, orderModel.OrderedTime, orderModel.TotalPrice);
             return command;
         }
     }
