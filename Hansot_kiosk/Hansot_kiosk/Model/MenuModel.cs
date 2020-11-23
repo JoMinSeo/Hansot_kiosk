@@ -32,6 +32,7 @@ namespace Hansot_kiosk.Model
             set
             {
                 _price = value;
+                DiscountedPrice = value;
                 OnPropertyChanged(nameof(Price));
             }
         }
@@ -75,6 +76,16 @@ namespace Hansot_kiosk.Model
                 OnPropertyChanged(nameof(Amount));
             }
         }
+        private bool _isDiscounted;
+        public bool IsDiscounted
+        {
+            get => _isDiscounted;
+            set
+            {
+                _isDiscounted = value;
+                OnPropertyChanged(nameof(IsDiscounted));
+            }
+        }
         private int _discountedPer;
         public int DiscountedPer
         {
@@ -82,6 +93,11 @@ namespace Hansot_kiosk.Model
             set
             {
                 _discountedPer = value;
+                if (DiscountedPer > 0)
+                {
+                    IsDiscounted = true;
+                    DiscountedPrice = ((100 - DiscountedPer) * Price)/100;
+                }
                 OnPropertyChanged(nameof(DiscountedPer));
             }
         }
