@@ -20,7 +20,10 @@
                 <Label Content="카메라에 QR코드를 인식하여주세요." HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" FontSize="48"/>
             </StackPanel>
             <StackPanel Grid.Row="1">
-                <Label Content="결제금액: 16,000원." HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" FontSize="40"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="결제금액:" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" FontSize="40"/>
+                    <TextBlock Text="{Binding TotalPrice}" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" FontSize="40"/>
+                </StackPanel>
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="200"/>
