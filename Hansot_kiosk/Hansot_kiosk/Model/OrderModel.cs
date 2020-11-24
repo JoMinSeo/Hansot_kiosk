@@ -22,7 +22,7 @@ namespace Hansot_kiosk.Model
         public int User_IDX { get; set; }
         public int Seat_IDX { get; set; }
         public bool IsCard { get; set; }
-        public DateTime OrderedTime { get; set; }
+        public DateTime OrderedTime { get; set; } = default(DateTime);
         private int _totalPrice;
         public int TotalPrice
         {
