@@ -39,7 +39,7 @@ namespace Hansot_kiosk.Manager
             CurrentOrder.init();
             OrderedMenus.Clear();
 
-            CurrentOrder.IDX = (from orderModel in App.Orders select orderModel).Max(orderModel => orderModel.IDX);
+            CurrentOrder.IDX = (from orderModel in App.Orders select orderModel).Max(orderModel => orderModel.IDX) + 1;
         }
         public void CompleteOrder()
         {
