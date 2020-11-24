@@ -16,6 +16,7 @@ namespace Kiosk.UIManager
         PAYCASH,    // 현금결제
         PAYCREDIT,  // 카드결제
         COMPLETE,   // 주문완료
+        ADMIN,      // 관리자
         MAX,
     }
 }
