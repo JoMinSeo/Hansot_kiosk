@@ -61,12 +61,18 @@ namespace Hansot_kiosk
         {
             if (App.orderManager.OrderedMenus.Any())
             {
-                if (MessageBoxResult.Yes == MessageBox.Show("주문이 초기화 됩니다. 괜찮으십니까?",
-                "메인화면으로 가기", MessageBoxButton.YesNo, MessageBoxImage.Warning))
+                if (App.orderManager.CurrentOrder.OrderedTime.CompareTo(default(DateTime)) == 0)
                 {
-                    Init();
+                    if (MessageBoxResult.Yes == MessageBox.Show("주문이 초기화 됩니다. 괜찮으십니까?",
+                "메인화면으로 가기", MessageBoxButton.YesNo, MessageBoxImage.Warning))
+                    {
+                        Init();
+                    }
+                    else
+                    {
+                        return;
+                    }
                 }
-                return;
             }
             Init();
         }
