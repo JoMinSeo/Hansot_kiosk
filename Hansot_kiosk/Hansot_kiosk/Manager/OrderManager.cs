@@ -44,7 +44,7 @@ namespace Hansot_kiosk.Manager
         public void CompleteOrder()
         {
             this.CurrentOrder.OrderedTime = DateTime.Now;
-            // DB로 전송하는 코드
+            App.sQLManager.InsertOrder(this.CurrentOrder);
 
         }
         #region PropertyChangedEvent

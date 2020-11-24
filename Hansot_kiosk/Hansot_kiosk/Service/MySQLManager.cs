@@ -22,8 +22,8 @@ namespace Hansot_kiosk.Service
             App.connection = new MySqlConnection(connectionPath);
 
             App.Menus = this.SelectAllMenus();
-            App.Orders = new ObservableCollection<OrderModel>(this.SelectAllOrders());
-            App.Users = new ObservableCollection<UserModel>(this.selectAllUsers());
+            App.Orders = this.SelectAllOrders();
+            App.Users = this.selectAllUsers();
         }
         public MySqlCommand CreateCommand(string query)
         {
@@ -67,9 +67,9 @@ namespace Hansot_kiosk.Service
             }
         }
 
-        public void MySqlQueryExecuter(string userQuery)
+        public void InsertOrder(OrderModel order)
         {
-            string query = userQuery;
+            string query = createOrderCommand(order);
 
             if (OpenMySqlConnection() == true)
             {
@@ -85,7 +85,6 @@ namespace Hansot_kiosk.Service
                     Debug.WriteLine("값 저장 실패");
                     App.DataSaveResult = false;
                 }
-
                 CloseMySqlConnection();
             }
         }
@@ -95,7 +94,6 @@ namespace Hansot_kiosk.Service
             string query = "SELECT * FROM menu";
 
             List<MenuModel> menus = new List<MenuModel>();
-
 
             if (this.OpenMySqlConnection() == true)
             {
@@ -131,7 +129,7 @@ namespace Hansot_kiosk.Service
             string query = "SELECT * FROM kiosk.user";
             List<UserModel> users = new List<UserModel>();
 
-            if(this.OpenMySqlConnection() == true)
+            if (this.OpenMySqlConnection() == true)
             {
                 MySqlCommand command = CreateCommand(query);
                 MySqlDataReader dataReader = command.ExecuteReader();
@@ -226,7 +224,10 @@ namespace Hansot_kiosk.Service
 
         public string createOrderCommand(OrderModel orderModel)
         {
-            string command = string.Format("INSERT INTO order (User_IDX, Seat_IDX, isCard, OrderedTime, TotalPrice) VALUES ( {0}, {1}, {2}, {3}, {4} )", orderModel.User_IDX, orderModel.Seat_IDX, orderModel.IsCard, orderModel.OrderedTime, orderModel.TotalPrice);
+            string command = string.Format("INSERT INTO kiosk.order (IDX, User_IDX, Seat_IDX, isCard, OrderedTime, TotalPrice) " +
+                "VALUES ( {0}, {1}, {2}, {3}, {4}, {5} )",
+                orderModel.IDX, orderModel.User_IDX, orderModel.Seat_IDX, 
+                orderModel.IsCard == true ? 1 : 0, "'"+orderModel.OrderedTime.ToString("yyyy-MM-dd HH:mm:ss.fff") +"'", orderModel.TotalPrice);
             return command;
         }
     }
