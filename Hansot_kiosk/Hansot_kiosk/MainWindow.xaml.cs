@@ -34,6 +34,17 @@ namespace Hansot_kiosk
         }
         public void Init()
         {
+            if (App.orderManager.OrderedMenus.Any())
+            {
+                if (App.uIStateManager.UIStack.Peek() != App.uIStateManager.Get(UICategory.COMPLETE))
+                {
+                    if (MessageBoxResult.No == MessageBox.Show("주문이 초기화 됩니다. 괜찮으십니까?",
+                        "메인화면으로 가기", MessageBoxButton.YesNo, MessageBoxImage.Warning))
+                    {
+                        return;
+                    }
+                }
+            }
             App.uIStateManager.AllPop();
             App.orderManager.Init();
             App.sQLManager.Init();
@@ -75,17 +86,6 @@ namespace Hansot_kiosk
 
         private void HomeBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (App.orderManager.OrderedMenus.Any())
-            {
-                if(App.uIStateManager.UIStack.Peek() != App.uIStateManager.Get(UICategory.COMPLETE))
-                {
-                    if (MessageBoxResult.No == MessageBox.Show("주문이 초기화 됩니다. 괜찮으십니까?",
-                        "메인화면으로 가기", MessageBoxButton.YesNo, MessageBoxImage.Warning))
-                    {
-                        return;
-                    }
-                }
-            }
             Init();
         }
         #endregion
