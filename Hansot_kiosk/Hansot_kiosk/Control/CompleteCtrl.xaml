@@ -15,16 +15,26 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="100"/>
                 <RowDefinition Height="100"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="100"/>
             </Grid.RowDefinitions>
             <Label Grid.Row="0" Content="결제되었습니다" FontSize="72" HorizontalAlignment="Center" Margin="0,0,0,100"/>
-            <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock  Text="주문 번호:" FontSize="60" HorizontalAlignment="Center"/>
+                <TextBlock Text="{Binding IDX}" FontSize="52" HorizontalAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <TextBlock Text="결제 금액:" FontSize="52" HorizontalAlignment="Center"/>
                 <TextBlock Text="{Binding TotalPrice}" FontSize="52" HorizontalAlignment="Center"/>
                 <TextBlock Text="원" FontSize="52" HorizontalAlignment="Center"/>
             </StackPanel>
-            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <TextBlock  Text="주문 번호:" FontSize="60" HorizontalAlignment="Center"/>
-                <TextBlock Text="{Binding IDX}" FontSize="52" HorizontalAlignment="Center"/>
+            <StackPanel Grid.Row="3" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock Text="회원 번호:" FontSize="52" HorizontalAlignment="Center"/>
+                <TextBlock Text="{Binding User_IDX}" FontSize="52" HorizontalAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Grid.Row="4" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock Text="회원 명:" FontSize="52" HorizontalAlignment="Center"/>
+                <TextBlock Text="{Binding User_Name}" FontSize="52" HorizontalAlignment="Center"/>
             </StackPanel>
         </Grid>
     </Grid>

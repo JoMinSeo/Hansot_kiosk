@@ -20,6 +20,7 @@ namespace Hansot_kiosk.Model
             }
         }
         public int User_IDX { get; set; }
+        public string User_Name { get; set; }
         public int Seat_IDX { get; set; }
         public bool IsCard { get; set; }
         public DateTime OrderedTime { get; set; } = default(DateTime);
