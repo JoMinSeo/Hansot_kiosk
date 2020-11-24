@@ -18,11 +18,11 @@ namespace Hansot_kiosk
         public static List<OrderModel> Orders;
         public static List<UserModel> Users;
 
-        public static readonly UIStateManager uIStateManager = new UIStateManager();
-        public static readonly MySQLManager sQLManager = new MySQLManager();
-        public static readonly UserManager userManager = new UserManager();
-        public static readonly OrderManager orderManager = new OrderManager();
-        public static readonly TCPManager tcpManager = new TCPManager();
+        public static readonly UIStateManager UIStateManager = new UIStateManager();
+        public static readonly MySQLManager SQLManager = new MySQLManager();
+        public static readonly UserManager UserManager = new UserManager();
+        public static readonly OrderManager OrderManager = new OrderManager();
+        public static readonly TCPManager TcpManager = new TCPManager();
 
         public static MySqlConnection connection;
         public static bool DataSaveResult = false;
