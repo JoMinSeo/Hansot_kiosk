@@ -45,7 +45,6 @@ namespace Hansot_kiosk.Manager
         {
             this.CurrentOrder.OrderedTime = DateTime.Now;
             App.sQLManager.InsertOrder(this.CurrentOrder);
-
         }
         #region PropertyChangedEvent
         public event PropertyChangedEventHandler PropertyChanged;

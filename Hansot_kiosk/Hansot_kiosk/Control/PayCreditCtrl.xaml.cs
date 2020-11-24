@@ -49,6 +49,8 @@ namespace Hansot_kiosk.Control
             if (currentUser != null)
             {
                 App.orderManager.CurrentOrder.User_IDX = currentUser.IDX;
+                App.orderManager.CurrentOrder.User_Name = currentUser.Name;
+
                 comfirmBtn.IsEnabled = true;
                 return;
             }

@@ -63,6 +63,7 @@ namespace Hansot_kiosk.Control
             if (currentUser != null)
             {
                 App.orderManager.CurrentOrder.User_IDX = currentUser.IDX;
+                App.orderManager.CurrentOrder.User_Name = currentUser.Name;
                 UserNameLab.Content = currentUser.Name;
                 comfirmBtn.IsEnabled = true;
                 barcodeTb.IsEnabled = false;
