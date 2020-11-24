@@ -234,6 +234,14 @@ namespace Hansot_kiosk.Control
         #region BtnClickEvent
         private void MenuResetBtn_Click(object sender, RoutedEventArgs e)
         {
+            if (App.orderManager.OrderedMenus.Any())
+            {
+                if (MessageBoxResult.No == MessageBox.Show("선택된 메뉴가 초기화 됩니다. 괜찮으십니까?",
+                        "메뉴 초기화", MessageBoxButton.YesNo, MessageBoxImage.Warning))
+                {
+                    return;
+                }
+            }
             foreach(var m in App.orderManager.OrderedMenus)
             {
                 m.Amount = 0;

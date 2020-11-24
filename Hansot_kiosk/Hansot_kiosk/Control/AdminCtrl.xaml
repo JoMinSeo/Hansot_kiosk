@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Hansot_kiosk.Control"
              mc:Ignorable="d" 
              d:DesignHeight="1080" d:DesignWidth="1920">
-    <Grid>
-            
+    <Grid Background="White">
+
     </Grid>
 </UserControl>
