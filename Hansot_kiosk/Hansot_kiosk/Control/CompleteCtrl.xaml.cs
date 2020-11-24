@@ -12,14 +12,14 @@ namespace Hansot_kiosk.Control
         {
             InitializeComponent();
 
+            this.IsVisibleChanged += CompleteCtrl_IsVisibleChanged;
+
             this.DataContext = App.orderManager.CurrentOrder;
         }
-        private void CompleteOrder()
+        private void CompleteCtrl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-
             App.orderManager.CompleteOrder();
         }
-
         private void CloseBtn_Click(object sender, RoutedEventArgs e)
         {
             ((MainWindow)System.Windows.Application.Current.MainWindow).Init();
