@@ -15,8 +15,8 @@ namespace Hansot_kiosk
     public partial class App : Application
     {
         public static List<MenuModel> Menus;
-        public static ObservableCollection<OrderModel> Orders;
-        public static ObservableCollection<UserModel> Users;
+        public static List<OrderModel> Orders;
+        public static List<UserModel> Users;
 
         public static readonly UIStateManager uIStateManager = new UIStateManager();
         public static readonly MySQLManager sQLManager = new MySQLManager();
