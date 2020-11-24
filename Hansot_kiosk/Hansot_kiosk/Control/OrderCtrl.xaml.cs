@@ -188,7 +188,7 @@ namespace Hansot_kiosk.Control
             if (menu != null)
             {
                 menu.Amount++;
-                App.orderManager.CurrentOrder.TotalPrice += menu.Price;
+                App.orderManager.CurrentOrder.TotalPrice += menu.DiscountedPrice;
             }
         }
         private void orderedMenuRemove(MenuModel menu)
@@ -196,7 +196,7 @@ namespace Hansot_kiosk.Control
             if (menu != null)
             {
                 App.orderManager.OrderedMenus.Remove(menu);
-                App.orderManager.CurrentOrder.TotalPrice -= (menu.Price * menu.Amount);
+                App.orderManager.CurrentOrder.TotalPrice -= (menu.DiscountedPrice * menu.Amount);
                 menu.Amount = 0;
 
                 if (!App.orderManager.OrderedMenus.Any())
@@ -218,7 +218,7 @@ namespace Hansot_kiosk.Control
                 if (senderMenu.Amount > 1)
                 {
                     senderMenu.Amount--;
-                    App.orderManager.CurrentOrder.TotalPrice -= senderMenu.Price;
+                    App.orderManager.CurrentOrder.TotalPrice -= senderMenu.DiscountedPrice;
                 }
                 else
                 {
@@ -250,7 +250,6 @@ namespace Hansot_kiosk.Control
             UserControl uc = App.uIStateManager.Get(UICategory.PLACE);
             if (uc != null)
             {
-                App.orderManager.CurrentOrder.TotalPrice = App.orderManager.CurrentOrder.TotalPrice;
                 App.uIStateManager.Push(uc);
             }
         }
