@@ -16,7 +16,7 @@ namespace Hansot_kiosk.Control
         {
             InitializeComponent();
             this.IsVisibleChanged += new DependencyPropertyChangedEventHandler
-                             (LoginControl_IsVisibleChanged);
+                             (PayCashCtrl_IsVisibleChanged);
             this.DataContext = App.orderManager.CurrentOrder;
         }
 
@@ -37,7 +37,7 @@ namespace Hansot_kiosk.Control
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void LoginControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        void PayCashCtrl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             if ((bool)e.NewValue == true)
             {
