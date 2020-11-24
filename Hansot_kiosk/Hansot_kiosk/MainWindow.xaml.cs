@@ -1,8 +1,10 @@
 ﻿using Kiosk.UIManager;
 using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Threading;
 
 namespace Hansot_kiosk
@@ -75,10 +77,10 @@ namespace Hansot_kiosk
         {
             if (App.orderManager.OrderedMenus.Any())
             {
-                if (App.orderManager.CurrentOrder.OrderedTime.CompareTo(default(DateTime)) == 0)
+                if(App.uIStateManager.UIStack.Peek() != App.uIStateManager.Get(UICategory.COMPLETE))
                 {
                     if (MessageBoxResult.Yes == MessageBox.Show("주문이 초기화 됩니다. 괜찮으십니까?",
-                "메인화면으로 가기", MessageBoxButton.YesNo, MessageBoxImage.Warning))
+                        "메인화면으로 가기", MessageBoxButton.YesNo, MessageBoxImage.Warning))
                     {
                         Init();
                     }
@@ -98,6 +100,17 @@ namespace Hansot_kiosk
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propetryName));
         }
         #endregion
-
+        private void MainWindow_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            Debug.WriteLine("KeyPress");
+            if(e.Key == System.Windows.Input.Key.F2)
+            {
+                UserControl uc = App.uIStateManager.Get(UICategory.ADMIN);
+                if (uc != null)
+                {
+                    App.uIStateManager.Push(uc);
+                }
+            }
+        }
     }
 }
