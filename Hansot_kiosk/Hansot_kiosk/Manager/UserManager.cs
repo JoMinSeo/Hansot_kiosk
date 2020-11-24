@@ -6,19 +6,11 @@ namespace Hansot_kiosk.Manager
 {
     public class UserManager
     {
-        List<UserModel> userList = new List<UserModel>();
-        MySQLManager mySQLManager = new MySQLManager();
-
-        public UserManager()
-        {
-            userList = mySQLManager.selectAllUsers();
-        }
-        
         public UserModel compareName(string tbValue)
         {
             UserModel user = null;
 
-            foreach(UserModel u in userList)
+            foreach(UserModel u in App.Users)
             {
                 if (u.Name.Equals(tbValue))
                 {
