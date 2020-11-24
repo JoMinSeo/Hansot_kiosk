@@ -31,7 +31,7 @@
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding Price}" FontSize="18px"/>
+                                        <TextBlock Text="{Binding DiscountedPrice}" FontSize="18px"/>
                                         <TextBlock Text="원" FontSize="18px"/>
                                     </StackPanel>
                                 </DataTemplate>
