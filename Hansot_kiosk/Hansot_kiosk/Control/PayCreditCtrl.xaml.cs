@@ -43,7 +43,7 @@ namespace Hansot_kiosk.Control
 
         private void txtQrcode_TextChanged(object sender, TextChangedEventArgs e)
         {
-            String barcode = txtQrcode.Text;
+            string barcode = txtQrcode.Text;
             UserModel currentUser = App.userManager.compareName(barcode);
 
             if (currentUser != null)
