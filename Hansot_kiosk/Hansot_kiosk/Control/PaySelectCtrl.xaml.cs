@@ -28,6 +28,7 @@ namespace Hansot_kiosk.Control
 
         private void CreditBtn_Click(object sender, RoutedEventArgs e)
         {
+            App.orderManager.CurrentOrder.IsCard = true;
             UserControl uc = App.uIStateManager.Get(UICategory.PAYCREDIT);
             if (uc != null)
                 App.uIStateManager.Push(uc);
@@ -35,6 +36,7 @@ namespace Hansot_kiosk.Control
 
         private void CashBtn_Click(object sender, RoutedEventArgs e)
         {
+            App.orderManager.CurrentOrder.IsCard = false;
             UserControl uc = App.uIStateManager.Get(UICategory.PAYCASH);
             if (uc != null)
                 App.uIStateManager.Push(uc);
