@@ -146,6 +146,7 @@
       <DependentUpon>SeatSelectCtrl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converter\BoolToVisibilityConverter.cs" />
+    <Compile Include="Converter\CurrentDateTimeToStringConverter.cs" />
     <Compile Include="Manager\OrderManager.cs" />
     <Compile Include="Manager\ServerIP.cs" />
     <Compile Include="Manager\TCPManager.cs" />
