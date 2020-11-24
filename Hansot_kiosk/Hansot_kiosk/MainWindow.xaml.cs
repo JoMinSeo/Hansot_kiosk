@@ -79,12 +79,8 @@ namespace Hansot_kiosk
             {
                 if(App.uIStateManager.UIStack.Peek() != App.uIStateManager.Get(UICategory.COMPLETE))
                 {
-                    if (MessageBoxResult.Yes == MessageBox.Show("주문이 초기화 됩니다. 괜찮으십니까?",
+                    if (MessageBoxResult.No == MessageBox.Show("주문이 초기화 됩니다. 괜찮으십니까?",
                         "메인화면으로 가기", MessageBoxButton.YesNo, MessageBoxImage.Warning))
-                    {
-                        Init();
-                    }
-                    else
                     {
                         return;
                     }
