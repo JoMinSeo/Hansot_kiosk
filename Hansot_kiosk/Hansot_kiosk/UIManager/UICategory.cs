@@ -8,7 +8,7 @@ namespace Kiosk.UIManager
 {
     public enum UICategory
     {
-        HOME,       // 홈화면
+        READY,       // 홈화면
         ORDER,      // 주문화면
         PLACE,      // 식사장소선택
         SEATSELECT, // 좌석선택

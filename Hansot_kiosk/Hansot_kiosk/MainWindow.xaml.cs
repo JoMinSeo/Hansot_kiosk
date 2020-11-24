@@ -58,7 +58,7 @@ namespace Hansot_kiosk
         #region UIControl
         private void initUI()
         {
-            App.uIStateManager.Set(UICategory.HOME, readyCtrl);
+            App.uIStateManager.Set(UICategory.READY, readyCtrl);
             App.uIStateManager.Set(UICategory.ORDER, orderCtrl);
             App.uIStateManager.Set(UICategory.PLACE, placeCtrl);
             App.uIStateManager.Set(UICategory.SEATSELECT, seatSelectCtrl);
@@ -102,13 +102,15 @@ namespace Hansot_kiosk
         #endregion
         private void MainWindow_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            Debug.WriteLine("KeyPress");
             if(e.Key == System.Windows.Input.Key.F2)
             {
-                UserControl uc = App.uIStateManager.Get(UICategory.ADMIN);
-                if (uc != null)
+                if(App.uIStateManager.UIStack.Peek() == App.uIStateManager.Get(UICategory.READY))
                 {
-                    App.uIStateManager.Push(uc);
+                    UserControl uc = App.uIStateManager.Get(UICategory.ADMIN);
+                    if (uc != null)
+                    {
+                        App.uIStateManager.Push(uc);
+                    }
                 }
             }
         }
