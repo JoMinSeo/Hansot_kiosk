@@ -18,7 +18,10 @@ namespace Hansot_kiosk.Control
         }
         private void CompleteCtrl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            App.orderManager.CompleteOrder();
+            if(this.Visibility == Visibility.Visible)
+            {
+                App.orderManager.CompleteOrder();
+            }
         }
         private void CloseBtn_Click(object sender, RoutedEventArgs e)
         {
