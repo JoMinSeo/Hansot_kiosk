@@ -5,13 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hansot_kiosk"
         xmlns:control="clr-namespace:Hansot_kiosk.Control"
+        xmlns:cvts="clr-namespace:Hansot_kiosk.Converter"
         WindowState="Maximized"
         WindowStyle="None"
         mc:Ignorable="d"
         Title="한솥 키오스크"
         Width="1920"
-        Height="1080"
-        >
+        Height="1080">
+    <Window.Resources>
+        <cvts:CurrentDateTimeToStringConverter x:Key="CurrentDateTimeToString"/>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*"/>
@@ -22,7 +25,7 @@
                 <Button Background="#373737" Click="HomeBtn_Click" BorderThickness="0">
                     <Image Source="Assets/baseline_home_white_48dp.png"/>
                 </Button>
-                <Label Content="yyyy-mm-dd hh:mm:ss" Name="dClock" FontSize="32" VerticalAlignment="Center" Foreground="White" DockPanel.Dock="Right" Width="600"></Label>
+                <TextBlock Text="{Binding CurrentDateTime, Converter={StaticResource CurrentDateTimeToString}}" FontSize="32" VerticalAlignment="Center" Foreground="White" DockPanel.Dock="Right" Width="600"/>
             </DockPanel>
         </Grid>
         <Grid Grid.Row="1" x:Name="CtrlGrid">

@@ -1,5 +1,6 @@
 ﻿using Kiosk.UIManager;
 using System;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Threading;
@@ -9,13 +10,25 @@ namespace Hansot_kiosk
     /// <summary>
     /// MainWindow.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
+        private DateTime _currentDateTime = DateTime.Now;
+        public DateTime CurrentDateTime
+        {
+            get => _currentDateTime;
+            set
+            {
+                _currentDateTime = value;
+                OnPropertyChanged(nameof(CurrentDateTime));
+            }
+        }
         public MainWindow()
         {
             InitializeComponent();
             initUI();
             StartTimer();
+
+            this.DataContext = this;
         }
         public void Init()
         {
@@ -36,7 +49,7 @@ namespace Hansot_kiosk
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            dClock.Content = String.Format("{0:yyyy년 MM월 dd일 tt hh시 mm분 ss초}", DateTime.Now);
+            CurrentDateTime = DateTime.Now;
         }
         #endregion
 
@@ -78,5 +91,13 @@ namespace Hansot_kiosk
             Init();
         }
         #endregion
+        #region PropertyChangedEvent
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propetryName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propetryName));
+        }
+        #endregion
+
     }
 }
