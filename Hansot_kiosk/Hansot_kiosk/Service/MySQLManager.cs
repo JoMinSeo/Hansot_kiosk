@@ -13,6 +13,10 @@ namespace Hansot_kiosk.Service
     {
         public MySQLManager()
         {
+            Init();
+        }
+        public void Init()
+        {
             string connectionPath = "Server = localhost; Database=kiosk; " +
             "Uid=root;Pwd=y28645506;Charset=utf8";
             App.connection = new MySqlConnection(connectionPath);
@@ -21,7 +25,6 @@ namespace Hansot_kiosk.Service
             App.Orders = new ObservableCollection<OrderModel>(this.SelectAllOrders());
             App.Users = new ObservableCollection<UserModel>(this.selectAllUsers());
         }
-
         public MySqlCommand CreateCommand(string query)
         {
             MySqlCommand command = new MySqlCommand(query, App.connection);

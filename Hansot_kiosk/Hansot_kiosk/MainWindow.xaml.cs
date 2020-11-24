@@ -21,6 +21,7 @@ namespace Hansot_kiosk
         {
             App.uIStateManager.AllPop();
             App.orderManager.Init();
+            App.sQLManager.Init();
             orderCtrl.init();
             seatSelectCtrl.init();
         }
