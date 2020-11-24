@@ -67,10 +67,8 @@ namespace Hansot_kiosk.Service
             }
         }
 
-        public void InsertOrder(OrderModel order)
+        private void ExecuteInsert(string query)
         {
-            string query = createOrderCommand(order);
-
             if (OpenMySqlConnection() == true)
             {
                 MySqlCommand command = new MySqlCommand(query, App.connection);
@@ -222,13 +220,19 @@ namespace Hansot_kiosk.Service
             }
         }
 
-        public string createOrderCommand(OrderModel orderModel)
+        public void InsertOrder(OrderModel orderModel)
         {
             string command = string.Format("INSERT INTO kiosk.order (IDX, User_IDX, Seat_IDX, isCard, OrderedTime, TotalPrice) " +
                 "VALUES ( {0}, {1}, {2}, {3}, {4}, {5} )",
                 orderModel.IDX, orderModel.User_IDX, orderModel.Seat_IDX, 
                 orderModel.IsCard == true ? 1 : 0, "'"+orderModel.OrderedTime.ToString("yyyy-MM-dd HH:mm:ss.fff") +"'", orderModel.TotalPrice);
-            return command;
+            ExecuteInsert(command);
+        }
+        public void InsertOrderedMenu(MenuModel menuModel, int orderIDX)
+        {
+            string command = string.Format("INSERT INTO kiosk.orderedmenu (Order_IDX, menu_IDX, amount, menu_name) " +
+                            "VALUES ( {0}, {1}, {2}, {3} )", orderIDX, menuModel.IDX, menuModel.Amount, "'"+menuModel.Name+"'");
+            ExecuteInsert(command);
         }
     }
 }
