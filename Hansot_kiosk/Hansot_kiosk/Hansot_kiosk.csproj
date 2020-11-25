@@ -151,6 +151,9 @@
     <Compile Include="Control\SeatSelectCtrl.xaml.cs">
       <DependentUpon>SeatSelectCtrl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\StatisticCtrl.xaml.cs">
+      <DependentUpon>StatisticCtrl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Converter\BoolToVisibilityConverter.cs" />
     <Compile Include="Converter\CurrentDateTimeToStringConverter.cs" />
     <Compile Include="Manager\OrderManager.cs" />
@@ -161,7 +164,6 @@
     <Compile Include="Model\SeatModel.cs" />
     <Compile Include="Model\TcpModel.cs" />
     <Compile Include="Service\MySQLManager.cs" />
-    <Compile Include="UIManager\UICategory.cs" />
     <Compile Include="UIManager\UIStateManager.cs" />
     <Compile Include="view\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
@@ -199,6 +201,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Control\SeatSelectCtrl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\StatisticCtrl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
