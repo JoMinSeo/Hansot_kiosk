@@ -31,7 +31,7 @@
                 <Label Content="안녕하세요. 주문을 원하시면 아래 주문버튼을 눌러주세요." FontSize="52" HorizontalAlignment="Center" Margin="0,70,0,0"/>
                 <Button x:Name="OrderStart_btn" Height="80" Width="320" Content="주문하기" FontSize="48" Foreground="#FFFFFF" Margin="0,70,0,0" Click="OrderButton_Click" Background="#373737" BorderThickness="0"/>
                 <Grid>
-                    <Button x:Name="Admin_btn" Width="120" Height="50" Content="관리자화면" HorizontalAlignment="Right" Margin="0,0,20,0" Background="#008575" Foreground="White" BorderThickness="0" VerticalAlignment="Bottom"/>
+                    <Button x:Name="Admin_btn" Click="Admin_btn_Click" Width="120" Height="50" Content="관리자화면" HorizontalAlignment="Right" Margin="0,0,20,0" Background="#008575" Foreground="White" BorderThickness="0" VerticalAlignment="Bottom"/>
                 </Grid>
             </StackPanel>
         </Grid> 

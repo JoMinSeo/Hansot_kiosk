@@ -47,5 +47,14 @@ namespace Hansot_kiosk.Control
                 MessageBox.Show("이미 로그인되어있습니다.");
             }
         }
+
+        private void Admin_btn_Click(object sender, RoutedEventArgs e)
+        {
+            UserControl uc = App.UIStateManager.Get(UICategory.ADMIN);
+            if (uc != null)
+            {
+                App.UIStateManager.Push(uc);
+            }
+        }
     }
 }
