@@ -56,16 +56,6 @@ namespace Hansot_kiosk.Model
                 OnPropertyChanged(nameof(Category));
             }
         }
-        private int _page;
-        public int Page
-        {
-            get => _page;
-            set
-            {
-                _page = value;
-                OnPropertyChanged(nameof(Page));
-            }
-        }
         private int _amount;
         public int Amount
         {
