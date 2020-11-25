@@ -33,6 +33,7 @@ namespace Hansot_kiosk.Manager
         public OrderManager()
         {
             Init();
+
         }
         public void Init()
         {
@@ -44,10 +45,10 @@ namespace Hansot_kiosk.Manager
         public void CompleteOrder()
         {
             this.CurrentOrder.OrderedTime = DateTime.Now;
-            App.sQLManager.InsertOrder(this.CurrentOrder);
+            App.SQLManager.InsertOrder(this.CurrentOrder);
             foreach(MenuModel menu in OrderedMenus)
             {
-                App.sQLManager.InsertOrderedMenu(menu, this.CurrentOrder.IDX);
+                App.SQLManager.InsertOrderedMenu(menu, this.CurrentOrder.IDX);
             }
         }
         #region PropertyChangedEvent

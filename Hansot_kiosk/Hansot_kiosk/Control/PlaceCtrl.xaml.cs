@@ -16,22 +16,22 @@ namespace Hansot_kiosk.Control
 
         private void ShopMealBtn_Click(object sender, RoutedEventArgs e)
         {
-            UserControl uc = App.uIStateManager.Get(UICategory.SEATSELECT);
+            UserControl uc = App.UIStateManager.Get(UICategory.SEATSELECT);
             if (uc != null)
-                App.uIStateManager.Push(uc);
+                App.UIStateManager.Push(uc);
         }
 
         private void TakeOutBtn_Click(object sender, RoutedEventArgs e)
         {
-            App.orderManager.CurrentOrder.Seat_IDX = 0;
-            UserControl uc = App.uIStateManager.Get(UICategory.PAYSELECT);
+            App.OrderManager.CurrentOrder.Seat_IDX = 0;
+            UserControl uc = App.UIStateManager.Get(UICategory.PAYSELECT);
             if (uc != null)
-                App.uIStateManager.Push(uc);
+                App.UIStateManager.Push(uc);
         }
 
         private void PreviousBtn_Click(object sender, RoutedEventArgs e)
         {
-            App.uIStateManager.Pop();
+            App.UIStateManager.Pop();
         }
     }
 }

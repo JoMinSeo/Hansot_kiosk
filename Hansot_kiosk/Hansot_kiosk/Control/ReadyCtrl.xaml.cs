@@ -18,9 +18,9 @@ namespace Hansot_kiosk.Control
 
         private void OrderButton_Click(object sender, RoutedEventArgs e)
         {
-            UserControl uc = App.uIStateManager.Get(UICategory.ORDER);
+            UserControl uc = App.UIStateManager.Get(UICategory.ORDER);
             if(uc != null)
-                App.uIStateManager.Push(uc);
+                App.UIStateManager.Push(uc);
         }
 
         private void ReadyControl_Loaded(object sender, RoutedEventArgs e)
@@ -35,7 +35,7 @@ namespace Hansot_kiosk.Control
                 App.isLogined = true;
                 //Properties.Settings.Default.isAutoLogin = false;
                 //Properties.Settings.Default.Save();
-                App.tcpManager.PostMessage(tcpModel);
+                App.TcpManager.PostMessage(tcpModel);
                 MessageBox.Show("자동로그인 되었습니다.");
             }else if (App.isLogined == false)
             {
