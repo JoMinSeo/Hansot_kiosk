@@ -67,7 +67,7 @@ namespace Hansot_kiosk.Service
             }
         }
 
-        private void ExecuteInsert(string query)
+        private void Execute(string query)
         {
             if (OpenMySqlConnection() == true)
             {
@@ -226,13 +226,19 @@ namespace Hansot_kiosk.Service
                 "VALUES ( {0}, {1}, {2}, {3}, {4}, {5} )",
                 orderModel.IDX, orderModel.User_IDX, orderModel.Seat_IDX, 
                 orderModel.IsCard == true ? 1 : 0, "'"+orderModel.OrderedTime.ToString("yyyy-MM-dd HH:mm:ss.fff") +"'", orderModel.TotalPrice);
-            ExecuteInsert(command);
+            Execute(command);
         }
         public void InsertOrderedMenu(MenuModel menuModel, int orderIDX)
         {
             string command = string.Format("INSERT INTO kiosk.orderedmenu (Order_IDX, menu_IDX, amount, menu_name) " +
                             "VALUES ( {0}, {1}, {2}, {3} )", orderIDX, menuModel.IDX, menuModel.Amount, "'"+menuModel.Name+"'");
-            ExecuteInsert(command);
+            Execute(command);
+        }
+        public void UpdateDiscountedPer(int idx, int discountedPer)
+        {
+            string command = string.Format("UPDATE kiosk.menu SET DiscountedPer = " +
+                            "{0} WHERE IDX = {1}", discountedPer, idx);
+            Execute(command);
         }
     }
 }
