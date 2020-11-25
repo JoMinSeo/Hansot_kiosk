@@ -17,19 +17,25 @@ namespace Hansot_kiosk.Control
             InitializeComponent();
             this.IsVisibleChanged += new DependencyPropertyChangedEventHandler
                              (PayCashCtrl_IsVisibleChanged);
-            this.DataContext = App.orderManager.CurrentOrder;
+
+            ((MainWindow)System.Windows.Application.Current.MainWindow).DeleGate += init;
+        }
+
+        private void init()
+        {
+            this.DataContext = App.OrderManager.CurrentOrder;
         }
 
         private void PreviousBtn_Click(object sender, RoutedEventArgs e)
         {
-            App.uIStateManager.Pop();
+            App.UIStateManager.Pop();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            UserControl uc = App.uIStateManager.Get(UICategory.COMPLETE);
+            UserControl uc = App.UIStateManager.Get(UICategory.COMPLETE);
             if (uc != null)
-                App.uIStateManager.Push(uc);
+                App.UIStateManager.Push(uc);
         }
 
         /// <summary>
@@ -58,14 +64,13 @@ namespace Hansot_kiosk.Control
         private void barcodeTb_TextChanged(object sender, TextChangedEventArgs e)
         {
             string barcode = barcodeTb.Text;
-            UserModel currentUser = App.userManager.compareName(barcode);
-            
+            UserModel currentUser = App.UserManager.compareName(barcode);
+
             if (currentUser != null)
             {
-                App.orderManager.CurrentOrder.User_IDX = currentUser.IDX;
-                App.orderManager.CurrentOrder.User_Name = currentUser.Name;
+                App.OrderManager.CurrentOrder.User_IDX = currentUser.IDX;
+                App.OrderManager.CurrentOrder.User_Name = currentUser.Name;
 
-                UserNameLab.Content = currentUser.Name;
                 comfirmBtn.IsEnabled = true;
                 barcodeTb.IsEnabled = false;
                 return;

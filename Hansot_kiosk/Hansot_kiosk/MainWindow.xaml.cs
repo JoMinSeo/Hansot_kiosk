@@ -24,19 +24,25 @@ namespace Hansot_kiosk
                 OnPropertyChanged(nameof(CurrentDateTime));
             }
         }
+        public delegate void InitDel();
+        public InitDel DeleGate;
         public MainWindow()
         {
+            DeleGate = new InitDel(this.init);
+
             InitializeComponent();
             initUI();
             StartTimer();
 
             this.DataContext = this;
+
+            DeleGate();
         }
-        public void Init()
+        private void init()
         {
-            if (App.orderManager.OrderedMenus.Any())
+            if (App.OrderManager.OrderedMenus.Any())
             {
-                if (App.uIStateManager.UIStack.Peek() != App.uIStateManager.Get(UICategory.COMPLETE))
+                if (App.UIStateManager.UIStack.Peek() != App.UIStateManager.Get(UICategory.COMPLETE))
                 {
                     if (MessageBoxResult.No == MessageBox.Show("주문이 초기화 됩니다. 괜찮으십니까?",
                         "메인화면으로 가기", MessageBoxButton.YesNo, MessageBoxImage.Warning))
@@ -45,11 +51,9 @@ namespace Hansot_kiosk
                     }
                 }
             }
-            App.uIStateManager.AllPop();
-            App.orderManager.Init();
-            App.sQLManager.Init();
-            orderCtrl.init();
-            seatSelectCtrl.init();
+            App.UIStateManager.AllPop();
+            App.SQLManager.Init();
+            App.OrderManager.Init();
         }
         #region TimeControl
         private void StartTimer()
@@ -69,24 +73,24 @@ namespace Hansot_kiosk
         #region UIControl
         private void initUI()
         {
-            App.uIStateManager.Set(UICategory.READY, readyCtrl);
-            App.uIStateManager.Set(UICategory.ORDER, orderCtrl);
-            App.uIStateManager.Set(UICategory.PLACE, placeCtrl);
-            App.uIStateManager.Set(UICategory.SEATSELECT, seatSelectCtrl);
-            App.uIStateManager.Set(UICategory.PAYSELECT, paySelectCtrl);
-            App.uIStateManager.Set(UICategory.PAYCREDIT, payCreditCtrl);
-            App.uIStateManager.Set(UICategory.PAYCASH, payCashCtrl);
-            App.uIStateManager.Set(UICategory.COMPLETE, completeCtrl);
-            App.uIStateManager.Set(UICategory.ADMIN, adminCtrl);
+            App.UIStateManager.Set(UICategory.READY, readyCtrl);
+            App.UIStateManager.Set(UICategory.ORDER, orderCtrl);
+            App.UIStateManager.Set(UICategory.PLACE, placeCtrl);
+            App.UIStateManager.Set(UICategory.SEATSELECT, seatSelectCtrl);
+            App.UIStateManager.Set(UICategory.PAYSELECT, paySelectCtrl);
+            App.UIStateManager.Set(UICategory.PAYCREDIT, payCreditCtrl);
+            App.UIStateManager.Set(UICategory.PAYCASH, payCashCtrl);
+            App.UIStateManager.Set(UICategory.COMPLETE, completeCtrl);
+            App.UIStateManager.Set(UICategory.ADMIN, adminCtrl);
 
             //chris - add user control. please~!!
 
-            App.uIStateManager.Push(readyCtrl);
+            App.UIStateManager.Push(readyCtrl);
         }
 
         private void HomeBtn_Click(object sender, RoutedEventArgs e)
         {
-            Init();
+            DeleGate();
         }
         #endregion
         #region PropertyChangedEvent
@@ -100,12 +104,12 @@ namespace Hansot_kiosk
         {
             if(e.Key == System.Windows.Input.Key.F2)
             {
-                if(App.uIStateManager.UIStack.Peek() == App.uIStateManager.Get(UICategory.READY))
+                if(App.UIStateManager.UIStack.Peek() == App.UIStateManager.Get(UICategory.READY))
                 {
-                    UserControl uc = App.uIStateManager.Get(UICategory.ADMIN);
+                    UserControl uc = App.UIStateManager.Get(UICategory.ADMIN);
                     if (uc != null)
                     {
-                        App.uIStateManager.Push(uc);
+                        App.UIStateManager.Push(uc);
                     }
                 }
             }

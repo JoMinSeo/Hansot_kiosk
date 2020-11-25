@@ -86,6 +86,8 @@ namespace Hansot_kiosk.Control
         {
             InitializeComponent();
             this.Loaded += OrderCtrl_Loaded;
+
+            ((MainWindow)System.Windows.Application.Current.MainWindow).DeleGate += init;
         }
 
         private void OrderCtrl_Loaded(object sender, RoutedEventArgs e)
@@ -93,16 +95,16 @@ namespace Hansot_kiosk.Control
             init();
         }
 
-        public void init()
+        private void init()
         {
             MenuResetBtn.IsEnabled = false;
             OrderBtn.IsEnabled = false;
-            this.DataContext = App.orderManager.CurrentOrder;
+            this.DataContext = App.OrderManager.CurrentOrder;
 
             menuList = App.Menus;
             currentCategoryMenuList = menuList;
 
-            lvOrderdMenus.ItemsSource = App.orderManager.OrderedMenus;
+            lvOrderdMenus.ItemsSource = App.OrderManager.OrderedMenus;
 
             categoryInit();
         }
@@ -165,11 +167,11 @@ namespace Hansot_kiosk.Control
 
             MenuModel sameMenu;
 
-            sameMenu = App.orderManager.OrderedMenus.Where(m => m.IDX == model.IDX).FirstOrDefault();
+            sameMenu = App.OrderManager.OrderedMenus.Where(m => m.IDX == model.IDX).FirstOrDefault();
 
             if (sameMenu == null)
             {
-                App.orderManager.OrderedMenus.Add(model);
+                App.OrderManager.OrderedMenus.Add(model);
                 menuAmountUp(model);
             }
             else
@@ -188,18 +190,18 @@ namespace Hansot_kiosk.Control
             if (menu != null)
             {
                 menu.Amount++;
-                App.orderManager.CurrentOrder.TotalPrice += menu.DiscountedPrice;
+                App.OrderManager.CurrentOrder.TotalPrice += menu.DiscountedPrice;
             }
         }
         private void orderedMenuRemove(MenuModel menu)
         {
             if (menu != null)
             {
-                App.orderManager.OrderedMenus.Remove(menu);
-                App.orderManager.CurrentOrder.TotalPrice -= (menu.DiscountedPrice * menu.Amount);
+                App.OrderManager.OrderedMenus.Remove(menu);
+                App.OrderManager.CurrentOrder.TotalPrice -= (menu.DiscountedPrice * menu.Amount);
                 menu.Amount = 0;
 
-                if (!App.orderManager.OrderedMenus.Any())
+                if (!App.OrderManager.OrderedMenus.Any())
                 {
                     MenuResetBtn.IsEnabled = false;
                     OrderBtn.IsEnabled = false;
@@ -218,7 +220,7 @@ namespace Hansot_kiosk.Control
                 if (senderMenu.Amount > 1)
                 {
                     senderMenu.Amount--;
-                    App.orderManager.CurrentOrder.TotalPrice -= senderMenu.DiscountedPrice;
+                    App.OrderManager.CurrentOrder.TotalPrice -= senderMenu.DiscountedPrice;
                 }
                 else
                 {
@@ -234,7 +236,7 @@ namespace Hansot_kiosk.Control
         #region BtnClickEvent
         private void MenuResetBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (App.orderManager.OrderedMenus.Any())
+            if (App.OrderManager.OrderedMenus.Any())
             {
                 if (MessageBoxResult.No == MessageBox.Show("선택된 메뉴가 초기화 됩니다. 괜찮으십니까?",
                         "메뉴 초기화", MessageBoxButton.YesNo, MessageBoxImage.Warning))
@@ -242,12 +244,12 @@ namespace Hansot_kiosk.Control
                     return;
                 }
             }
-            foreach(var m in App.orderManager.OrderedMenus)
+            foreach(var m in App.OrderManager.OrderedMenus)
             {
                 m.Amount = 0;
             }
-            App.orderManager.OrderedMenus.Clear();
-            App.orderManager.CurrentOrder.TotalPrice = 0;
+            App.OrderManager.OrderedMenus.Clear();
+            App.OrderManager.CurrentOrder.TotalPrice = 0;
 
             MenuResetBtn.IsEnabled = false;
             OrderBtn.IsEnabled = false;
@@ -255,16 +257,16 @@ namespace Hansot_kiosk.Control
 
         private void OrderBtn_Click(object sender, RoutedEventArgs e)
         {
-            UserControl uc = App.uIStateManager.Get(UICategory.PLACE);
+            UserControl uc = App.UIStateManager.Get(UICategory.PLACE);
             if (uc != null)
             {
-                App.uIStateManager.Push(uc);
+                App.UIStateManager.Push(uc);
             }
         }
 
         private void PrevCtrlBtn_Click(object sender, RoutedEventArgs e)
         {
-            App.uIStateManager.Pop();
+            App.UIStateManager.Pop();
         }
 
         private void CategoryPrevBtn_Click(object sender, RoutedEventArgs e)

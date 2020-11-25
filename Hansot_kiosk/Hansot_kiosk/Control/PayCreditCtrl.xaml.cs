@@ -16,14 +16,22 @@ namespace Hansot_kiosk.Control
         {
             InitializeComponent();
             webcam.CameraIndex = 0;
-            this.DataContext = App.orderManager.CurrentOrder;
+
+            ((MainWindow)System.Windows.Application.Current.MainWindow).DeleGate += init;
+        }
+
+        private void init()
+        {
+            this.DataContext = App.OrderManager.CurrentOrder;
+
+            tbxQrcode.Text = "";
         }
 
         FilterInfoCollection filterInfoCollection;
 
         private void PreviousBtn_Click(object sender, RoutedEventArgs e)
         {
-            App.uIStateManager.Pop();
+            App.UIStateManager.Pop();
         }
 
         private void PayCreditCtrl_Loaded(object sender, RoutedEventArgs e)
@@ -38,18 +46,18 @@ namespace Hansot_kiosk.Control
 
         private void webcam_QrDecoded(object sender, string e)
         {
-            txtQrcode.Text = e;
+            tbxQrcode.Text = e;
         }
 
         private void txtQrcode_TextChanged(object sender, TextChangedEventArgs e)
         {
-            string barcode = txtQrcode.Text;
-            UserModel currentUser = App.userManager.compareName(barcode);
+            string barcode = tbxQrcode.Text;
+            UserModel currentUser = App.UserManager.compareName(barcode);
 
             if (currentUser != null)
             {
-                App.orderManager.CurrentOrder.User_IDX = currentUser.IDX;
-                App.orderManager.CurrentOrder.User_Name = currentUser.Name;
+                App.OrderManager.CurrentOrder.User_IDX = currentUser.IDX;
+                App.OrderManager.CurrentOrder.User_Name = currentUser.Name;
 
                 comfirmBtn.IsEnabled = true;
                 return;
@@ -58,9 +66,9 @@ namespace Hansot_kiosk.Control
 
         private void comfirmBtn_Click(object sender, RoutedEventArgs e)
         {
-            UserControl uc = App.uIStateManager.Get(UICategory.COMPLETE);
+            UserControl uc = App.UIStateManager.Get(UICategory.COMPLETE);
             if (uc != null)
-                App.uIStateManager.Push(uc);
+                App.UIStateManager.Push(uc);
         }
     }
 }

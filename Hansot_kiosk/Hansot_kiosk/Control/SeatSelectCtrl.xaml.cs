@@ -29,9 +29,9 @@ namespace Hansot_kiosk.Control
         public SeatSelectCtrl()
         {
             InitializeComponent();
-            init();
+            ((MainWindow)System.Windows.Application.Current.MainWindow).DeleGate += init;
         }
-        public void init()
+        private void init()
         {
             if (Seats.Count > 0)
             {
@@ -56,22 +56,22 @@ namespace Hansot_kiosk.Control
             SeatModel model = (SeatModel)lbSeats.SelectedItem;
             if (model.IsEnableClick)
             {
-                App.orderManager.CurrentOrder.Seat_IDX = model.IDX;
-                App.uIStateManager.Push(App.uIStateManager.Get(UICategory.PAYSELECT));
+                App.OrderManager.CurrentOrder.Seat_IDX = model.IDX;
+                App.UIStateManager.Push(App.UIStateManager.Get(UICategory.PAYSELECT));
             }
         }
 
         #region UIControl
         private void PreviusBtn_Click(object sender, RoutedEventArgs e)
         {
-            App.uIStateManager.Pop();
+            App.UIStateManager.Pop();
         }
 
         private void NextBtn_Click(object sender, RoutedEventArgs e)
         {
-            UserControl uc = App.uIStateManager.Get(UICategory.PAYSELECT);
+            UserControl uc = App.UIStateManager.Get(UICategory.PAYSELECT);
             if (uc != null)
-                App.uIStateManager.Push(uc);
+                App.UIStateManager.Push(uc);
         }
         #endregion
         #region PropertyChangedEvent

@@ -14,18 +14,24 @@ namespace Hansot_kiosk.Control
 
             this.IsVisibleChanged += CompleteCtrl_IsVisibleChanged;
 
-            this.DataContext = App.orderManager.CurrentOrder;
+            ((MainWindow)System.Windows.Application.Current.MainWindow).DeleGate += init;
         }
+
+        private void init()
+        {
+            this.DataContext = App.OrderManager.CurrentOrder;
+        }
+
         private void CompleteCtrl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            if(this.Visibility == Visibility.Visible)
+            if (this.Visibility == Visibility.Visible)
             {
-                App.orderManager.CompleteOrder();
+                App.OrderManager.CompleteOrder();
             }
         }
         private void CloseBtn_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)System.Windows.Application.Current.MainWindow).Init();
+            ((MainWindow)System.Windows.Application.Current.MainWindow).DeleGate();
         }
     }
 }

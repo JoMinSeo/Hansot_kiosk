@@ -12,34 +12,35 @@ namespace Hansot_kiosk.Control
         public PaySelectCtrl()
         {
             InitializeComponent();
-            init();
+
+            ((MainWindow)System.Windows.Application.Current.MainWindow).DeleGate += init;
         }
 
         private void init()
         {
-            lvOrderdMenus.ItemsSource = App.orderManager.OrderedMenus;
-            this.DataContext = App.orderManager;
+            lvOrderdMenus.ItemsSource = App.OrderManager.OrderedMenus;
+            this.DataContext = App.OrderManager;
         }
 
         private void PreviusBtn_Click(object sender, RoutedEventArgs e)
         {
-            App.uIStateManager.Pop();
+            App.UIStateManager.Pop();
         }
 
         private void CreditBtn_Click(object sender, RoutedEventArgs e)
         {
-            App.orderManager.CurrentOrder.IsCard = true;
-            UserControl uc = App.uIStateManager.Get(UICategory.PAYCREDIT);
+            App.OrderManager.CurrentOrder.IsCard = true;
+            UserControl uc = App.UIStateManager.Get(UICategory.PAYCREDIT);
             if (uc != null)
-                App.uIStateManager.Push(uc);
+                App.UIStateManager.Push(uc);
         }
 
         private void CashBtn_Click(object sender, RoutedEventArgs e)
         {
-            App.orderManager.CurrentOrder.IsCard = false;
-            UserControl uc = App.uIStateManager.Get(UICategory.PAYCASH);
+            App.OrderManager.CurrentOrder.IsCard = false;
+            UserControl uc = App.UIStateManager.Get(UICategory.PAYCASH);
             if (uc != null)
-                App.uIStateManager.Push(uc);
+                App.UIStateManager.Push(uc);
         }
     }
 }                                            
