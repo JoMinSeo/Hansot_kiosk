@@ -1,6 +1,6 @@
-﻿using Hansot_kiosk.Model;
+﻿using Hansot_kiosk.Common;
+using Hansot_kiosk.Model;
 using Hansot_kiosk.view;
-using Kiosk.UIManager;
 using System.Windows;
 using System.Windows.Controls;
 

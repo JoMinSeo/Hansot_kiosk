@@ -1,7 +1,5 @@
 ﻿using Hansot_kiosk.Common;
-using Hansot_kiosk.Manager;
 using Hansot_kiosk.Model;
-using Kiosk.UIManager;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;

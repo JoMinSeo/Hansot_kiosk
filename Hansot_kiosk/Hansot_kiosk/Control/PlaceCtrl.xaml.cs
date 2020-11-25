@@ -1,4 +1,4 @@
-﻿using Kiosk.UIManager;
+﻿using Hansot_kiosk.Common;
 using System.Windows;
 using System.Windows.Controls;
 

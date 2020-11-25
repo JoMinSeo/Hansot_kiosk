@@ -1,9 +1,8 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using AForge.Video.DirectShow;
+using Hansot_kiosk.Common;
 using Hansot_kiosk.Model;
-using Kiosk.UIManager;
 
 namespace Hansot_kiosk.Control
 {
