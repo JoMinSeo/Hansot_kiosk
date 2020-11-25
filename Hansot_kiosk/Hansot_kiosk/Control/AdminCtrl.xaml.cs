@@ -1,7 +1,9 @@
-﻿using LiveCharts;
+﻿using Hansot_kiosk.Model;
+using LiveCharts;
 using LiveCharts.Wpf;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,37 +24,54 @@ namespace Hansot_kiosk.Control
     /// </summary>
     public partial class AdminCtrl : UserControl
     {
-        public SeriesCollection SeriesCollection { get; set; }
-        public string[] Labels { get; set; }
-        public Func<double, string> Formatter { get; set; }
-
         public AdminCtrl()
         {
             InitializeComponent();
 
-            SeriesCollection = new SeriesCollection
+            lv_Users.ItemsSource = App.Users;
+            lv_Menus.ItemsSource = App.Menus;
+
+            this.DataContext = Properties.Settings.Default;
+        }
+
+        private void btn_Statistic_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void cbx_AutoLogin_Checked(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default.isAutoLogin = true;
+            Properties.Settings.Default.Save();
+        }
+
+        private void cbx_AutoLogin_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default.isAutoLogin = false;
+            Properties.Settings.Default.Save();
+        }
+
+        private void tbx_DiscountedPer_KeyDown(object sender, KeyEventArgs e)
+        {
+            Debug.WriteLine(e.Key);
+            if (!((e.Key.ToString().Length > 1) && (char.IsDigit(e.Key.ToString(), 1)) || Key.Back == e.Key))
             {
-                new ColumnSeries
-                {
-                    Title = "2015",
-                    Values = new ChartValues<double> { 10, 50, 39, 50 }
-                }
-            };
+                e.Handled = true;
+            }
+        }
 
-            //adding series will update and animate the chart automatically
-            SeriesCollection.Add(new ColumnSeries
+        private void tbx_DiscountedPer_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            MenuModel senderMenu = (sender as TextBox).DataContext as MenuModel;
+
+            if (senderMenu != null)
             {
-                Title = "2016",
-                Values = new ChartValues<double> { 11, 56, 42 }
-            });
-
-            //also adding values updates and animates the chart automatically
-            SeriesCollection[1].Values.Add(48d);
-
-            Labels = new[] { "Maria", "Susan", "Charles", "Frida" };
-            Formatter = value => value.ToString("N");
-
-            DataContext = this;
+                App.SQLManager.UpdateDiscountedPer(senderMenu.IDX, senderMenu.DiscountedPer);
+            }
+            else
+            {
+                App.SQLManager.UpdateDiscountedPer(senderMenu.IDX, 0);
+            }
         }
     }
 }
