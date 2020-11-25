@@ -37,7 +37,7 @@
                     <ColumnDefinition Width="300"/>
                 </Grid.ColumnDefinitions>
                 <Label Grid.Column="0" Content="회원명:" FontSize="52" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label Grid.Column="1" x:Name="UserNameLab" FontSize="52" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <TextBlock Grid.Column="1" Text="{Binding User_Name}" FontSize="52" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             </Grid>
         </Grid>
         <Grid>
