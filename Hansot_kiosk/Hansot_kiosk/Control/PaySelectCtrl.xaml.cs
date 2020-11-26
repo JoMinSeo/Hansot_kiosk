@@ -13,7 +13,7 @@ namespace Hansot_kiosk.Control
         {
             InitializeComponent();
 
-            ((MainWindow)System.Windows.Application.Current.MainWindow).DeleGate += init;
+            App.InitDeleGate += init;
         }
 
         private void init()
