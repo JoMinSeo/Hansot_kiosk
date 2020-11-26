@@ -16,7 +16,7 @@ namespace Hansot_kiosk.Control
             InitializeComponent();
             webcam.CameraIndex = 0;
 
-            ((MainWindow)System.Windows.Application.Current.MainWindow).DeleGate += init;
+            App.InitDeleGate += init;
         }
 
         private void init()
