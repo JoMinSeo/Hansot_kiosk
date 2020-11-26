@@ -17,6 +17,7 @@ namespace Hansot_kiosk
         public static List<MenuModel> Menus;
         public static List<OrderModel> Orders;
         public static List<UserModel> Users;
+        public static List<OrderedMenuModel> OrderedMenus;
 
         public static readonly UIStateManager UIStateManager = new UIStateManager();
         public static readonly MySQLManager SQLManager = new MySQLManager();

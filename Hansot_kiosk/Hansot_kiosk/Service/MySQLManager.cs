@@ -24,6 +24,7 @@ namespace Hansot_kiosk.Service
             App.Menus = this.SelectAllMenus();
             App.Orders = this.SelectAllOrders();
             App.Users = this.selectAllUsers();
+            App.OrderedMenus = this.SelectAllOrderedMenus();
         }
         public MySqlCommand CreateCommand(string query)
         {
@@ -121,7 +122,39 @@ namespace Hansot_kiosk.Service
                 return null;
             }
         }
+        public List<OrderedMenuModel> SelectAllOrderedMenus()
+        {
+            string query = "SELECT * FROM orderedmenu";
 
+            List<OrderedMenuModel> orderedMenus = new List<OrderedMenuModel>();
+
+            if (this.OpenMySqlConnection() == true)
+            {
+                MySqlCommand command = CreateCommand(query);
+                MySqlDataReader dataReader = command.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+                    OrderedMenuModel orderedMenu = new OrderedMenuModel();
+                    orderedMenu.IDX = dataReader.GetInt32("IDX");
+                    orderedMenu.OrderIdx = dataReader.GetInt32("order_IDX");
+                    orderedMenu.MenuIDX = dataReader.GetInt32("menu_IDX");
+                    orderedMenu.Amount = dataReader.GetInt32("amount");
+
+                    orderedMenus.Add(orderedMenu);
+                }
+
+                dataReader.Close();
+                this.CloseMySqlConnection();
+
+                return orderedMenus;
+            }
+            else
+            {
+                MessageBox.Show("메뉴를 불러오는것에 실패하였습니다.");
+                return null;
+            }
+        }
         public List<UserModel> selectAllUsers()
         {
             string query = "SELECT * FROM kiosk.user";
@@ -224,14 +257,14 @@ namespace Hansot_kiosk.Service
         {
             string command = string.Format("INSERT INTO kiosk.order (IDX, User_IDX, Seat_IDX, isCard, OrderedTime, TotalPrice) " +
                 "VALUES ( {0}, {1}, {2}, {3}, {4}, {5} )",
-                orderModel.IDX, orderModel.User_IDX, orderModel.Seat_IDX, 
-                orderModel.IsCard == true ? 1 : 0, "'"+orderModel.OrderedTime.ToString("yyyy-MM-dd HH:mm:ss.fff") +"'", orderModel.TotalPrice);
+                orderModel.IDX, orderModel.User_IDX, orderModel.Seat_IDX,
+                orderModel.IsCard == true ? 1 : 0, "'" + orderModel.OrderedTime.ToString("yyyy-MM-dd HH:mm:ss.fff") + "'", orderModel.TotalPrice);
             Execute(command);
         }
         public void InsertOrderedMenu(MenuModel menuModel, int orderIDX)
         {
             string command = string.Format("INSERT INTO kiosk.orderedmenu (Order_IDX, menu_IDX, amount, menu_name) " +
-                            "VALUES ( {0}, {1}, {2}, {3} )", orderIDX, menuModel.IDX, menuModel.Amount, "'"+menuModel.Name+"'");
+                            "VALUES ( {0}, {1}, {2}, {3} )", orderIDX, menuModel.IDX, menuModel.Amount, "'" + menuModel.Name + "'");
             Execute(command);
         }
         public void UpdateDiscountedPer(int idx, int discountedPer)
