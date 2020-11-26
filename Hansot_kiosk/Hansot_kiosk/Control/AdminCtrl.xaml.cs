@@ -1,4 +1,5 @@
-﻿using Hansot_kiosk.Model;
+﻿using Hansot_kiosk.Common;
+using Hansot_kiosk.Model;
 using LiveCharts;
 using LiveCharts.Wpf;
 using System;
@@ -36,7 +37,9 @@ namespace Hansot_kiosk.Control
 
         private void btn_Statistic_Click(object sender, RoutedEventArgs e)
         {
-
+            UserControl uc = App.UIStateManager.Get(UICategory.STATISTIC);
+            if (uc != null)
+                App.UIStateManager.Push(uc);
         }
 
         private void cbx_AutoLogin_Checked(object sender, RoutedEventArgs e)
