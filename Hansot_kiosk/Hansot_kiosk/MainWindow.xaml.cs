@@ -23,19 +23,16 @@ namespace Hansot_kiosk
                 OnPropertyChanged(nameof(CurrentDateTime));
             }
         }
-        public delegate void InitDel();
-        public InitDel DeleGate;
+        
         public MainWindow()
         {
-            DeleGate = new InitDel(this.init);
-
             InitializeComponent();
             initUI();
             StartTimer();
 
             this.DataContext = this;
 
-            DeleGate();
+            App.InitDeleGate();
         }
         private void init()
         {
@@ -50,9 +47,7 @@ namespace Hansot_kiosk
                     }
                 }
             }
-            App.UIStateManager.AllPop();
-            App.SQLManager.Init();
-            App.OrderManager.Init();
+            App.InitDeleGate();
         }
         #region TimeControl
         private void StartTimer()
@@ -90,7 +85,7 @@ namespace Hansot_kiosk
 
         private void HomeBtn_Click(object sender, RoutedEventArgs e)
         {
-            DeleGate();
+            init();
         }
         #endregion
         #region PropertyChangedEvent
