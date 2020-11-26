@@ -18,7 +18,7 @@ namespace Hansot_kiosk.Control
             this.IsVisibleChanged += new DependencyPropertyChangedEventHandler
                              (PayCashCtrl_IsVisibleChanged);
 
-            ((MainWindow)System.Windows.Application.Current.MainWindow).DeleGate += init;
+            App.InitDeleGate += init;
         }
 
         private void init()
