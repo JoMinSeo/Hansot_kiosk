@@ -85,7 +85,7 @@ namespace Hansot_kiosk.Control
             InitializeComponent();
             this.Loaded += OrderCtrl_Loaded;
 
-            ((MainWindow)System.Windows.Application.Current.MainWindow).DeleGate += init;
+            App.InitDeleGate += init;
         }
 
         private void OrderCtrl_Loaded(object sender, RoutedEventArgs e)
