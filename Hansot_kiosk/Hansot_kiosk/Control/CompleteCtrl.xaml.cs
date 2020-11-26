@@ -14,7 +14,7 @@ namespace Hansot_kiosk.Control
 
             this.IsVisibleChanged += CompleteCtrl_IsVisibleChanged;
 
-            ((MainWindow)System.Windows.Application.Current.MainWindow).DeleGate += init;
+            App.InitDeleGate += init;
         }
 
         private void init()
@@ -28,10 +28,6 @@ namespace Hansot_kiosk.Control
             {
                 App.OrderManager.CompleteOrder();
             }
-        }
-        private void CloseBtn_Click(object sender, RoutedEventArgs e)
-        {
-            ((MainWindow)System.Windows.Application.Current.MainWindow).DeleGate();
         }
     }
 }
