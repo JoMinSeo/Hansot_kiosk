@@ -32,10 +32,9 @@ namespace Hansot_kiosk.Manager
         #endregion
         public OrderManager()
         {
-            Init();
-
+            App.InitDeleGate += init;
         }
-        public void Init()
+        private void init()
         {
             CurrentOrder.init();
             OrderedMenus.Clear();
