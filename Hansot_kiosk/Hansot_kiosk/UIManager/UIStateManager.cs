@@ -1,4 +1,5 @@
-﻿using Hansot_kiosk.Common;
+﻿using Hansot_kiosk;
+using Hansot_kiosk.Common;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
@@ -7,9 +8,13 @@ namespace UIManager
 {
     public class UIStateManager
     {
-
         private Dictionary<UICategory, UserControl> DicUserControl = new Dictionary<UICategory, UserControl>();
         public Stack<UserControl> UIStack = new Stack<UserControl>();
+
+        public UIStateManager()
+        {
+            App.InitDeleGate += AllPop;
+        }
 
         public void Push(UserControl ctrl)
         {
