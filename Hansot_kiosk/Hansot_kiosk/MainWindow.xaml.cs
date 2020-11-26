@@ -81,6 +81,7 @@ namespace Hansot_kiosk
             App.UIStateManager.Set(UICategory.PAYCASH, payCashCtrl);
             App.UIStateManager.Set(UICategory.COMPLETE, completeCtrl);
             App.UIStateManager.Set(UICategory.ADMIN, adminCtrl);
+            App.UIStateManager.Set(UICategory.STATISTIC, statisticCtrl);
 
             //chris - add user control. please~!!
 
