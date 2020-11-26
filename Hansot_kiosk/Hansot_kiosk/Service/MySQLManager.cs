@@ -13,9 +13,11 @@ namespace Hansot_kiosk.Service
     {
         public MySQLManager()
         {
-            Init();
+            App.InitDeleGate += init;
+
+            init();
         }
-        public void Init()
+        private void init()
         {
             string connectionPath = "Server = localhost; Database=kiosk; " +
             "Uid=root;Pwd=y28645506;Charset=utf8";
@@ -263,8 +265,8 @@ namespace Hansot_kiosk.Service
         }
         public void InsertOrderedMenu(MenuModel menuModel, int orderIDX)
         {
-            string command = string.Format("INSERT INTO kiosk.orderedmenu (Order_IDX, menu_IDX, amount, menu_name) " +
-                            "VALUES ( {0}, {1}, {2}, {3} )", orderIDX, menuModel.IDX, menuModel.Amount, "'" + menuModel.Name + "'");
+            string command = string.Format("INSERT INTO kiosk.orderedmenu (Order_IDX, menu_IDX, amount) " +
+                            "VALUES ( {0}, {1}, {2} )", orderIDX, menuModel.IDX, menuModel.Amount);
             Execute(command);
         }
         public void UpdateDiscountedPer(int idx, int discountedPer)
