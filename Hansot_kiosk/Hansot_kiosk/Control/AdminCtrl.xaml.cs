@@ -29,12 +29,16 @@ namespace Hansot_kiosk.Control
         {
             InitializeComponent();
 
+            App.InitDeleGate += init;
+        }
+
+        private void init()
+        {
             lv_Users.ItemsSource = App.Users;
             lv_Menus.ItemsSource = App.Menus;
 
             this.DataContext = Properties.Settings.Default;
         }
-
         private void btn_Statistic_Click(object sender, RoutedEventArgs e)
         {
             UserControl uc = App.UIStateManager.Get(UICategory.STATISTIC);
