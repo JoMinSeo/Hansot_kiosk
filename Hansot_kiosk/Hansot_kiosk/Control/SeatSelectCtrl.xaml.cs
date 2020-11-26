@@ -29,7 +29,7 @@ namespace Hansot_kiosk.Control
         public SeatSelectCtrl()
         {
             InitializeComponent();
-            ((MainWindow)System.Windows.Application.Current.MainWindow).DeleGate += init;
+            App.InitDeleGate += init;
         }
         private void init()
         {
