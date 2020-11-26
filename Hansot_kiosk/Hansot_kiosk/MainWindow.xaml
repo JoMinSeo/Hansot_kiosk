@@ -43,6 +43,7 @@
             <control:PayCreditCtrl x:Name="payCreditCtrl" Grid.ColumnSpan="2"/>
             <control:CompleteCtrl x:Name="completeCtrl" Grid.ColumnSpan="2"/>
             <control:AdminCtrl x:Name="adminCtrl" Grid.ColumnSpan="2"/>
+            <control:StatisticCtrl x:Name="statisticCtrl" Grid.ColumnSpan="2"/>
         </Grid>
     </Grid>
 </Window>
