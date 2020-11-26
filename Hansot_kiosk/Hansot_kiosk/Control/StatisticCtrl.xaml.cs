@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LiveCharts;
+using LiveCharts.Wpf;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,51 @@ namespace Hansot_kiosk.Control
     /// </summary>
     public partial class StatisticCtrl : UserControl
     {
+        public SeriesCollection SeriesCollection { get; set; }
+        public string[] Labels { get; set; }
+        public Func<double, string> Formatter { get; set; }
         public StatisticCtrl()
         {
             InitializeComponent();
+
+            List<int> totalPrices = new List<int>();
+
+            for(int i=0; i < App.Menus.Count; i++)
+            {
+            }
+
+            SeriesCollection = new SeriesCollection
+            {
+                new ColumnSeries
+                {
+                    Title = "총 매출",
+                    Values = new ChartValues<int>{}
+                }
+            };
+
+            //adding series will update and animate the chart automatically
+            SeriesCollection.Add(new ColumnSeries
+            {
+                Title = "총 수량",
+                Values = new ChartValues<double> { 11, 56, 42 }
+            });
+
+            //also adding values updates and animates the chart automatically
+            SeriesCollection[1].Values.Add(48d);
+
+            List<string> menuNames = new List<string>();
+            App.Menus.ForEach(menu => menuNames.Add(menu.Name));
+
+            Labels = menuNames.ToArray();
+
+            Formatter = value => value.ToString("N");
+
+            DataContext = this;
+        }
+
+        private void PrevCtrlBtn_Click(object sender, RoutedEventArgs e)
+        {
+            App.UIStateManager.Pop();
         }
     }
 }
