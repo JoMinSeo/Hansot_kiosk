@@ -30,9 +30,11 @@ namespace Hansot_kiosk.Control
             InitializeComponent();
 
             List<int> totalPrices = new List<int>();
+            List<int> totalAmounts = new List<int>();
 
-            for(int i=0; i < App.Menus.Count; i++)
+            for (int i = 0; i < App.Menus.Count; i++)
             {
+                totalAmounts.Add((from orderedMenu in App.OrderedMenus where orderedMenu.MenuIDX == i select orderedMenu.Amount).Sum());
             }
 
             SeriesCollection = new SeriesCollection
@@ -40,7 +42,7 @@ namespace Hansot_kiosk.Control
                 new ColumnSeries
                 {
                     Title = "총 매출",
-                    Values = new ChartValues<int>{}
+                    Values = new ChartValues<int>(totalPrices.ToArray())
                 }
             };
 
@@ -48,11 +50,10 @@ namespace Hansot_kiosk.Control
             SeriesCollection.Add(new ColumnSeries
             {
                 Title = "총 수량",
-                Values = new ChartValues<double> { 11, 56, 42 }
-            });
+                Values = new ChartValues<int>(totalAmounts.ToArray())
+            }); ;
 
             //also adding values updates and animates the chart automatically
-            SeriesCollection[1].Values.Add(48d);
 
             List<string> menuNames = new List<string>();
             App.Menus.ForEach(menu => menuNames.Add(menu.Name));
