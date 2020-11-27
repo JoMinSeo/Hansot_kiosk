@@ -12,7 +12,7 @@
             <RowDefinition Height="0.1*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0">
-            <ListView x:Name="lvOrderdMenus" Margin="20 20 20 0" FontSize="20" FontWeight="SemiBold" Height="900px"
+            <ListView x:Name="lvOrderdMenus" Margin="20 20 20 0" FontSize="20" FontWeight="SemiBold" Height="800px"
                       VerticalAlignment="Top" BorderBrush="Transparent" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                 <ListView.View>
                     <GridView>
@@ -27,7 +27,7 @@
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header="가격" Width="150">
+                        <GridViewColumn Header="단가" Width="150">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
