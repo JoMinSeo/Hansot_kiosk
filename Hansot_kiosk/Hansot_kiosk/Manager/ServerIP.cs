@@ -8,7 +8,7 @@ namespace Hansot_kiosk.Manager
 {
     class ServerIP
     {
-        public const string serverIP = "10.80.163.155";
+        public const string serverIP = "10.80.162.152";
         public const int port = 80;
     }
 }
