@@ -17,6 +17,9 @@
                 <Button x:Name="btn_Statistic" Click="btn_Statistic_Click" Content="통계화면" FontSize="60" Margin="15"/>
                 <CheckBox x:Name="cbx_AutoLogin" Checked="cbx_AutoLogin_Checked" Unchecked="cbx_AutoLogin_Unchecked" Content="자동로그인"
                           IsChecked="{Binding isAutoLogin}" FontSize="55" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="15"/>
+                <TextBlock Text="총 구동시간 : " FontSize="50" VerticalAlignment="Center" HorizontalAlignment="Center" Margin=""/>
+                <TextBlock Text="{Binding totalProgramTime}" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="초" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </StackPanel>
 
         </Grid>

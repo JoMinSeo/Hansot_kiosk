@@ -61,6 +61,8 @@ namespace Hansot_kiosk
         private void Timer_Tick(object sender, EventArgs e)
         {
             CurrentDateTime = DateTime.Now;
+            Properties.Settings.Default.totalProgramTime++;
+            Properties.Settings.Default.Save();
         }
         #endregion
 
