@@ -45,10 +45,19 @@ namespace Hansot_kiosk.Manager
         {
             this.CurrentOrder.OrderedTime = DateTime.Now;
             App.SQLManager.InsertOrder(this.CurrentOrder);
-            foreach(MenuModel menu in OrderedMenus)
+            TcpModel tcpModel = new TcpModel();
+            tcpModel.MSGType = 2;
+            tcpModel.OrderNumber = this.CurrentOrder.IDX;
+
+            foreach (MenuModel menu in OrderedMenus)
             {
                 App.SQLManager.InsertOrderedMenu(menu, this.CurrentOrder.IDX);
+                tcpModel.Menus.Add(new OrderInfo(menu.Name,menu.Amount, menu.Price));
             }
+
+
+            App.TcpManager.PostMessage(tcpModel);
+
         }
         #region PropertyChangedEvent
         public event PropertyChangedEventHandler PropertyChanged;
