@@ -19,7 +19,7 @@ namespace Hansot_kiosk.Control
         private void init()
         {
             lvOrderdMenus.ItemsSource = App.OrderManager.OrderedMenus;
-            this.DataContext = App.OrderManager;
+            this.DataContext = App.OrderManager.CurrentOrder;
         }
 
         private void PreviusBtn_Click(object sender, RoutedEventArgs e)
