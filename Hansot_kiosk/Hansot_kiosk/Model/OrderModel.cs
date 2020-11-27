@@ -19,7 +19,16 @@ namespace Hansot_kiosk.Model
                 OnPropertyChanged(nameof(IDX));
             }
         }
-        public int User_IDX { get; set; }
+        private int _user_IDX;
+        public int User_IDX
+        {
+            get => _user_IDX;
+            set
+            {
+                _user_IDX = value;
+                OnPropertyChanged(nameof(User_IDX));
+            }
+        }
         private string _user_Name;
         public string User_Name
         {
