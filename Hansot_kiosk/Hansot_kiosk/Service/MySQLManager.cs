@@ -19,7 +19,7 @@ namespace Hansot_kiosk.Service
         }
         private void init()
         {
-            string connectionPath = "Server = localhost; Database=kiosk; " +
+            string connectionPath = "Server = 10.80.163.155; Database=kiosk; " +
             "Uid=root;Pwd=y28645506;Charset=utf8";
             App.connection = new MySqlConnection(connectionPath);
 
