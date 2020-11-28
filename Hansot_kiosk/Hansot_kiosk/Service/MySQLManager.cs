@@ -11,6 +11,7 @@ namespace Hansot_kiosk.Service
 {
     public class MySQLManager
     {
+        private MySqlConnection connection;
         public MySQLManager()
         {
             App.InitDeleGate += init;
@@ -19,9 +20,9 @@ namespace Hansot_kiosk.Service
         }
         private void init()
         {
-            string connectionPath = "Server = 10.80.163.155; Database=kiosk; " +
+            string connectionPath = "Server = localhost; Database=kiosk; " +
             "Uid=root;Pwd=y28645506;Charset=utf8";
-            App.connection = new MySqlConnection(connectionPath);
+            this.connection = new MySqlConnection(connectionPath);
 
             App.Menus = this.SelectAllMenus();
             App.Orders = this.SelectAllOrders();
@@ -30,7 +31,7 @@ namespace Hansot_kiosk.Service
         }
         public MySqlCommand CreateCommand(string query)
         {
-            MySqlCommand command = new MySqlCommand(query, App.connection);
+            MySqlCommand command = new MySqlCommand(query, connection);
             return command;
         }
 
@@ -38,7 +39,7 @@ namespace Hansot_kiosk.Service
         {
             try
             {
-                App.connection.Open();
+                connection.Open();
                 return true;
             }
             catch (MySqlException e)
@@ -60,7 +61,7 @@ namespace Hansot_kiosk.Service
         {
             try
             {
-                App.connection.Close();
+                connection.Close();
                 return true;
             }
             catch (MySqlException e)
@@ -74,7 +75,7 @@ namespace Hansot_kiosk.Service
         {
             if (OpenMySqlConnection() == true)
             {
-                MySqlCommand command = new MySqlCommand(query, App.connection);
+                MySqlCommand command = new MySqlCommand(query, connection);
 
                 if (command.ExecuteNonQuery() == 1)
                 {
