@@ -45,6 +45,8 @@ namespace Hansot_kiosk.Control
             }
             this.DataContext = this;
             lbSeats.ItemsSource = Seats;
+
+            this.NextBtn.IsEnabled = false;
         }
 
         private void lbSeats_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -57,7 +59,8 @@ namespace Hansot_kiosk.Control
             if (model.IsEnableClick)
             {
                 App.OrderManager.CurrentOrder.Seat_IDX = model.IDX;
-                App.UIStateManager.Push(App.UIStateManager.Get(UICategory.PAYSELECT));
+
+                this.NextBtn.IsEnabled = true;
             }
         }
 
