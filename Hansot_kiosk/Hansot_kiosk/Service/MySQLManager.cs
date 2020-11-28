@@ -18,11 +18,18 @@ namespace Hansot_kiosk.Service
 
             init();
         }
+
+        //동민이 아이피 10.80.163.155
+        //비번 y28645506
         private void init()
         {
-            string connectionPath = "Server = localhost; Database=kiosk; " +
-            "Uid=root;Pwd=y28645506;Charset=utf8";
-            this.connection = new MySqlConnection(connectionPath);
+            // string connectionPath = "Server = localhost; Database=kiosk; " +
+            // "Uid=root;Pwd=y28645506;Charset=utf8";
+            // this.connection = new MySqlConnection(connectionPath);
+            
+            string connectionPath = "Server = localhost; Database=HANSOT; " +
+            "Uid=root;Pwd=lol10884653;Charset=utf8";
+            App.connection = new MySqlConnection(connectionPath);
 
             App.Menus = this.SelectAllMenus();
             App.Orders = this.SelectAllOrders();
@@ -160,7 +167,7 @@ namespace Hansot_kiosk.Service
         }
         public List<UserModel> selectAllUsers()
         {
-            string query = "SELECT * FROM kiosk.user";
+            string query = "SELECT * FROM hansot.user";
             List<UserModel> users = new List<UserModel>();
 
             if (this.OpenMySqlConnection() == true)
@@ -191,7 +198,7 @@ namespace Hansot_kiosk.Service
         }
         public List<OrderModel> SelectAllOrders()
         {
-            string query = "SELECT * FROM kiosk.order";
+            string query = "SELECT * FROM hansot.order";
 
             List<OrderModel> orders = new List<OrderModel>();
 
@@ -231,7 +238,7 @@ namespace Hansot_kiosk.Service
 
             string sSeatIdx = "'" + tableIdx + "'";
 
-            string query = "SELECT OrderedTime FROM kiosk.order WHERE Seat_IDX = " + sSeatIdx +
+            string query = "SELECT OrderedTime FROM hansot.order WHERE Seat_IDX = " + sSeatIdx +
                 " ORDER BY OrderedTime DESC LIMIT 1";
 
             if (this.OpenMySqlConnection() == true)
@@ -258,7 +265,7 @@ namespace Hansot_kiosk.Service
 
         public void InsertOrder(OrderModel orderModel)
         {
-            string command = string.Format("INSERT INTO kiosk.order (IDX, User_IDX, Seat_IDX, isCard, OrderedTime, TotalPrice) " +
+            string command = string.Format("INSERT INTO hansot.order (IDX, User_IDX, Seat_IDX, isCard, OrderedTime, TotalPrice) " +
                 "VALUES ( {0}, {1}, {2}, {3}, {4}, {5} )",
                 orderModel.IDX, orderModel.User_IDX, orderModel.Seat_IDX,
                 orderModel.IsCard == true ? 1 : 0, "'" + orderModel.OrderedTime.ToString("yyyy-MM-dd HH:mm:ss.fff") + "'", orderModel.TotalPrice);
@@ -266,13 +273,13 @@ namespace Hansot_kiosk.Service
         }
         public void InsertOrderedMenu(MenuModel menuModel, int orderIDX)
         {
-            string command = string.Format("INSERT INTO kiosk.orderedmenu (Order_IDX, menu_IDX, amount) " +
+            string command = string.Format("INSERT INTO hansot.orderedmenu (Order_IDX, menu_IDX, amount) " +
                             "VALUES ( {0}, {1}, {2} )", orderIDX, menuModel.IDX, menuModel.Amount);
             Execute(command);
         }
         public void UpdateDiscountedPer(int idx, int discountedPer)
         {
-            string command = string.Format("UPDATE kiosk.menu SET DiscountedPer = " +
+            string command = string.Format("UPDATE hansot.menu SET DiscountedPer = " +
                             "{0} WHERE IDX = {1}", discountedPer, idx);
             Execute(command);
         }
