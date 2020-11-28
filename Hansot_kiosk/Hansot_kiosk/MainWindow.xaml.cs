@@ -1,4 +1,6 @@
 ﻿using Hansot_kiosk.Common;
+using Hansot_kiosk.Model;
+using Hansot_kiosk.view;
 using System;
 using System.ComponentModel;
 using System.Linq;
@@ -110,6 +112,12 @@ namespace Hansot_kiosk
                     }
                 }
             }
+        }
+
+        private void messageButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageWindow messageWindow = new MessageWindow();
+            messageWindow.Show();
         }
     }
 }

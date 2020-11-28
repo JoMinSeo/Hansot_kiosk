@@ -25,6 +25,7 @@
                 <Button Background="#373737" Click="HomeBtn_Click" BorderThickness="0">
                     <Image Source="Assets/baseline_home_white_48dp.png"/>
                 </Button>
+                <Button x:Name="messageButton" Click ="messageButton_Click" Margin="20,0,0,0" Content="메세지 보내기" Width="100" Height="50"/>
                 <TextBlock Text="{Binding CurrentDateTime, Converter={StaticResource CurrentDateTimeToString}}" FontSize="32" VerticalAlignment="Center" Foreground="White" DockPanel.Dock="Right" Width="600"/>
             </DockPanel>
         </Grid>
