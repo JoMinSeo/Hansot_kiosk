@@ -55,9 +55,11 @@ namespace Hansot_kiosk.Manager
                 tcpModel.Menus.Add(new OrderInfo(menu.Name,menu.Amount, menu.Price));
             }
 
+            if (App.isLogined)
+            {
+                App.TcpManager.PostMessage(tcpModel);
 
-            App.TcpManager.PostMessage(tcpModel);
-
+            }
         }
         #region PropertyChangedEvent
         public event PropertyChangedEventHandler PropertyChanged;

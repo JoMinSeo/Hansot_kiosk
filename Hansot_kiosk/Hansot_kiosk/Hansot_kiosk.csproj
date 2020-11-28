@@ -154,6 +154,9 @@
     <Compile Include="Control\StatisticCtrl.xaml.cs">
       <DependentUpon>StatisticCtrl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\Statistic\TotalStatisticCtrl.xaml.cs">
+      <DependentUpon>TotalStatisticCtrl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Converter\BoolToVisibilityConverter.cs" />
     <Compile Include="Converter\CurrentDateTimeToStringConverter.cs" />
     <Compile Include="Manager\OrderManager.cs" />
@@ -208,6 +211,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Control\StatisticCtrl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\Statistic\TotalStatisticCtrl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

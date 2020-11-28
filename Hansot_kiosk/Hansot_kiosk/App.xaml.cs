@@ -25,7 +25,6 @@ namespace Hansot_kiosk
         public static readonly OrderManager OrderManager = new OrderManager();
         public static readonly TCPManager TcpManager = new TCPManager();
 
-        public static MySqlConnection connection;
         public static bool DataSaveResult = false;
         public static bool isLogined = false;
 
