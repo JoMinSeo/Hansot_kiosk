@@ -101,6 +101,16 @@ namespace Hansot_kiosk.Model
                 OnPropertyChanged(nameof(DiscountedPrice));
             }
         }
+        private int _totalPrice;
+        public int TotalPrice
+        {
+            get => _totalPrice;
+            set
+            {
+                _totalPrice = value;
+                OnPropertyChanged(nameof(TotalPrice));
+            }
+        }
         #region PropertyChangedEvent
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propetryName)
