@@ -21,13 +21,13 @@ namespace Hansot_kiosk.Service
         //비번 y28645506
         private void init()
         {
-            string connectionPath = "Server = localhost; Database=kiosk; " +
+            string connectionPath = "Server = 10.80.163.155; Database=kiosk; " +
             "Uid=root;Pwd=y28645506;Charset=utf8";
             this.connection = new MySqlConnection(connectionPath);
 
             //string connectionPath = "Server = localhost; Database=HANSOT; " +
             //"Uid=root;Pwd=lol10884653;Charset=utf8";
-            //connection = new MySqlConnection(connectionPath);
+            //this.connection = new MySqlConnection(connectionPath);
 
             App.Menus = this.SelectAllMenus();
             App.Orders = this.SelectAllOrders();
@@ -165,7 +165,7 @@ namespace Hansot_kiosk.Service
         }
         public List<UserModel> selectAllUsers()
         {
-            string query = "SELECT * FROM user";
+            string query = "SELECT * FROM kiosk.user";
             List<UserModel> users = new List<UserModel>();
 
             if (this.OpenMySqlConnection() == true)
