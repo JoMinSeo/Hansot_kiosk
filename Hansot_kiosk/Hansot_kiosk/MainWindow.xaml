@@ -11,7 +11,7 @@
         mc:Ignorable="d"
         Title="한솥 키오스크"
         Width="1920"
-        Height="1080" PreviewKeyDown="MainWindow_PreviewKeyDown">
+        Height="1080" PreviewKeyDown="MainWindow_PreviewKeyDown" Loaded="Window_Loaded" Unloaded="Window_Unloaded">
     <Window.Resources>
         <cvts:CurrentDateTimeToStringConverter x:Key="CurrentDateTimeToString"/>
     </Window.Resources>
@@ -25,8 +25,29 @@
                 <Button Background="#373737" Click="HomeBtn_Click" BorderThickness="0">
                     <Image Source="Assets/baseline_home_white_48dp.png"/>
                 </Button>
-                <Button x:Name="messageButton" Click ="messageButton_Click" Margin="20,0,0,0" Content="메세지 보내기" Width="100" Height="50"/>
+                <StackPanel x:Name="serverConnectionPanel" Width="16" Height="16" Margin="0 0 5px 0" VerticalAlignment="Center" />
+                <TextBlock
+                        x:Name="serverConnected"
+                        FontSize="16px"
+                        Foreground="White"
+                        VerticalAlignment="Center"
+                     />
+
+                <Button
+                        x:Name="connectionBtn"
+                        Margin="10px 0 0 0"
+                        Background="#50915B"
+                        Padding="5px 2px"
+                        Foreground="White"
+                        BorderThickness="0"
+                        FontSize="16px"
+                        VerticalContentAlignment="Center"
+                        VerticalAlignment="Center"
+                        Click="ReConnectConnection"
+                    >Connect</Button>
+                <Button x:Name="messageButton" Click ="messageButton_Click" Margin="20,0,0,0" Content="💬" Width="50" Height="50"/>
                 <TextBlock Text="{Binding CurrentDateTime, Converter={StaticResource CurrentDateTimeToString}}" FontSize="32" VerticalAlignment="Center" Foreground="White" DockPanel.Dock="Right" Width="600"/>
+                <TextBlock x:Name="connectedTime" Width="200" Margin="10px 0 0 0" FontSize="14px" VerticalAlignment="Center" Foreground="White"/>
             </DockPanel>
         </Grid>
         <Grid Grid.Row="1" x:Name="CtrlGrid">

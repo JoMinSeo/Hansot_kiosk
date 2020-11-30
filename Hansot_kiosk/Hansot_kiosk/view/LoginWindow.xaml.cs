@@ -45,7 +45,7 @@ namespace Hansot_kiosk.view
                 App.isLogined = true;
                 App.TcpManager.PostMessage(tcpModel);
                 MessageBox.Show("로그인되었습니다.");
-
+                App.TcpManager.threadStart();
                 this.Close();
             }
             else

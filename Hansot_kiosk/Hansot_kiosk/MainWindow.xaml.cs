@@ -1,11 +1,15 @@
 ﻿using Hansot_kiosk.Common;
+using Hansot_kiosk.Manager;
 using Hansot_kiosk.Model;
 using Hansot_kiosk.view;
 using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Threading;
 
 namespace Hansot_kiosk
@@ -15,6 +19,10 @@ namespace Hansot_kiosk
     /// </summary>
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
+        readonly BrushConverter converter = new BrushConverter();
+        Brush red = null;
+        Brush green = null;
+
         private DateTime _currentDateTime = DateTime.Now;
         public DateTime CurrentDateTime
         {
@@ -25,7 +33,7 @@ namespace Hansot_kiosk
                 OnPropertyChanged(nameof(CurrentDateTime));
             }
         }
-        
+
         public MainWindow()
         {
             InitializeComponent();
@@ -33,6 +41,8 @@ namespace Hansot_kiosk
             StartTimer();
 
             this.DataContext = this;
+            //Loaded += Window_Loaded;
+            //Unloaded += Window_Unloaded;
 
             App.InitDeleGate();
         }
@@ -101,9 +111,9 @@ namespace Hansot_kiosk
         #endregion
         private void MainWindow_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            if(e.Key == System.Windows.Input.Key.F2)
+            if (e.Key == System.Windows.Input.Key.F2)
             {
-                if(App.UIStateManager.UIStack.Peek() == App.UIStateManager.Get(UICategory.READY))
+                if (App.UIStateManager.UIStack.Peek() == App.UIStateManager.Get(UICategory.READY))
                 {
                     UserControl uc = App.UIStateManager.Get(UICategory.ADMIN);
                     if (uc != null)
@@ -118,6 +128,79 @@ namespace Hansot_kiosk
         {
             MessageWindow messageWindow = new MessageWindow();
             messageWindow.Show();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            TcpModel tcpModel = new TcpModel()
+            {
+                MSGType = 0,
+            };
+
+            if (Properties.Settings.Default.isAutoLogin == true)
+            {
+                App.isLogined = true;
+                App.TcpManager.PostMessage(tcpModel);
+                App.TcpManager.threadStart();
+                MessageBox.Show("자동로그인 되었습니다.");
+            }
+            else if (App.isLogined == false)
+            {
+                LoginWindow loginWindow = new LoginWindow();
+                loginWindow.Show();
+            }
+            else
+            {
+                MessageBox.Show("이미 로그인되어있습니다.");
+            }
+
+            red = (Brush)converter.ConvertFromString("#B83226");
+            green = (Brush)converter.ConvertFromString("#50915B");
+
+            ConnectionThreadRun();
+        }
+
+        private void ConnectionThreadRun()
+        {
+            Thread networkThread = new Thread(new ThreadStart(ConnectionStateObserver))
+            {
+                IsBackground = true
+            };
+            networkThread.Start();
+        }
+
+        private void ConnectionStateObserver()
+        {
+            while (true)
+            {
+                Dispatcher.Invoke(DispatcherPriority.Normal, new Action(delegate
+                {
+                    serverConnected.Text = App.TcpManager.isConnection ? "서버와 연결 되어있습니다." : "서버와 연결 되어있지 않습니다.";
+                    connectionBtn.IsEnabled = !App.TcpManager.isConnection;
+                    serverConnectionPanel.Background = App.TcpManager.isConnection ? green : red;
+                }));
+            }
+        }
+
+        private void ReConnectConnection(object sender, RoutedEventArgs e)
+        {
+            TcpModel tcpModel = new TcpModel()
+            {
+                MSGType = 0
+
+            };
+            string response = App.TcpManager.PostMessage(tcpModel);
+
+            if (response == "200")
+            {
+                App.TcpManager.isConnection = true;
+                connectedTime.Text = App.TcpManager.isConnection ? "최근 접속 시간: " + DateTime.Now.ToString("yyyy년 MM월 dd일 HH시 mm분 ss초") : "";
+            }
+        }
+
+        private void Window_Unloaded(object sender, RoutedEventArgs e)
+        {
+            App.TcpManager.threadEnd();
         }
     }
 }
