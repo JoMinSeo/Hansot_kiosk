@@ -154,8 +154,14 @@
     <Compile Include="Control\StatisticCtrl.xaml.cs">
       <DependentUpon>StatisticCtrl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\Statistic\CategoryStatisticCtrl.xaml.cs">
+      <DependentUpon>CategoryStatisticCtrl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\Statistic\TotalStatisticCtrl.xaml.cs">
       <DependentUpon>TotalStatisticCtrl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\Statistic\UserStatisticCtrl.xaml.cs">
+      <DependentUpon>UserStatisticCtrl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converter\BoolToVisibilityConverter.cs" />
     <Compile Include="Converter\CurrentDateTimeToStringConverter.cs" />
@@ -214,7 +220,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Control\Statistic\CategoryStatisticCtrl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Control\Statistic\TotalStatisticCtrl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\Statistic\UserStatisticCtrl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
