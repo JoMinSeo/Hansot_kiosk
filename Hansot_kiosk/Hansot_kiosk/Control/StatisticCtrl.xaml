@@ -10,15 +10,23 @@
     <Grid Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            <ColumnDefinition Width="0.4*"/>
+            <ColumnDefinition Width="0.2*"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
-            <statisticCtrl:TotalStatisticCtrl/>
+            <statisticCtrl:TotalStatisticCtrl x:Name="TotalStatisticCtrl" Visibility="Visible"/>
+            <statisticCtrl:CategoryStatisticCtrl x:Name="CategoryStatisticCtrl" Visibility="Collapsed"/>
+            <statisticCtrl:UserStatisticCtrl x:Name="UserStatisticCtrl" Visibility="Collapsed"/>
         </Grid>
         <Grid Grid.Column="1">
             <StackPanel Orientation="Vertical">
                 <Button x:Name="PrevCtrlBtn" Click="PrevCtrlBtn_Click" Width="180px" Height="80px" 
                         HorizontalAlignment="Left" Content="이전 화면" FontSize="32" Margin="16"/>
+                <Button x:Name="TotalStatisticCtrlBtn" Click="TotalStatisticCtrlBtn_Click" Width="180px" Height="80px" 
+                        HorizontalAlignment="Left" Content="총 매출" FontSize="32" Margin="30"/>
+                <Button x:Name="CategoryStatisticCtrlBtn" Click="CategoryStatisticCtrlBtn_Click" Width="180px" Height="80px" 
+                        HorizontalAlignment="Left" Content="카테고리별" FontSize="32" Margin="30"/>
+                <Button x:Name="UserStatisticCtrlBtn" Click="UserStatisticCtrlBtn_Click" Width="180px" Height="80px" 
+                        HorizontalAlignment="Left" Content="유저별" FontSize="32" Margin="30"/>
             </StackPanel>
         </Grid>
     </Grid>

@@ -19,44 +19,31 @@ using System.Windows.Shapes;
 namespace Hansot_kiosk.Control.Statistic
 {
     /// <summary>
-    /// Interaction logic for TotalStatisticCtrl.xaml
+    /// Interaction logic for CategoryStatisticCtrl.xaml
     /// </summary>
-    public partial class TotalStatisticCtrl : UserControl
+    public partial class CategoryStatisticCtrl : UserControl
     {
         public SeriesCollection SeriesCollection { get; set; }
         public string[] Labels { get; set; }
         public Func<double, string> Formatter { get; set; }
-        public TotalStatisticCtrl()
+        public CategoryStatisticCtrl()
         {
             InitializeComponent();
+
             App.InitDeleGate += this.init;
         }
         private void init()
         {
-            List<int> values = new List<int>();
+            int[] values = new int[5];
 
-            int totalDiscountedPrice = 0;
+            values[0] = (App.Orders.Sum(order => order.TotalPrice));
 
             foreach(OrderedMenuModel orderedMenu in App.OrderedMenus)
             {
                 MenuModel menu = App.Menus.Find(x => x.IDX == orderedMenu.MenuIDX);
-                totalDiscountedPrice +=(int)Math.Round(orderedMenu.Amount * menu.Price * 
-                    (menu.DiscountedPer * 0.01));
+                values[(int)menu.Category] += (int)Math.Round(orderedMenu.Amount * menu.Price *
+                    ((100-menu.DiscountedPer) * 0.01));
             }
-
-            int totalPurePrice = (from order in App.Orders select order).Sum(order => order.TotalPrice);
-
-            int totalPrice = totalPurePrice + totalDiscountedPrice;
-
-            int totalCardPrice = (from order in App.Orders where order.IsCard select order).Sum(order => order.TotalPrice);
-
-            int totalCashPrice = totalPurePrice - totalCardPrice;
-
-            values.Add(totalPrice);
-            values.Add(totalPurePrice);
-            values.Add(totalDiscountedPrice);
-            values.Add(totalCashPrice);
-            values.Add(totalCardPrice);
 
             SeriesCollection = new SeriesCollection
             {
@@ -69,7 +56,7 @@ namespace Hansot_kiosk.Control.Statistic
 
             //also adding values updates and animates the chart automatically
 
-            Labels = new string[] { "총금액", "순수 매출액", "할인금액", "현금", "카드" };
+            Labels = new string[] { "전부", "고기고기", "세트", "도시락", "사이드" };
 
             Formatter = value => value.ToString("N");
 
