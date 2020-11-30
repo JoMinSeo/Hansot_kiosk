@@ -140,9 +140,9 @@ namespace Hansot_kiosk
             if (Properties.Settings.Default.isAutoLogin == true)
             {
                 App.isLogined = true;
-                App.TcpManager.PostMessage(tcpModel);
-                App.TcpManager.threadStart();
-                connectedTime.Text = App.TcpManager.isConnection ? "최근 접속 시간: " + DateTime.Now.ToString("yyyy년 MM월 dd일 HH시 mm분 ss초") : "";
+                App.TCPManager.PostMessage(tcpModel);
+                App.TCPManager.threadStart();
+                connectedTime.Text = App.TCPManager.isConnection ? "최근 접속 시간: " + DateTime.Now.ToString("yyyy년 MM월 dd일 HH시 mm분 ss초") : "";
                 MessageBox.Show("자동로그인 되었습니다.");
             }
             else if (App.isLogined == false)
@@ -176,9 +176,9 @@ namespace Hansot_kiosk
             {
                 Dispatcher.Invoke(DispatcherPriority.Normal, new Action(delegate
                 {
-                    serverConnected.Text = App.TcpManager.isConnection ? "서버와 연결 되어있습니다." : "서버와 연결 되어있지 않습니다.";
-                    connectionBtn.IsEnabled = !App.TcpManager.isConnection;
-                    serverConnectionPanel.Background = App.TcpManager.isConnection ? green : red;
+                    serverConnected.Text = App.TCPManager.isConnection ? "서버와 연결 되어있습니다." : "서버와 연결 되어있지 않습니다.";
+                    connectionBtn.IsEnabled = !App.TCPManager.isConnection;
+                    serverConnectionPanel.Background = App.TCPManager.isConnection ? green : red;
                 }));
             }
         }
@@ -190,18 +190,18 @@ namespace Hansot_kiosk
                 MSGType = 0
 
             };
-            string response = App.TcpManager.PostMessage(tcpModel);
+            string response = App.TCPManager.PostMessage(tcpModel);
 
             if (response == "200")
             {
-                App.TcpManager.isConnection = true;
-                connectedTime.Text = App.TcpManager.isConnection ? "최근 접속 시간: " + DateTime.Now.ToString("yyyy년 MM월 dd일 HH시 mm분 ss초") : "";
+                App.TCPManager.isConnection = true;
+                connectedTime.Text = App.TCPManager.isConnection ? "최근 접속 시간: " + DateTime.Now.ToString("yyyy년 MM월 dd일 HH시 mm분 ss초") : "";
             }
         }
 
         private void Window_Unloaded(object sender, RoutedEventArgs e)
         {
-            App.TcpManager.threadEnd();
+            App.TCPManager.threadEnd();
         }
     }
 }

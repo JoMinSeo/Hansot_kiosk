@@ -51,8 +51,8 @@ namespace Hansot_kiosk.view
             else
             {
                 tcpModel.Content = messageTB.Text;
-                App.TcpManager.PostMessage(tcpModel);
-                App.TcpManager.isSend = true;
+                App.TCPManager.PostMessage(tcpModel);
+                App.TCPManager.isSend = true;
             }
         }
 

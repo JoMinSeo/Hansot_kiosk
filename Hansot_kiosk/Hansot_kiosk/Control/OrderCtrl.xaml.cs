@@ -264,7 +264,15 @@ namespace Hansot_kiosk.Control
 
         private void PrevCtrlBtn_Click(object sender, RoutedEventArgs e)
         {
-            App.UIStateManager.Pop();
+            if (App.OrderManager.OrderedMenus.Any())
+            {
+                if (MessageBoxResult.No == MessageBox.Show("주문된 메뉴가 초기화 됩니다. 괜찮으십니까?",
+                        "메인화면으로 가기", MessageBoxButton.YesNo, MessageBoxImage.Warning))
+                {
+                    return;
+                }
+            }
+            App.InitDeleGate();
         }
 
         private void CategoryPrevBtn_Click(object sender, RoutedEventArgs e)
