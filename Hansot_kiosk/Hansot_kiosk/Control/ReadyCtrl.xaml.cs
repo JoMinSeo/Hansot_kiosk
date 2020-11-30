@@ -19,6 +19,7 @@ namespace Hansot_kiosk.Control
         private void OrderButton_Click(object sender, RoutedEventArgs e)
         {
             UserControl uc = App.UIStateManager.Get(UICategory.ORDER);
+
             if (uc != null)
                 App.UIStateManager.Push(uc);
         }
@@ -26,6 +27,7 @@ namespace Hansot_kiosk.Control
         private void Admin_btn_Click(object sender, RoutedEventArgs e)
         {
             UserControl uc = App.UIStateManager.Get(UICategory.ADMIN);
+
             if (uc != null)
             {
                 App.UIStateManager.Push(uc);
