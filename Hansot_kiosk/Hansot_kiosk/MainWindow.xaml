@@ -28,7 +28,7 @@
                 <StackPanel x:Name="serverConnectionPanel" Width="16" Height="16" Margin="10px 0 5px 0" VerticalAlignment="Center" />
                 <TextBlock x:Name="serverConnected" FontSize="16px" Foreground="White" VerticalAlignment="Center"/>
 
-                <Button x:Name="connectionBtn" Content="Connect" Margin="10px 0 0 0"  Background="#50915B" Padding="5px 2px" Foreground="White" BorderThickness="0" FontSize="16px" VerticalContentAlignment="Center" VerticalAlignment="Center" Click="ReConnectConnection"
+                <Button x:Name="connectionBtn" Content="Connect" Margin="10px 0 0 0"  Background="#50915B" Padding="5px 2px" Foreground="White" BorderThickness="0" FontSize="16px" VerticalContentAlignment="Center" VerticalAlignment="Center" Click="reConnectConnection"
                     />
                 <Button x:Name="messageButton" Click ="messageButton_Click" Margin="20,0,0,0" Content="💬" Width="50" Height="50"/>
                 <TextBlock Text="{Binding CurrentDateTime, Converter={StaticResource CurrentDateTimeToString}}" FontSize="32" VerticalAlignment="Center" Foreground="White" DockPanel.Dock="Right" Width="600"/>

@@ -177,7 +177,7 @@
     <Compile Include="Model\MenuModel.cs" />
     <Compile Include="Model\SeatModel.cs" />
     <Compile Include="Model\TcpModel.cs" />
-    <Compile Include="Service\MySQLManager.cs" />
+    <Compile Include="Manager\MySQLManager.cs" />
     <Compile Include="UIManager\UIStateManager.cs" />
     <Compile Include="view\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
@@ -317,8 +317,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Abstract\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

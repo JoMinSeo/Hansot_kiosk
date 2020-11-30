@@ -160,12 +160,12 @@ namespace Hansot_kiosk
                 MessageBox.Show("이미 로그인되어있습니다.");
             }
 
-            ConnectionThreadRun();
+            connectionThreadRun();
         }
 
-        private void ConnectionThreadRun()
+        private void connectionThreadRun()
         {
-            Thread networkThread = new Thread(new ThreadStart(ConnectionStateObserver))
+            Thread networkThread = new Thread(new ThreadStart(connectionStateObserver))
             {
                 IsBackground = true
             };
@@ -173,7 +173,7 @@ namespace Hansot_kiosk
             networkThread.Start();
         }
 
-        private void ConnectionStateObserver()
+        private void connectionStateObserver()
         {
             while (true)
             {
@@ -186,7 +186,7 @@ namespace Hansot_kiosk
             }
         }
 
-        private void ReConnectConnection(object sender, RoutedEventArgs e)
+        private void reConnectConnection(object sender, RoutedEventArgs e)
         {
             TcpModel tcpModel = new TcpModel()
             {

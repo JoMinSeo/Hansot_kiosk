@@ -9,7 +9,6 @@
         SIDEDISH
     }
 
-
     public enum EMessageType
     {
         LOGIN,

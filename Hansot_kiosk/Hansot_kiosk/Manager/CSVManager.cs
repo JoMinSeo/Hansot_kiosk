@@ -1,10 +1,5 @@
 ﻿using Hansot_kiosk.Interface;
 using Hansot_kiosk.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Hansot_kiosk
 {

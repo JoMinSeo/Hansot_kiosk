@@ -5,7 +5,6 @@ using System.Diagnostics;
 using Hansot_kiosk.Model;
 using Hansot_kiosk.Common;
 using System.Windows;
-using System.Collections.ObjectModel;
 using Hansot_kiosk.Interface;
 
 namespace Hansot_kiosk.Service
@@ -18,23 +17,18 @@ namespace Hansot_kiosk.Service
             App.InitDeleGate += init;
         }
 
-        //동민이 아이피 10.80.163.155
-        //비번 y28645506
         private void init()
         {
             string connectionPath = "Server = 10.80.163.155; Database=kiosk; " +
             "Uid=root;Pwd=y28645506;Charset=utf8";
             this.connection = new MySqlConnection(connectionPath);
 
-            //string connectionPath = "Server = localhost; Database=HANSOT; " +
-            //"Uid=root;Pwd=lol10884653;Charset=utf8";
-            //this.connection = new MySqlConnection(connectionPath);
-
             App.Menus = this.SelectAllMenus();
             App.Orders = this.SelectAllOrders();
             App.Users = this.selectAllUsers();
             App.OrderedMenus = this.SelectAllOrderedMenus();
         }
+
         public MySqlCommand CreateCommand(string query)
         {
             MySqlCommand command = new MySqlCommand(query, connection);
@@ -77,13 +71,13 @@ namespace Hansot_kiosk.Service
             }
         }
 
-        private void Execute(string query)
+        private void ExecuteNonQuery(string command)
         {
             if (OpenMySqlConnection() == true)
             {
-                MySqlCommand command = new MySqlCommand(query, connection);
+                MySqlCommand sqlCommand = new MySqlCommand(command, connection);
 
-                if (command.ExecuteNonQuery() == 1)
+                if (sqlCommand.ExecuteNonQuery() == 1)
                 {
                     Debug.WriteLine("값 저장 성공");
                     App.DataSaveResult = true;
@@ -164,6 +158,7 @@ namespace Hansot_kiosk.Service
                 return null;
             }
         }
+
         public List<UserModel> selectAllUsers()
         {
             string query = "SELECT * FROM kiosk.user";
@@ -195,6 +190,7 @@ namespace Hansot_kiosk.Service
                 return null;
             }
         }
+
         public List<OrderModel> SelectAllOrders()
         {
             string query = "SELECT * FROM kiosk.order";
@@ -237,19 +233,21 @@ namespace Hansot_kiosk.Service
                 "VALUES ( {0}, {1}, {2}, {3}, {4}, {5} )",
                 orderModel.IDX, orderModel.User_IDX, orderModel.Seat_IDX,
                 orderModel.IsCard == true ? 1 : 0, "'" + orderModel.OrderedTime.ToString("yyyy-MM-dd HH:mm:ss.fff") + "'", orderModel.TotalPrice);
-            Execute(command);
+            ExecuteNonQuery(command);
         }
+
         public void InsertOrderedMenu(MenuModel menuModel, int orderIDX)
         {
             string command = string.Format("INSERT INTO kiosk.orderedmenu (Order_IDX, menu_IDX, amount) " +
                             "VALUES ( {0}, {1}, {2} )", orderIDX, menuModel.IDX, menuModel.Amount);
-            Execute(command);
+            ExecuteNonQuery(command);
         }
+
         public void UpdateDiscountedPer(int idx, int discountedPer)
         {
             string command = string.Format("UPDATE kiosk.menu SET DiscountedPer = " +
                             "{0} WHERE IDX = {1}", discountedPer, idx);
-            Execute(command);
+            ExecuteNonQuery(command);
         }
     }
 }
