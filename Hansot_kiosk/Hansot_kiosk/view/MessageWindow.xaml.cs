@@ -18,25 +18,25 @@ namespace Hansot_kiosk.view
             InitializeComponent();
         }
 
-        private void checkGroup_Checked(object sender, RoutedEventArgs e)
+        private void checkCbx_Checked(object sender, RoutedEventArgs e)
         {
             tcpModel.Group = true;
         }
 
-        private void checkGroup_Unchecked(object sender, RoutedEventArgs e)
+        private void checkCbx_Unchecked(object sender, RoutedEventArgs e)
         {
             tcpModel.Group = false;
         }
 
-        private void sendButton_Click(object sender, RoutedEventArgs e)
+        private void sendBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(messageTB.Text))
+            if (string.IsNullOrEmpty(messageTbx.Text))
             {
                 MessageBox.Show("메세지를 입력하여주세요.");
             }
             else
             {
-                tcpModel.Content = messageTB.Text;
+                tcpModel.Content = messageTbx.Text;
                 App.TCPManager.PostMessage(tcpModel);
                 App.TCPManager.IsSend = true;
             }

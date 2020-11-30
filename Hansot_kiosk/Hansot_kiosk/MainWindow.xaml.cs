@@ -147,7 +147,7 @@ namespace Hansot_kiosk
                 App.isLogined = true;
                 App.TCPManager.PostMessage(tcpModel);
                 App.TCPManager.ThreadStart();
-                connectedTime.Text = App.TCPManager.isConnection ? "최근 접속 시간: " + DateTime.Now.ToString("yyyy년 MM월 dd일 HH시 mm분 ss초") : "";
+                connectedTimeTbx.Text = App.TCPManager.isConnection ? "최근 접속 시간: " + DateTime.Now.ToString("yyyy년 MM월 dd일 HH시 mm분 ss초") : "";
                 MessageBox.Show("자동로그인 되었습니다.");
             }
             else if (App.isLogined == false)
@@ -179,7 +179,7 @@ namespace Hansot_kiosk
             {
                 Dispatcher.Invoke(DispatcherPriority.Normal, new Action(delegate
                 {
-                    serverConnected.Text = App.TCPManager.isConnection ? "서버와 연결 되어있습니다." : "서버와 연결 되어있지 않습니다.";
+                    serverConnectionTb.Text = App.TCPManager.isConnection ? "서버와 연결 되어있습니다." : "서버와 연결 되어있지 않습니다.";
                     connectionBtn.IsEnabled = !App.TCPManager.isConnection;
                     serverConnectionPanel.Background = App.TCPManager.isConnection ? green : red;
                 }));
@@ -200,7 +200,7 @@ namespace Hansot_kiosk
             {
                 App.TCPManager.ThreadStart();
                 App.TCPManager.isConnection = true;
-                connectedTime.Text = App.TCPManager.isConnection ? "최근 접속 시간: " + DateTime.Now.ToString("yyyy년 MM월 dd일 HH시 mm분 ss초") : "";
+                connectedTimeTbx.Text = App.TCPManager.isConnection ? "최근 접속 시간: " + DateTime.Now.ToString("yyyy년 MM월 dd일 HH시 mm분 ss초") : "";
             }
         }
 

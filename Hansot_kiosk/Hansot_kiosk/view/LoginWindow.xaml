@@ -15,17 +15,17 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <Label Content="아이디" Width="120" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" HorizontalContentAlignment="Center"/>
-            <TextBox x:Name ="idTb" Margin="125,0,30,0" Height="50" FontSize="20" VerticalContentAlignment="center"/>
+            <TextBox x:Name ="idTbx" Margin="125,0,30,0" Height="50" FontSize="20" VerticalContentAlignment="center"/>
         </Grid>
         <Grid Grid.Row="1">
             <Label Content="패스워드" Width="120" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" HorizontalContentAlignment="Center"/>
-            <TextBox x:Name="passTb" Margin="125,0,30,0" Height="50" FontSize="20" VerticalContentAlignment="center"/>
+            <TextBox x:Name="passTbx" Margin="125,0,30,0" Height="50" FontSize="20" VerticalContentAlignment="center"/>
         </Grid>
         <Grid Grid.Row="2">
-            <CheckBox x:Name="autoLoginCheck" Content="자동 로그인" IsChecked="False" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,16,0"/>
+            <CheckBox x:Name="autoLoginCbx" Content="자동 로그인" IsChecked="False" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,16,0"/>
         </Grid>
         <Grid Grid.Row="3">
-            <Button Width="250" Height="60" HorizontalAlignment="center" Content="로그인" Click="LoginBtnClick"/>
+            <Button x:Name="loginBtn" Width="250" Height="60" HorizontalAlignment="center" Content="로그인" Click="LoginBtnClick"/>
         </Grid>
     </Grid>
 </Window>

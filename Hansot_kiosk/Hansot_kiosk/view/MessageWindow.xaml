@@ -11,8 +11,8 @@
             <ColumnDefinition Width="600"/>
             <ColumnDefinition Width="200"/>
         </Grid.ColumnDefinitions>
-        <TextBox Grid.Column="0" x:Name="messageTB" Text="{Binding inputText, UpdateSourceTrigger=PropertyChanged}" Width="500" Height="80" Margin="32,32,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <Button Grid.Column="1" x:Name="sendButton" Width="120" Height="80" Margin="0,32,32,0" HorizontalAlignment="Right" VerticalAlignment="Top" Content="메시지 전송" Click="sendButton_Click"/>
-        <CheckBox x:Name="checkGroup" Content="그룹 메세지 전송 허용" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="checkGroup_Checked" Unchecked="checkGroup_Unchecked"/>
+        <TextBox Grid.Column="0" x:Name="messageTbx" Text="{Binding inputText, UpdateSourceTrigger=PropertyChanged}" Width="500" Height="80" Margin="32,32,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Button Grid.Column="1" x:Name="sendBtn" Width="120" Height="80" Margin="0,32,32,0" HorizontalAlignment="Right" VerticalAlignment="Top" Content="메시지 전송" Click="sendBtn_Click"/>
+        <CheckBox x:Name="checkCbx" Content="그룹 메세지 전송 허용" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="checkCbx_Checked" Unchecked="checkCbx_Unchecked"/>
     </Grid>
 </Window>

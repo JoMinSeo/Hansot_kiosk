@@ -15,8 +15,8 @@ namespace Hansot_kiosk.view
 
         private void LoginBtnClick(object sender, RoutedEventArgs e)
         {
-            string id = idTb.Text;
-            string pass = passTb.Text;
+            string id = idTbx.Text;
+            string pass = passTbx.Text;
 
             TcpModel tcpModel = new TcpModel()
             {
@@ -25,7 +25,7 @@ namespace Hansot_kiosk.view
 
             if (Properties.Settings.Default.id == id && Properties.Settings.Default.pass == pass)
             {
-                if(autoLoginCheck.IsChecked == true)
+                if(autoLoginCbx.IsChecked == true)
                 {
                     Properties.Settings.Default.isAutoLogin = true;
                     Properties.Settings.Default.Save();
