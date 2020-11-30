@@ -16,6 +16,7 @@
             <statisticCtrl:TotalStatisticCtrl x:Name="TotalStatisticCtrl" Visibility="Visible"/>
             <statisticCtrl:CategoryStatisticCtrl x:Name="CategoryStatisticCtrl" Visibility="Collapsed"/>
             <statisticCtrl:UserStatisticCtrl x:Name="UserStatisticCtrl" Visibility="Collapsed"/>
+            <statisticCtrl:MenuStatisticCtrl x:Name="menuStatisticCtrl" Visibility="Collapsed"/>
         </Grid>
         <Grid Grid.Column="1">
             <StackPanel Orientation="Vertical">
@@ -27,6 +28,8 @@
                         HorizontalAlignment="Left" Content="카테고리별" FontSize="32" Margin="30"/>
                 <Button x:Name="UserStatisticCtrlBtn" Click="UserStatisticCtrlBtn_Click" Width="180px" Height="80px" 
                         HorizontalAlignment="Left" Content="유저별" FontSize="32" Margin="30"/>
+                <Button x:Name="MenuStatisticCtrlBtn" Click="MenuStatisticCtrlBtn_Click" Width="180px" Height="80px" 
+                        HorizontalAlignment="Left" Content="메뉴별" FontSize="32" Margin="30"/>
             </StackPanel>
         </Grid>
     </Grid>

@@ -23,6 +23,7 @@ namespace Hansot_kiosk.Control
     public partial class StatisticCtrl : UserControl
     {
         private List<UserControl> controls = new List<UserControl>();
+        private List<Button> btnss = new List<Button>();
         public StatisticCtrl()
         {
             InitializeComponent();
@@ -30,6 +31,13 @@ namespace Hansot_kiosk.Control
             controls.Add(TotalStatisticCtrl);
             controls.Add(CategoryStatisticCtrl);
             controls.Add(UserStatisticCtrl);
+            controls.Add(menuStatisticCtrl);
+
+            btnss.Add(TotalStatisticCtrlBtn);
+            btnss.Add(CategoryStatisticCtrlBtn);
+            btnss.Add(MenuStatisticCtrlBtn);
+
+            TotalStatisticCtrlBtn.IsEnabled = false;
         }
 
         private void PrevCtrlBtn_Click(object sender, RoutedEventArgs e)
@@ -53,6 +61,12 @@ namespace Hansot_kiosk.Control
         {
             controls.ForEach(control => control.Visibility = Visibility.Collapsed);
             UserStatisticCtrl.Visibility = Visibility.Visible;
+        }
+
+        private void MenuStatisticCtrlBtn_Click(object sender, RoutedEventArgs e)
+        {
+            controls.ForEach(control => control.Visibility = Visibility.Collapsed);
+            menuStatisticCtrl.Visibility = Visibility.Visible;
         }
     }
 }
