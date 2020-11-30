@@ -2,14 +2,9 @@
 using Hansot_kiosk.Model;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace Hansot_kiosk.Manager
@@ -17,11 +12,11 @@ namespace Hansot_kiosk.Manager
     public class TCPManager
     {
         private const int MAX_LEN = 4096;
-        public bool isSend = false;
+        public bool IsSend = false;
         private byte[] sendData = new byte[MAX_LEN];
         private byte[] receiveData = new byte[MAX_LEN];
-        private byte[] response = new byte[MAX_LEN];
-        public string getResponse = string.Empty;
+        private byte[] responseData = new byte[MAX_LEN];
+        public string Response = string.Empty;
 
         NetworkStream networkStream = null;
         TcpClient tcpClient = null;
@@ -45,14 +40,14 @@ namespace Hansot_kiosk.Manager
 
                 tcpClient.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.KeepAlive, true);
 
-                int readData = networkStream.Read(this.response, 0, this.response.Length);
-                getResponse = Encoding.UTF8.GetString(response, 0, readData);
+                int readData = networkStream.Read(this.responseData, 0, this.responseData.Length);
+                Response = Encoding.UTF8.GetString(responseData, 0, readData);
 
-                if (getResponse == "200")
+                if (Response == "200")
                 {
                     this.isConnection = true;
                 }
-                return getResponse;
+                return Response;
             }
             catch (Exception e)
             {
@@ -75,11 +70,11 @@ namespace Hansot_kiosk.Manager
                 {
                     try
                     {
-                        isSend = false;
+                        IsSend = false;
                         data = await stream.ReadAsync(receiveData, 0, receiveData.Length);
                         response = Encoding.UTF8.GetString(receiveData, 0, data);
 
-                        if (!isSend)
+                        if (!IsSend)
                         {
                             if (!string.IsNullOrEmpty(response))
                             {
@@ -95,6 +90,7 @@ namespace Hansot_kiosk.Manager
                                         Content = totalPrice,
                                         Group = true
                                     };
+
                                     PostMessage(tcpModel);
                                     break;
                                 }
@@ -102,14 +98,15 @@ namespace Hansot_kiosk.Manager
                             }
                             else
                             {
+                                isConnection = false;
                                 MessageBox.Show("서버와 연결이 끊겼습니다.");
                                 break;
                             }
                         }
                         else
                         {
-                            isConnection = false;
                             MessageBox.Show("Server Connection Failed");
+                            isConnection = false;
                             tcpClient.Close();
                             networkStream.Close();
                             break;
@@ -130,7 +127,7 @@ namespace Hansot_kiosk.Manager
             }
         }
 
-        public void threadStart()
+        public void ThreadStart()
         {
             if (this.isConnection)
             {
@@ -139,7 +136,7 @@ namespace Hansot_kiosk.Manager
             }
         }
 
-        public void threadEnd()
+        public void ThreadClose()
         {
             if (tcpThread != null)
             {

@@ -41,11 +41,10 @@ namespace Hansot_kiosk
             StartTimer();
 
             this.DataContext = this;
-            //Loaded += Window_Loaded;
-            //Unloaded += Window_Unloaded;
 
             App.InitDeleGate();
         }
+
         private void init()
         {
             if (App.OrderManager.OrderedMenus.Any())
@@ -61,6 +60,7 @@ namespace Hansot_kiosk
             }
             App.InitDeleGate();
         }
+
         #region TimeControl
         private void StartTimer()
         {
@@ -102,6 +102,7 @@ namespace Hansot_kiosk
             init();
         }
         #endregion
+
         #region PropertyChangedEvent
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propetryName)
@@ -109,6 +110,7 @@ namespace Hansot_kiosk
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propetryName));
         }
         #endregion
+
         private void MainWindow_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
             if (e.Key == System.Windows.Input.Key.F2)
@@ -132,6 +134,9 @@ namespace Hansot_kiosk
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            red = (Brush)converter.ConvertFromString("#B83226");
+            green = (Brush)converter.ConvertFromString("#50915B");
+
             TcpModel tcpModel = new TcpModel()
             {
                 MSGType = 0,
@@ -141,7 +146,7 @@ namespace Hansot_kiosk
             {
                 App.isLogined = true;
                 App.TCPManager.PostMessage(tcpModel);
-                App.TCPManager.threadStart();
+                App.TCPManager.ThreadStart();
                 connectedTime.Text = App.TCPManager.isConnection ? "최근 접속 시간: " + DateTime.Now.ToString("yyyy년 MM월 dd일 HH시 mm분 ss초") : "";
                 MessageBox.Show("자동로그인 되었습니다.");
             }
@@ -155,22 +160,20 @@ namespace Hansot_kiosk
                 MessageBox.Show("이미 로그인되어있습니다.");
             }
 
-            red = (Brush)converter.ConvertFromString("#B83226");
-            green = (Brush)converter.ConvertFromString("#50915B");
-
-            ConnectionThreadRun();
+            connectionThreadRun();
         }
 
-        private void ConnectionThreadRun()
+        private void connectionThreadRun()
         {
-            Thread networkThread = new Thread(new ThreadStart(ConnectionStateObserver))
+            Thread networkThread = new Thread(new ThreadStart(connectionStateObserver))
             {
                 IsBackground = true
             };
+
             networkThread.Start();
         }
 
-        private void ConnectionStateObserver()
+        private void connectionStateObserver()
         {
             while (true)
             {
@@ -183,17 +186,19 @@ namespace Hansot_kiosk
             }
         }
 
-        private void ReConnectConnection(object sender, RoutedEventArgs e)
+        private void reConnectConnection(object sender, RoutedEventArgs e)
         {
             TcpModel tcpModel = new TcpModel()
             {
                 MSGType = 0
 
             };
+
             string response = App.TCPManager.PostMessage(tcpModel);
 
             if (response == "200")
             {
+                App.TCPManager.ThreadStart();
                 App.TCPManager.isConnection = true;
                 connectedTime.Text = App.TCPManager.isConnection ? "최근 접속 시간: " + DateTime.Now.ToString("yyyy년 MM월 dd일 HH시 mm분 ss초") : "";
             }
@@ -201,7 +206,7 @@ namespace Hansot_kiosk
 
         private void Window_Unloaded(object sender, RoutedEventArgs e)
         {
-            App.TCPManager.threadEnd();
+            App.TCPManager.ThreadClose();
         }
     }
 }
