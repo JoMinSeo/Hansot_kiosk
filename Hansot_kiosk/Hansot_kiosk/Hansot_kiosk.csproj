@@ -157,6 +157,9 @@
     <Compile Include="Control\Statistic\CategoryStatisticCtrl.xaml.cs">
       <DependentUpon>CategoryStatisticCtrl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\Statistic\MenuStatisticCtrl.xaml.cs">
+      <DependentUpon>MenuStatisticCtrl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\Statistic\TotalStatisticCtrl.xaml.cs">
       <DependentUpon>TotalStatisticCtrl.xaml</DependentUpon>
     </Compile>
@@ -165,6 +168,8 @@
     </Compile>
     <Compile Include="Converter\BoolToVisibilityConverter.cs" />
     <Compile Include="Converter\CurrentDateTimeToStringConverter.cs" />
+    <Compile Include="Interface\IInsertManager.cs" />
+    <Compile Include="Manager\CSVManager.cs" />
     <Compile Include="Manager\OrderManager.cs" />
     <Compile Include="Manager\ServerIP.cs" />
     <Compile Include="Manager\TCPManager.cs" />
@@ -221,6 +226,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Control\Statistic\CategoryStatisticCtrl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\Statistic\MenuStatisticCtrl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -310,7 +319,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Abstract\" />
-    <Folder Include="Interface\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
