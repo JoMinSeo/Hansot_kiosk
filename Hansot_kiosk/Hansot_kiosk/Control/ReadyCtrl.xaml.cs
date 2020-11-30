@@ -16,15 +16,17 @@ namespace Hansot_kiosk.Control
             InitializeComponent();
         }
 
-        private void OrderButton_Click(object sender, RoutedEventArgs e)
+        private void OrderStartBtn_Click(object sender, RoutedEventArgs e)
         {
             UserControl uc = App.UIStateManager.Get(UICategory.ORDER);
 
             if (uc != null)
+            {
                 App.UIStateManager.Push(uc);
+            }
         }
 
-        private void Admin_btn_Click(object sender, RoutedEventArgs e)
+        private void AdminBtn_Click(object sender, RoutedEventArgs e)
         {
             UserControl uc = App.UIStateManager.Get(UICategory.ADMIN);
 
