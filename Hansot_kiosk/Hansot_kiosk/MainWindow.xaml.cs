@@ -41,8 +41,6 @@ namespace Hansot_kiosk
             StartTimer();
 
             this.DataContext = this;
-            //Loaded += Window_Loaded;
-            //Unloaded += Window_Unloaded;
 
             App.InitDeleGate();
         }
@@ -132,6 +130,8 @@ namespace Hansot_kiosk
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            red = (Brush)converter.ConvertFromString("#B83226");
+            green = (Brush)converter.ConvertFromString("#50915B");
             TcpModel tcpModel = new TcpModel()
             {
                 MSGType = 0,
@@ -155,9 +155,6 @@ namespace Hansot_kiosk
                 MessageBox.Show("이미 로그인되어있습니다.");
             }
 
-            red = (Brush)converter.ConvertFromString("#B83226");
-            green = (Brush)converter.ConvertFromString("#50915B");
-
             ConnectionThreadRun();
         }
 
@@ -167,6 +164,7 @@ namespace Hansot_kiosk
             {
                 IsBackground = true
             };
+
             networkThread.Start();
         }
 
@@ -191,9 +189,11 @@ namespace Hansot_kiosk
 
             };
             string response = App.TCPManager.PostMessage(tcpModel);
+            Debug.WriteLine(response);
 
             if (response == "200")
             {
+                App.TCPManager.threadStart();
                 App.TCPManager.isConnection = true;
                 connectedTime.Text = App.TCPManager.isConnection ? "최근 접속 시간: " + DateTime.Now.ToString("yyyy년 MM월 dd일 HH시 mm분 ss초") : "";
             }

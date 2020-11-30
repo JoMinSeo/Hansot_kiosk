@@ -102,6 +102,8 @@ namespace Hansot_kiosk.Manager
                             }
                             else
                             {
+                                isConnection = false;
+                                Debug.WriteLine("11111");
                                 MessageBox.Show("서버와 연결이 끊겼습니다.");
                                 break;
                             }
