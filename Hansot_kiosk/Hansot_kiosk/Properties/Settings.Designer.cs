@@ -62,9 +62,9 @@ namespace Hansot_kiosk.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int totalProgramTime {
+        public long totalProgramTime {
             get {
-                return ((int)(this["totalProgramTime"]));
+                return ((long)(this["totalProgramTime"]));
             }
             set {
                 this["totalProgramTime"] = value;
