@@ -81,20 +81,28 @@ namespace Hansot_kiosk.Manager
 
                         if (!isSend)
                         {
-                            MessageBox.Show(response);
-                            if (response.IndexOf("총매출액") > -1)
+                            if (!string.IsNullOrEmpty(response))
                             {
-                                StatisticCtrl statisticCtrl = (StatisticCtrl)App.UIStateManager.Get(Common.UICategory.STATISTIC);
-                                
-                                string totalPrice = "오늘까지의 총매출액은 " + statisticCtrl.TotalStatisticCtrl.TotalPrice + "원 입니다.";
-
-                                TcpModel tcpModel = new TcpModel()
+                                if (response.IndexOf("총매출액") > -1)
                                 {
-                                    MSGType = 1,
-                                    Content = totalPrice
-                                };
+                                    StatisticCtrl statisticCtrl = (StatisticCtrl)App.UIStateManager.Get(Common.UICategory.STATISTIC);
 
-                                PostMessage(tcpModel);
+                                    string totalPrice = "오늘까지의 총매출액은 " + statisticCtrl.TotalStatisticCtrl.TotalPrice + "원 입니다.";
+
+                                    TcpModel tcpModel = new TcpModel()
+                                    {
+                                        MSGType = 1,
+                                        Content = totalPrice,
+                                        Group = true
+                                    };
+                                    PostMessage(tcpModel);
+                                    break;
+                                }
+                                MessageBox.Show(response);
+                            }
+                            else
+                            {
+                                MessageBox.Show("서버와 연결이 끊겼습니다.");
                                 break;
                             }
                         }
