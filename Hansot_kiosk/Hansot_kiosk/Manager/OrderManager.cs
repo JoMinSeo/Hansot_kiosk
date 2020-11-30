@@ -45,6 +45,8 @@ namespace Hansot_kiosk.Manager
         {
             this.CurrentOrder.OrderedTime = DateTime.Now;
             App.SQLManager.InsertOrder(this.CurrentOrder);
+            App.CSVManager.InsertOrder(this.CurrentOrder);
+
             TcpModel tcpModel = new TcpModel();
             tcpModel.MSGType = 2;
             tcpModel.OrderNumber = this.CurrentOrder.IDX;
@@ -52,13 +54,13 @@ namespace Hansot_kiosk.Manager
             foreach (MenuModel menu in OrderedMenus)
             {
                 App.SQLManager.InsertOrderedMenu(menu, this.CurrentOrder.IDX);
+                App.CSVManager.InsertOrderedMenu(menu, this.CurrentOrder.IDX);
                 tcpModel.Menus.Add(new OrderInfo(menu.Name,menu.Amount, menu.Price));
             }
 
             if (App.isLogined)
             {
-                App.TcpManager.PostMessage(tcpModel);
-
+                App.TCPManager.PostMessage(tcpModel);
             }
         }
         #region PropertyChangedEvent
