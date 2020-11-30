@@ -14,7 +14,7 @@ namespace Hansot_kiosk.Control
             InitializeComponent();
         }
 
-        private void ShopMealBtn_Click(object sender, RoutedEventArgs e)
+        private void IndoorMealBtn_Click(object sender, RoutedEventArgs e)
         {
             UserControl uc = App.UIStateManager.Get(UICategory.SEATSELECT);
             if (uc != null)
