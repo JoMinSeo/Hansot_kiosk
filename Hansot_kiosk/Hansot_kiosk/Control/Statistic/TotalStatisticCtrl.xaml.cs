@@ -26,6 +26,9 @@ namespace Hansot_kiosk.Control.Statistic
         public SeriesCollection SeriesCollection { get; set; }
         public string[] Labels { get; set; }
         public Func<double, string> Formatter { get; set; }
+
+        public int TotalPrice { get; set; }
+
         public TotalStatisticCtrl()
         {
             InitializeComponent();
@@ -46,13 +49,13 @@ namespace Hansot_kiosk.Control.Statistic
 
             int totalPurePrice = (from order in App.Orders select order).Sum(order => order.TotalPrice);
 
-            int totalPrice = totalPurePrice + totalDiscountedPrice;
+            TotalPrice = totalPurePrice + totalDiscountedPrice;
 
             int totalCardPrice = (from order in App.Orders where order.IsCard select order).Sum(order => order.TotalPrice);
 
             int totalCashPrice = totalPurePrice - totalCardPrice;
 
-            values.Add(totalPrice);
+            values.Add(TotalPrice);
             values.Add(totalPurePrice);
             values.Add(totalDiscountedPrice);
             values.Add(totalCashPrice);

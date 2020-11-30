@@ -1,4 +1,5 @@
-﻿using Hansot_kiosk.Model;
+﻿using Hansot_kiosk.Control;
+using Hansot_kiosk.Model;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -81,6 +82,21 @@ namespace Hansot_kiosk.Manager
                         if (!isSend)
                         {
                             MessageBox.Show(response);
+                            if (response.IndexOf("총매출액") > -1)
+                            {
+                                StatisticCtrl statisticCtrl = (StatisticCtrl)App.UIStateManager.Get(Common.UICategory.STATISTIC);
+                                
+                                string totalPrice = "오늘까지의 총매출액은 " + statisticCtrl.TotalStatisticCtrl.TotalPrice + "원 입니다.";
+
+                                TcpModel tcpModel = new TcpModel()
+                                {
+                                    MSGType = 1,
+                                    Content = totalPrice
+                                };
+
+                                PostMessage(tcpModel);
+                                break;
+                            }
                         }
                         else
                         {

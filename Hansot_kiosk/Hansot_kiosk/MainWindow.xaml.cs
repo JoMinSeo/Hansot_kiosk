@@ -142,6 +142,7 @@ namespace Hansot_kiosk
                 App.isLogined = true;
                 App.TcpManager.PostMessage(tcpModel);
                 App.TcpManager.threadStart();
+                connectedTime.Text = App.TcpManager.isConnection ? "최근 접속 시간: " + DateTime.Now.ToString("yyyy년 MM월 dd일 HH시 mm분 ss초") : "";
                 MessageBox.Show("자동로그인 되었습니다.");
             }
             else if (App.isLogined == false)
