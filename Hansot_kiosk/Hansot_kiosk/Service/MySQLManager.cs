@@ -6,10 +6,11 @@ using Hansot_kiosk.Model;
 using Hansot_kiosk.Common;
 using System.Windows;
 using System.Collections.ObjectModel;
+using Hansot_kiosk.Interface;
 
 namespace Hansot_kiosk.Service
 {
-    public class MySQLManager
+    public class MySQLManager : IInsertManager
     {
         private MySqlConnection connection;
         public MySQLManager()
