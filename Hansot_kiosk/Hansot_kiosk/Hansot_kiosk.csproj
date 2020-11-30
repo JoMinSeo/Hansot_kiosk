@@ -290,10 +290,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Resource Include="Fonts\nanum_squareb.ttf" />
-    <Resource Include="Fonts\nanum_squareeb.ttf" />
-    <Resource Include="Fonts\nanum_squarel.ttf" />
-    <Resource Include="Fonts\nanum_squarer.ttf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

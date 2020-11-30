@@ -16,7 +16,7 @@
                 <Grid>
                     <Label Content="좌석을 선택하여주세요." HorizontalAlignment="Center" FontSize="55" Margin="20" VerticalAlignment="Top"/>
                 </Grid>
-                <ListBox x:Name="lbSeats" FontSize="20" VerticalAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="850px" SelectionChanged="lbSeats_SelectionChanged">
+                <ListBox x:Name="seatsLb" FontSize="20" VerticalAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="850px" SelectionChanged="lbSeats_SelectionChanged">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel />
@@ -40,7 +40,7 @@
             <Button Content="이전" Margin="20,0,0,20" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="200" Height="70" Background="#D9D9D9" Click="PreviusBtn_Click" BorderThickness="0"/>
         </Grid>
         <Grid Grid.Row="1">
-            <Button Content="다음" x:Name="NextBtn" Margin="20,0,0,20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="200" Height="70" Background="#D9D9D9" Click="NextBtn_Click" BorderThickness="0"/>
+            <Button Content="다음" x:Name="nextBtn" Margin="20,0,0,20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="200" Height="70" Background="#D9D9D9" Click="NextBtn_Click" BorderThickness="0"/>
         </Grid>
     </Grid>
 </UserControl>

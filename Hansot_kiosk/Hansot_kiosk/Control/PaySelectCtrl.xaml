@@ -42,7 +42,7 @@
             </ListView>
             <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 10 10 10">
                 <TextBlock Text="총 가격 : " FontSize="35px" TextAlignment="Center" VerticalAlignment="Center"/>
-                <TextBlock x:Name="tbk_TotalPrice" Text="{Binding TotalPrice}" FontSize="35px" TextAlignment="Center" VerticalAlignment="Center" Width="200px"/>
+                <TextBlock x:Name="TotalPriceTbk" Text="{Binding TotalPrice}" FontSize="35px" TextAlignment="Center" VerticalAlignment="Center" Width="200px"/>
                 <TextBlock Text="원" FontSize="35px" TextAlignment="Center" VerticalAlignment="Center"/>
             </StackPanel>
         </StackPanel>

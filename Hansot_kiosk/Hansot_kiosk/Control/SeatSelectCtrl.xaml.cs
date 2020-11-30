@@ -44,23 +44,23 @@ namespace Hansot_kiosk.Control
                 Seats.Add(new SeatModel(i, criteriaDate));
             }
             this.DataContext = this;
-            lbSeats.ItemsSource = Seats;
+            seatsLb.ItemsSource = Seats;
 
-            this.NextBtn.IsEnabled = false;
+            this.nextBtn.IsEnabled = false;
         }
 
         private void lbSeats_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (lbSeats.SelectedItems.Count < 1)
+            if (seatsLb.SelectedItems.Count < 1)
             {
                 return;
             }
-            SeatModel model = (SeatModel)lbSeats.SelectedItem;
+            SeatModel model = (SeatModel)seatsLb.SelectedItem;
             if (model.IsEnableClick)
             {
                 App.OrderManager.CurrentOrder.Seat_IDX = model.IDX;
 
-                this.NextBtn.IsEnabled = true;
+                this.nextBtn.IsEnabled = true;
             }
         }
 
