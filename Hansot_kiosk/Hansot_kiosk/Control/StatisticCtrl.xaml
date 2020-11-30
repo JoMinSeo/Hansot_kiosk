@@ -16,7 +16,7 @@
             <statisticCtrl:TotalStatisticCtrl x:Name="TotalStatisticCtrl" Visibility="Visible"/>
             <statisticCtrl:CategoryStatisticCtrl x:Name="CategoryStatisticCtrl" Visibility="Collapsed"/>
             <statisticCtrl:UserStatisticCtrl x:Name="UserStatisticCtrl" Visibility="Collapsed"/>
-            <statisticCtrl:MenuStatisticCtrl x:Name="menuStatisticCtrl" Visibility="Collapsed"/>
+            <statisticCtrl:MenuStatisticCtrl x:Name="MenuStatisticCtrl" Visibility="Collapsed"/>
         </Grid>
         <Grid Grid.Column="1">
             <StackPanel Orientation="Vertical">

@@ -31,7 +31,7 @@ namespace Hansot_kiosk.Control
             controls.Add(TotalStatisticCtrl);
             controls.Add(CategoryStatisticCtrl);
             controls.Add(UserStatisticCtrl);
-            controls.Add(menuStatisticCtrl);
+            controls.Add(MenuStatisticCtrl);
 
             btnss.Add(TotalStatisticCtrlBtn);
             btnss.Add(CategoryStatisticCtrlBtn);
@@ -66,7 +66,7 @@ namespace Hansot_kiosk.Control
         private void MenuStatisticCtrlBtn_Click(object sender, RoutedEventArgs e)
         {
             controls.ForEach(control => control.Visibility = Visibility.Collapsed);
-            menuStatisticCtrl.Visibility = Visibility.Visible;
+            MenuStatisticCtrl.Visibility = Visibility.Visible;
         }
     }
 }
